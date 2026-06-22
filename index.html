@@ -4434,22 +4434,6 @@ DIARIO_CURSOWEBM: indice editorial generado
             Día 30 - Colecciones, redirecciones y contexto Java Web
           </a>
         </li>
-        <li>
-          <a
-            href="#ampliacion-java---herencia-modificadores-y-librerias-jar"
-            id="toc-ampliacion-java---herencia-modificadores-y-librerias-jar"
-          >
-            Ampliación Java integrada en días 26-30
-          </a>
-        </li>
-        <li>
-          <a
-            href="#ampliacion-java-web---maven-tomcat-y-servlets"
-            id="toc-ampliacion-java-web---maven-tomcat-y-servlets"
-          >
-            Ampliación Java web integrada en días 27-30
-          </a>
-        </li>
       </ul>
     </nav>
     <section class="level1 front-section" id="portada">
@@ -19817,6 +19801,19 @@ response.setHeader("Access-Control-Allow-Headers", "Content-Type");</code></pre>
           ampliación histórica o mantenimiento de proyectos heredados, no como
           el patrón principal de este tramo del curso.
         </p>
+        <p>
+          En la actualización de <code>profe/f11webjava/imcwebprofejsp</code>, el
+          Servlet no entrega JSON para que lo pinte JavaScript. Guarda el modelo
+          en la petición con <code>request.setAttribute(...)</code> y delega la
+          pantalla en un JSP con <code>request.getRequestDispatcher(...).forward(...)</code>.
+          Esto refuerza la diferencia: <code>forward</code> mantiene el trabajo en el
+          servidor; <code>fetch</code> deja que el navegador consuma JSON.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">request.setAttribute("resultadoImc", imcRespuestaNueva);
+request.getRequestDispatcher("/resultado-imc.jsp")
+        .forward(request, response);</code></pre>
+        </div>
       </section>
       <section class="level2" id="errores-frecuentes-dia-29">
         <h2>Errores frecuentes</h2>
@@ -19854,10 +19851,10 @@ response.setHeader("Access-Control-Allow-Headers", "Content-Type");</code></pre>
       <section class="level2 quick-summary" id="resumen-rapido-dia-30">
         <h2>Resumen rápido</h2>
         <ul>
-          <li><strong>Qué se vio:</strong> <code>List</code>, <code>Set</code>, <code>Map</code>, genéricos, redirecciones HTTP, scopes y <code>ServletContext</code>.</li>
+          <li><strong>Qué se vio:</strong> <code>List</code>, <code>Set</code>, <code>Map</code>, genéricos, recorridos con <code>for</code>/<code>for-each</code>, redirecciones HTTP, scopes y <code>ServletContext</code>.</li>
           <li><strong>Concepto que importa:</strong> HTTP no recuerda estado; Java Web decide si un dato vive en request, session o context.</li>
           <li><strong>Error a evitar:</strong> guardar datos de un usuario en el contexto global o reiniciar un contador al actualizarlo.</li>
-          <li><strong>Práctica:</strong> usar colecciones pequeñas, un contador global y una lista de IMC en el contexto.</li>
+          <li><strong>Práctica:</strong> usar colecciones pequeñas, recorrerlas con <code>for-each</code>, actualizar un contador global y guardar una lista de IMC en el contexto.</li>
           <li><strong>Debe quedar claro:</strong> las colecciones organizan datos; los scopes marcan cuánto tiempo y para quién existen.</li>
         </ul>
       </section>
@@ -19870,7 +19867,7 @@ response.setHeader("Access-Control-Allow-Headers", "Content-Type");</code></pre>
           </article>
           <article class="study-level-item">
             <strong>Práctica</strong>
-            <p>Crear colecciones pequeñas, actualizar un contador global de IMC y guardar resultados correctos en <code>listaIMC</code>.</p>
+            <p>Crear colecciones pequeñas, recorrerlas con <code>for</code> y <code>for-each</code>, actualizar un contador global de IMC y guardar resultados correctos en <code>listaIMC</code>.</p>
           </article>
           <article class="study-level-item">
             <strong>Ampliación</strong>
@@ -19884,7 +19881,8 @@ response.setHeader("Access-Control-Allow-Headers", "Content-Type");</code></pre>
           La parte de colecciones mantiene el nivel de Java inicial ya observado
           en el diario. La parte web se apoya en los ejemplos de
           <code>profe/f11webjava/imcwebprofe</code>, especialmente el listener de
-          contexto, el servlet de IMC y el uso de <code>sendRedirect</code> visto en
+          contexto, el servlet de IMC, el recorrido de <code>listaIMC</code> con
+          <code>for</code>/<code>for-each</code> y el uso de <code>sendRedirect</code> visto en
           el material de resumen. No se modifica <code>profe</code>; solo se usa como
           referencia de nivel.
         </p>
@@ -20075,6 +20073,37 @@ public class EjemploMap {
           </tbody>
         </table>
       </section>
+
+      <section class="level2" id="recorrer-colecciones-dia-30">
+        <h2>Recorrer colecciones: <code>for</code> tradicional y <code>for-each</code></h2>
+        <p>
+          La actualización de <code>ContextoInicioYFin</code> en <code>profe</code>
+          muestra dos formas de leer la lista global de IMC al apagar la
+          aplicación. El <code>for</code> tradicional sirve cuando se necesita el
+          índice; el <code>for-each</code> es más directo cuando solo se quiere visitar
+          cada objeto.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">ArrayList&lt;ImcRespuestaNueva&gt; listaIMC =
+        (ArrayList&lt;ImcRespuestaNueva&gt;) servletContext.getAttribute("listaIMC");
+
+// For tradicional: útil si necesitas la posición.
+for (int i = 0; i &lt; listaIMC.size(); i++) {
+    ImcRespuestaNueva imc = listaIMC.get(i);
+    System.out.println(imc);
+}
+
+// For-each: más limpio si solo quieres recorrer elementos.
+for (ImcRespuestaNueva imc : listaIMC) {
+    System.out.println(imc);
+}</code></pre>
+        </div>
+        <p>
+          Para estudiar, no hay que convertir esto en teoría avanzada. La regla
+          práctica es sencilla: si necesitas <code>i</code>, usa <code>for</code> con
+          índice; si solo necesitas cada elemento, usa <code>for-each</code>.
+        </p>
+      </section>
       <section class="level2" id="redirecciones-http-dia-30">
         <h2>Redirecciones HTTP: códigos 300 y 302</h2>
         <p>
@@ -20233,8 +20262,9 @@ context.setAttribute("listaIMC", lista);</code></pre>
         <h2>Ejercicio para practicar</h2>
         <p>
           Haz dos prácticas cortas. Primero, crea un programa de consola que
-          guarde nombres en una <code>List</code>, DNI únicos en un <code>Set</code> y
-          notas en un <code>Map</code>. Después, revisa el servlet de IMC y comprueba
+          guarde nombres en una <code>List</code>, DNI únicos en un <code>Set</code>,
+          notas en un <code>Map</code> y recorra la lista con <code>for-each</code>.
+          Después, revisa el servlet de IMC y comprueba
           que el contador global del contexto se lee, se incrementa y se vuelve
           a guardar con el valor actualizado. Si el cálculo es correcto, añade
           también la respuesta a <code>listaIMC</code>.
@@ -20270,6 +20300,10 @@ public class PracticaColecciones {
         System.out.println("Alumnos en lista: " + alumnos.size());
         System.out.println("DNI unicos: " + dnis.size());
         System.out.println("Nota de 12345678Z: " + notas.get("12345678Z"));
+
+        for (String alumno : alumnos) {
+            System.out.println("Alumno: " + alumno);
+        }
     }
 }</code></pre>
           </div>
@@ -20281,6 +20315,7 @@ public class PracticaColecciones {
           <li>Olvidar los <code>import</code> de <code>java.util</code>.</li>
           <li>Confundir índice de lista con clave de mapa.</li>
           <li>Esperar que <code>HashSet</code> mantenga un orden concreto.</li>
+          <li>Usar <code>for</code> con índice cuando un <code>for-each</code> sería suficiente.</li>
           <li>Pensar que una redirección devuelve JSON; en realidad pide al navegador otra URL.</li>
           <li>Guardar datos privados de un usuario en <code>ServletContext</code>, que es compartido por todos.</li>
           <li>Leer un atributo como <code>Object</code> y olvidar el casting antes de sumar o usar métodos específicos.</li>
@@ -20298,86 +20333,7 @@ public class PracticaColecciones {
         </p>
       </section>
     </section>
-    <!-- Bloques de ampliación compactados tras integrar su contenido principal en los días 26-30. -->
-    <section
-      class="level1"
-      id="ampliacion-java---herencia-modificadores-y-librerias-jar"
-    >
-      <h1>Ampliación Java integrada en días 26-30</h1>
-      <p>
-        Esta ampliación ya no se mantiene como un capítulo independiente para
-        evitar duplicar teoría. Sus ideas principales quedan repartidas donde se
-        estudian: POO básica en el Día 26, jerarquía Java y modificadores en el
-        Día 27, modelos de datos en el Día 28 y <code>Object</code> con casting en
-        el Día 30.
-      </p>
-      <section class="level2 quick-summary" id="resumen-rapido-ampliacion-java">
-        <h2>Resumen rápido</h2>
-        <ul>
-          <li><strong>Qué se vio:</strong> <code>extends</code>, <code>Object</code>, <code>super</code>, <code>final</code>, <code>static</code> y JAR.</li>
-          <li><strong>Concepto que importa:</strong> la POO se entiende mejor cuando cada idea aparece junto a una práctica real.</li>
-          <li><strong>Error a evitar:</strong> estudiar la ampliación como tema aislado y olvidar en qué día se usa.</li>
-          <li><strong>Práctica:</strong> volver a Día 26 y Día 27 para repasar clase, herencia, modificadores y empaquetado.</li>
-          <li><strong>Debe quedar claro:</strong> lo obligatorio está integrado en los días; esta sección solo conserva trazabilidad.</li>
-        </ul>
-      </section>
-      <section class="level2 study-levels" id="niveles-de-estudio-ampliacion-java">
-        <h2>Niveles de estudio</h2>
-        <div class="study-level-grid">
-          <article class="study-level-item">
-            <strong>Esencial</strong>
-            <p>Día 26: clase, objeto, constructor, <code>this</code> y herencia básica.</p>
-          </article>
-          <article class="study-level-item">
-            <strong>Práctica</strong>
-            <p>Día 27: reconocer <code>Object</code>, <code>super</code>, <code>final</code>, <code>static</code>, JAR y Maven en contexto.</p>
-          </article>
-          <article class="study-level-item">
-            <strong>Ampliación</strong>
-            <p>Día 30: recuperar valores del contexto como <code>Object</code> y convertirlos al tipo real.</p>
-          </article>
-        </div>
-      </section>
-    </section>
-    <section
-      class="level1"
-      id="ampliacion-java-web---maven-tomcat-y-servlets"
-    >
-      <h1>Ampliación Java web integrada en días 27-30</h1>
-      <p>
-        Esta ampliación queda como índice de repaso. Maven, Tomcat, Servlets,
-        estado HTTP, JSON, CORS, redirecciones y contexto ya están desarrollados
-        en los días 27, 28, 29 y 30 para que el alumno estudie cada concepto junto
-        al ejercicio donde aparece.
-      </p>
-      <section class="level2 quick-summary" id="resumen-rapido-ampliacion-java-web">
-        <h2>Resumen rápido</h2>
-        <ul>
-          <li><strong>Qué se vio:</strong> estructura web Java, Tomcat, Servlets, Maven, estados HTTP y separación estático/dinámico.</li>
-          <li><strong>Concepto que importa:</strong> Java responde por web cuando Tomcat recibe una ruta y la asocia a un Servlet.</li>
-          <li><strong>Error a evitar:</strong> repetir aquí lo que ya está explicado dentro de cada día.</li>
-          <li><strong>Práctica:</strong> revisar Día 27 para Servlet, Día 28 para JSON, Día 29 para fetch/CORS y Día 30 para contexto.</li>
-          <li><strong>Debe quedar claro:</strong> este bloque no añade obligación nueva; orienta el repaso.</li>
-        </ul>
-      </section>
-      <section class="level2 study-levels" id="niveles-de-estudio-ampliacion-java-web">
-        <h2>Niveles de estudio</h2>
-        <div class="study-level-grid">
-          <article class="study-level-item">
-            <strong>Esencial</strong>
-            <p>Día 27: Tomcat, <code>webapp</code>, <code>@WebServlet</code>, <code>request</code>, <code>response</code> y status.</p>
-          </article>
-          <article class="study-level-item">
-            <strong>Práctica</strong>
-            <p>Día 28 y Día 29: devolver JSON desde Java y consumirlo con JavaScript.</p>
-          </article>
-          <article class="study-level-item">
-            <strong>Ampliación</strong>
-            <p>Día 30: redirecciones, scopes, listeners, contexto y persistencia final.</p>
-          </article>
-        </div>
-      </section>
-    </section>
+    <!-- Ampliaciones Java integradas dentro de los días 26-30; se retira el anexo visible para evitar duplicación editorial. -->
     <!--
 DIARIO_CURSOWEBM: controladores de laboratorios interactivos
 -->
