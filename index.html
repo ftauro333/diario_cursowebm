@@ -4399,7 +4399,7 @@ DIARIO_CURSOWEBM: indice editorial generado
             href="#dia-26---entorno-logica-algoritmica-y-excepciones-java"
             id="toc-dia-26---entorno-logica-algoritmica-y-excepciones-java"
           >
-            Día 26 - Entorno, lógica algorítmica y excepciones Java
+            Día 26 - Configuración inicial, lógica algorítmica y POO
           </a>
         </li>
         <li>
@@ -4431,7 +4431,7 @@ DIARIO_CURSOWEBM: indice editorial generado
             href="#dia-30---colecciones-java-list-set-y-map"
             id="toc-dia-30---colecciones-java-list-set-y-map"
           >
-            Día 30 - Colecciones Java: List, Set y Map
+            Día 30 - Colecciones, redirecciones y contexto Java Web
           </a>
         </li>
         <li>
@@ -4439,7 +4439,7 @@ DIARIO_CURSOWEBM: indice editorial generado
             href="#ampliacion-java---herencia-modificadores-y-librerias-jar"
             id="toc-ampliacion-java---herencia-modificadores-y-librerias-jar"
           >
-            Ampliación Java - Herencia, modificadores y librerías JAR
+            Ampliación Java integrada en días 26-30
           </a>
         </li>
         <li>
@@ -4447,7 +4447,7 @@ DIARIO_CURSOWEBM: indice editorial generado
             href="#ampliacion-java-web---maven-tomcat-y-servlets"
             id="toc-ampliacion-java-web---maven-tomcat-y-servlets"
           >
-            Ampliación Java web - Maven, Tomcat y Servlets
+            Ampliación Java web integrada en días 27-30
           </a>
         </li>
       </ul>
@@ -4576,9 +4576,9 @@ DIARIO_CURSOWEBM: indice editorial generado
               <span>Dias 27-29: conectar Tomcat, Java servidor y consumo desde JavaScript.</span>
             </a>
             <a class="study-topic-card" href="#dia-30---colecciones-java-list-set-y-map">
-              <b>Colecciones Java</b>
-              <strong>List, Set y Map para organizar datos</strong>
-              <span>Dia 30: elegir estructura segun orden, repetidos o busqueda por clave.</span>
+              <b>Java y estado web</b>
+              <strong>List, Set, Map, redirecciones, scopes y contexto</strong>
+              <span>Dia 30: organizar datos y entender donde vive la informacion en Java Web.</span>
             </a>
           </div>
         </div>
@@ -18485,21 +18485,21 @@ public class ProgramaDni {
       class="level1 day-section"
       id="dia-26---entorno-logica-algoritmica-y-excepciones-java"
     >
-      <h1 data-day-date="16/06/2026">Día 26 - Entorno, lógica algorítmica y excepciones Java</h1>
+      <h1 data-day-date="16/06/2026">Día 26 - Configuración inicial, lógica algorítmica y POO</h1>
       <p>
-        Este día conecta el trabajo real de un proyecto Java con tres ideas que
-        tienen que quedar unidas: organizar el código desde el repositorio,
-        convertir un problema sencillo en algoritmo y proteger el programa
-        cuando el usuario o el sistema provocan un fallo.
+        Este día conecta el trabajo real de un proyecto Java con cuatro ideas
+        que tienen que quedar unidas: organizar el código desde el repositorio,
+        convertir un problema sencillo en algoritmo, proteger el programa ante
+        fallos previsibles y empezar a leer la POO como relación entre clases.
       </p>
       <section class="level2 quick-summary" id="resumen-rapido-dia-26">
         <h2>Resumen rapido</h2>
         <ul>
-          <li><strong>Que se vio:</strong> monorepositorios, Smart Import, ramas, IMC, <code>Scanner</code>, excepciones y depuracion.</li>
-          <li><strong>Concepto que importa:</strong> un programa serio no solo calcula; tambien anticipa fallos.</li>
-          <li><strong>Error a evitar:</strong> confiar en que el usuario siempre escribira datos validos.</li>
-          <li><strong>Practica:</strong> leer datos, calcular IMC, capturar excepciones e inspeccionar variables con breakpoints.</li>
-          <li><strong>Debe quedar claro:</strong> <code>try</code> contiene el riesgo y <code>catch</code> decide como responder.</li>
+          <li><strong>Que se vio:</strong> monorepositorios, Smart Import, ramas, IMC, <code>Scanner</code>, excepciones, clases, herencia, constructores y <code>this</code>.</li>
+          <li><strong>Concepto que importa:</strong> un programa serio no solo calcula; tambien organiza datos en objetos y anticipa fallos.</li>
+          <li><strong>Error a evitar:</strong> confiar en que el usuario siempre escribira datos validos o crear clases sin relacion clara.</li>
+          <li><strong>Practica:</strong> leer datos, calcular IMC, capturar excepciones y modelar una clase sencilla con constructor.</li>
+          <li><strong>Debe quedar claro:</strong> <code>try</code> contiene el riesgo; una clase define el molde de los objetos.</li>
         </ul>
       </section>
       <section class="level2 study-levels" id="niveles-de-estudio-dia-26">
@@ -18507,15 +18507,15 @@ public class ProgramaDni {
         <div class="study-level-grid">
           <article class="study-level-item">
             <strong>Esencial</strong>
-            <p><code>Scanner</code>, <code>try</code>, <code>catch</code>, excepcion, constructor y <code>this</code>.</p>
+            <p><code>Scanner</code>, <code>try</code>, <code>catch</code>, excepcion, clase, objeto, constructor, <code>this</code> y <code>extends</code>.</p>
           </article>
           <article class="study-level-item">
             <strong>Practica</strong>
             <p>Calcular IMC, provocar un dato no valido y comprobar que el programa no se cae.</p>
           </article>
           <article class="study-level-item">
-            <strong>Arquitectura</strong>
-            <p>Entender ramas, importacion inteligente y depuracion como rutina profesional.</p>
+            <strong>Ampliación</strong>
+            <p>Entender ramas, importacion inteligente, depuracion, herencia y reutilizacion como rutina profesional.</p>
           </article>
         </div>
       </section>
@@ -18525,7 +18525,7 @@ public class ProgramaDni {
           Aprender a pasar de una idea de programa a una ejecución controlada:
           preparar el proyecto, leer datos por consola, detectar errores de
           entrada, capturar excepciones y entender cómo se crea un objeto con
-          constructores y <code>this</code>.
+          constructores, <code>this</code> y una relacion de herencia sencilla.
         </p>
       </section>
       <section class="level2" id="mapa-de-estudio-dia-26">
@@ -18758,6 +18758,47 @@ public class ImcConExcepcion {
           recibido por el constructor.
         </p>
       </section>
+
+      <section class="level2" id="poo-herencia-basica-dia-26">
+        <h2>POO mínima: clases, herencia y constructores</h2>
+        <p>
+          Java trabaja con clases como moldes y objetos como instancias reales.
+          La herencia se usa cuando una clase hija es un tipo más concreto de una
+          clase padre. No se trata de copiar menos por comodidad, sino de expresar
+          una relación clara: <code>Dni</code> puede ser un tipo de
+          <code>Documento</code>; un constructor deja cada objeto preparado al nacer.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">public class Documento {
+
+    private String numero;
+
+    public Documento(String numero) {
+        this.numero = numero;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+}
+
+public class Dni extends Documento {
+
+    private char letra;
+
+    public Dni(String numero, char letra) {
+        super(numero);
+        this.letra = letra;
+    }
+}</code></pre>
+        </div>
+        <p>
+          <code>extends</code> marca la herencia, <code>super(numero)</code> llama al
+          constructor de la clase padre y <code>this.letra</code> señala el atributo
+          del objeto que se está creando. Es una ampliación del día, pero encaja
+          con la idea principal: organizar mejor el código antes de hacerlo crecer.
+        </p>
+      </section>
       <section class="level2" id="errores-frecuentes-dia-26">
         <h2>Errores frecuentes</h2>
         <ul>
@@ -18810,10 +18851,76 @@ public class ImcConExcepcion {
             <p>Construir una URL con <code>nombre</code> y <code>edad</code> para comprobar la respuesta del Servlet.</p>
           </article>
           <article class="study-level-item">
-            <strong>Arquitectura</strong>
-            <p>Distinguir recurso estático, controlador Java y contrato HTTP de salida.</p>
+            <strong>Ampliación</strong>
+            <p>Distinguir recurso estático, controlador Java, contrato HTTP, base POO y dependencias del proyecto.</p>
           </article>
         </div>
+      </section>
+
+      <section class="level2" id="base-java-servlets-dia-27">
+        <h2>Base Java que aparece al estudiar Servlets</h2>
+        <p>
+          Un Servlet también es una clase Java. Por eso vuelven ideas de POO:
+          hereda de <code>HttpServlet</code>, todas las clases cuelgan de
+          <code>Object</code> y <code>super</code> permite inicializar o usar la parte
+          heredada. En este punto basta con reconocer la jerarquía, no con
+          diseñar frameworks propios.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Lectura de estudio</th>
+              <th>Error a evitar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>Object</code></td>
+              <td>Raíz común de las clases Java.</td>
+              <td>Olvidar que al recuperar datos genéricos puede hacer falta convertirlos.</td>
+            </tr>
+            <tr>
+              <td><code>super</code></td>
+              <td>Llama a la parte heredada de la clase padre.</td>
+              <td>Usarlo sin saber qué constructor o método de padre se necesita.</td>
+            </tr>
+            <tr>
+              <td><code>final</code></td>
+              <td>Marca un valor que no se reasigna después.</td>
+              <td>Usarlo en datos que deben cambiar durante la ejecución.</td>
+            </tr>
+            <tr>
+              <td><code>static</code></td>
+              <td>Pertenece a la clase, no a cada objeto individual.</td>
+              <td>Confundir estado compartido con estado propio de un usuario u objeto.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="level2" id="jar-maven-dia-27">
+        <h2>JAR, Maven y dependencias</h2>
+        <p>
+          Un <code>.jar</code> agrupa clases compiladas para reutilizarlas como
+          librería. Maven evita gestionar esos JAR a mano: el proyecto declara
+          dependencias en <code>pom.xml</code> y el entorno las descarga o las pone
+          disponibles. En el curso se estudia como idea práctica de organización,
+          no como una capa avanzada de arquitectura.
+        </p>
+        <dl class="micro-lesson cognitive-row">
+          <div class="signal-idea">
+            <dt>Idea clave</dt>
+            <dd>El código reutilizable se empaqueta; las dependencias se declaran.</dd>
+          </div>
+          <div class="signal-rule">
+            <dt>Regla práctica</dt>
+            <dd>HTML/CSS/JS viven en <code>webapp</code>; Java servidor vive en <code>src/main/java</code>; dependencias en <code>pom.xml</code>.</dd>
+          </div>
+          <div class="signal-warning">
+            <dt>Cuidado</dt>
+            <dd>Copiar JARs sin control funciona para probar, pero dificulta reproducir el proyecto.</dd>
+          </div>
+        </dl>
       </section>
       <section class="level2" id="fuentes-reales-dia-27">
         <h2>Material fuente usado</h2>
@@ -19737,21 +19844,21 @@ response.setHeader("Access-Control-Allow-Headers", "Content-Type");</code></pre>
       class="level1 day-section"
       id="dia-30---colecciones-java-list-set-y-map"
     >
-      <h1 data-day-date="22/06/2026">Día 30 - Colecciones Java: List, Set y Map</h1>
+      <h1 data-day-date="22/06/2026">Día 30 - Colecciones, redirecciones y contexto Java Web</h1>
       <p>
-        Esta jornada continúa Java desde una necesidad muy práctica: guardar más
-        de un dato sin crear muchas variables sueltas. Las colecciones permiten
-        agrupar elementos, recorrerlos y elegir la estructura adecuada según el
-        problema.
+        Esta jornada une dos necesidades prácticas: organizar varios datos en
+        Java con colecciones y entender dónde puede guardar memoria una
+        aplicación web entre peticiones HTTP. El objetivo no es añadir más
+        teoría, sino distinguir qué estructura o ámbito conviene en cada caso.
       </p>
       <section class="level2 quick-summary" id="resumen-rapido-dia-30">
         <h2>Resumen rápido</h2>
         <ul>
-          <li><strong>Qué se vio:</strong> colecciones Java y diferencias entre <code>List</code>, <code>Set</code> y <code>Map</code>.</li>
-          <li><strong>Concepto que importa:</strong> no todas las colecciones sirven para lo mismo.</li>
-          <li><strong>Error a evitar:</strong> usar una <code>List</code> cuando el dato debe ser único o usar un <code>Map</code> como si fuera una lista.</li>
-          <li><strong>Práctica:</strong> guardar alumnos, DNI únicos y notas asociadas a una clave.</li>
-          <li><strong>Debe quedar claro:</strong> <code>List</code> ordena por posición, <code>Set</code> evita duplicados y <code>Map</code> busca por clave.</li>
+          <li><strong>Qué se vio:</strong> <code>List</code>, <code>Set</code>, <code>Map</code>, genéricos, redirecciones HTTP, scopes y <code>ServletContext</code>.</li>
+          <li><strong>Concepto que importa:</strong> HTTP no recuerda estado; Java Web decide si un dato vive en request, session o context.</li>
+          <li><strong>Error a evitar:</strong> guardar datos de un usuario en el contexto global o reiniciar un contador al actualizarlo.</li>
+          <li><strong>Práctica:</strong> usar colecciones pequeñas, un contador global y una lista de IMC en el contexto.</li>
+          <li><strong>Debe quedar claro:</strong> las colecciones organizan datos; los scopes marcan cuánto tiempo y para quién existen.</li>
         </ul>
       </section>
       <section class="level2 study-levels" id="niveles-de-estudio-dia-30">
@@ -19759,25 +19866,27 @@ response.setHeader("Access-Control-Allow-Headers", "Content-Type");</code></pre>
         <div class="study-level-grid">
           <article class="study-level-item">
             <strong>Esencial</strong>
-            <p><code>ArrayList</code>, <code>HashSet</code>, <code>HashMap</code>, <code>add</code>, <code>put</code>, <code>get</code> y recorrido con <code>for</code>.</p>
+            <p><code>ArrayList</code>, <code>HashSet</code>, <code>HashMap</code>, genéricos, <code>add</code>, redirección <code>sendRedirect</code> y diferencia entre <code>request</code>, <code>session</code> y <code>context</code>.</p>
           </article>
           <article class="study-level-item">
             <strong>Práctica</strong>
-            <p>Crear tres estructuras pequeñas y comprobar qué pasa con el orden, los repetidos y las claves.</p>
+            <p>Crear colecciones pequeñas, actualizar un contador global de IMC y guardar resultados correctos en <code>listaIMC</code>.</p>
           </article>
           <article class="study-level-item">
             <strong>Ampliación</strong>
-            <p>Entender interfaces, genéricos, autoboxing y diferencias internas entre implementaciones.</p>
+            <p>Entender ciclo de vida con listeners, cookies de sesión, <code>Object</code>, casting, <code>TreeMap</code> y persistencia final al apagar la aplicación.</p>
           </article>
         </div>
       </section>
       <section class="level2" id="trazabilidad-dia-30">
         <h2>Trazabilidad del día</h2>
         <p>
-          En esta ubicación no aparece una carpeta Java nueva dentro de
-          <code>profe</code> para colecciones. Por eso el desarrollo mantiene el
-          nivel ya observado en el diario: Java inicial, clases sencillas,
-          consola, tipos, objetos y ejemplos cortos verificables.
+          La parte de colecciones mantiene el nivel de Java inicial ya observado
+          en el diario. La parte web se apoya en los ejemplos de
+          <code>profe/f11webjava/imcwebprofe</code>, especialmente el listener de
+          contexto, el servlet de IMC y el uso de <code>sendRedirect</code> visto en
+          el material de resumen. No se modifica <code>profe</code>; solo se usa como
+          referencia de nivel.
         </p>
       </section>
       <section class="level2" id="idea-de-coleccion-dia-30">
@@ -19785,9 +19894,10 @@ response.setHeader("Access-Control-Allow-Headers", "Content-Type");</code></pre>
         <p>
           Una colección es una estructura preparada para guardar varios valores.
           En vez de crear variables como <code>alumno1</code>, <code>alumno2</code>
-          y <code>alumno3</code>, se crea una colección y se añaden elementos.
-          La decisión importante no es solo guardar datos, sino elegir cómo se
-          necesitan recuperar.
+          y <code>alumno3</code>, se crea una colección y se añaden elementos. Frente
+          a un array de tamaño fijo, una colección como <code>ArrayList</code> puede
+          crecer cuando llegan nuevos datos. La decisión importante no es solo
+          guardar datos, sino elegir cómo se necesitan recuperar.
         </p>
         <table>
           <thead>
@@ -19821,7 +19931,8 @@ response.setHeader("Access-Control-Allow-Headers", "Content-Type");</code></pre>
         <p>
           Una <code>List</code> guarda elementos en orden de entrada y permite
           repetidos. La implementación más habitual para empezar es
-          <code>ArrayList</code>.
+          <code>ArrayList</code>. En el proyecto IMC encaja para guardar un histórico
+          de respuestas correctas, porque cada cálculo nuevo se añade al final.
         </p>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.ArrayList;
@@ -19848,6 +19959,27 @@ public class EjemploList {
           La posición empieza en cero, igual que en los arrays. Si se añade
           <code>"Ana"</code> dos veces, aparece dos veces porque la lista no
           filtra duplicados.
+        </p>
+      </section>
+      <section class="level2" id="genericos-sobrecarga-dia-30">
+        <h2>Genéricos y sobrecarga de <code>add</code></h2>
+        <p>
+          Los genéricos indican qué tipo de objeto acepta una colección. Así,
+          <code>ArrayList&lt;ImcRespuestaNueva&gt;</code> solo debe recibir respuestas
+          de IMC y evita mezclar datos sin control. El operador diamante
+          <code>&lt;&gt;</code> permite crear la lista sin repetir todo el tipo a la
+          derecha.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">ArrayList&lt;ImcRespuestaNueva&gt; listaIMC = new ArrayList&lt;&gt;();
+
+listaIMC.add(imcRespuestaNueva);       // añade al final
+listaIMC.add(0, imcRespuestaNueva);    // inserta en una posición concreta</code></pre>
+        </div>
+        <p>
+          Las dos llamadas se llaman igual, pero tienen parámetros distintos.
+          Eso es sobrecarga de métodos: una misma operación ofrece varias formas
+          de uso según lo que se necesita.
         </p>
       </section>
       <section class="level2" id="set-dia-30">
@@ -19886,7 +20018,8 @@ public class EjemploSet {
         <p>
           Un <code>Map</code> no guarda elementos por posición. Guarda pares de
           clave y valor. La clave identifica el dato y el valor es lo que se
-          quiere recuperar.
+          quiere recuperar. Su ventaja es que permite buscar directamente por la
+          clave, sin recorrer una lista completa desde el principio.
         </p>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.HashMap;
@@ -19908,7 +20041,9 @@ public class EjemploMap {
         <p>
           Si se usa dos veces la misma clave, el segundo <code>put</code> sustituye
           el valor anterior. Por eso <code>Map</code> es adecuado cuando la clave
-          debe identificar un único resultado.
+          debe identificar un único resultado. Como ampliación, <code>TreeMap</code>
+          mantiene las claves ordenadas, pero hace más trabajo interno al insertar
+          o borrar datos; no es lo primero que hay que usar para empezar.
         </p>
       </section>
       <section class="level2" id="comparacion-list-set-map-dia-30">
@@ -19940,13 +20075,169 @@ public class EjemploMap {
           </tbody>
         </table>
       </section>
+      <section class="level2" id="redirecciones-http-dia-30">
+        <h2>Redirecciones HTTP: códigos 300 y 302</h2>
+        <p>
+          Una redirección no entrega directamente el contenido final. El servidor
+          responde indicando otra ruta y el navegador hace una segunda petición
+          HTTP nueva hacia esa dirección. Por eso cambia la URL visible y también
+          queda rastro en el historial del navegador.
+        </p>
+        <p>
+          En Java Web, una forma sencilla de provocarlo desde un servlet es usar
+          <code>sendRedirect</code>. Es útil para llevar a una página de error, mover
+          una web antigua a una ruta nueva o evitar que una recarga repita una
+          acción sensible, como procesar una compra dos veces.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">response.sendRedirect("error-imc.jsp");
+return;</code></pre>
+        </div>
+      </section>
+      <section class="level2" id="http-stateless-scopes-dia-30">
+        <h2>HTTP no tiene memoria: request, session y context</h2>
+        <p>
+          HTTP es <em>stateless</em>: cada petición nace, recibe respuesta y termina.
+          Para recordar algo entre peticiones, Java Web necesita un ámbito de
+          memoria adecuado. La elección depende de cuánto debe durar el dato y
+          quién debe verlo.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Ámbito</th>
+              <th>Duración</th>
+              <th>Uso inicial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>request</code></td>
+              <td>Solo una petición y su respuesta.</td>
+              <td>Pasar un mensaje o resultado puntual.</td>
+            </tr>
+            <tr>
+              <td><code>session</code></td>
+              <td>Varias peticiones del mismo usuario.</td>
+              <td>Login, carrito o preferencias de un navegador.</td>
+            </tr>
+            <tr>
+              <td><code>context</code></td>
+              <td>Mientras la aplicación está arrancada.</td>
+              <td>Datos globales compartidos por todos los usuarios.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="level2" id="servlet-context-listener-dia-30">
+        <h2><code>ServletContext</code> y listeners</h2>
+        <p>
+          El contexto de aplicación es una memoria global creada al arrancar la
+          aplicación en Tomcat y destruida al detenerla. Un
+          <code>ServletContextListener</code> permite preparar esa memoria justo al
+          inicio y liberar o cerrar recursos al final.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.ArrayList;
+
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
+
+@WebListener
+public class ContextoInicioFin implements ServletContextListener {
+
+    /**
+     * Inicializa los datos globales cuando arranca la aplicación.
+     */
+    public void contextInitialized(ServletContextEvent sce) {
+        ServletContext context = sce.getServletContext();
+        context.setAttribute("numero_veces", 0);
+        context.setAttribute("listaIMC", new ArrayList&lt;ImcRespuestaNueva&gt;());
+    }
+
+    /**
+     * Lee el contador global antes de cerrar la aplicación.
+     */
+    public void contextDestroyed(ServletContextEvent sce) {
+        ServletContext context = sce.getServletContext();
+        Object numeroVecesGuardado = context.getAttribute("numero_veces");
+        int numeroVeces = 0;
+
+        if (numeroVecesGuardado instanceof Integer) {
+            numeroVeces = (int) numeroVecesGuardado;
+        }
+
+        System.out.println("Se ha invocado a CalculoIMC " + numeroVeces + " veces");
+        System.out.println("APP FINALIZADA");
+    }
+}</code></pre>
+        </div>
+        <p>
+          El ejemplo encaja con el IMC porque el contador de veces y una lista de
+          respuestas son datos globales de la aplicación, no datos privados de un
+          único usuario. Al cerrar, el contador se lee como <code>Object</code> y se
+          comprueba su tipo antes de convertirlo a número.
+        </p>
+        <p>
+          <code>contextDestroyed</code> es la última oportunidad antes de que Tomcat
+          destruya esa memoria. En una aplicación real, ahí podrían volcarse
+          estadísticas o listas acumuladas a un archivo o base de datos. En este
+          nivel basta con entender que si no se guardan fuera de la memoria, esos
+          datos desaparecen al apagar la aplicación.
+        </p>
+      </section>
+      <section class="level2" id="object-casting-context-dia-30">
+        <h2><code>Object</code>, lectura del contexto y casting</h2>
+        <p>
+          <code>setAttribute</code> recibe una clave de texto y un valor de tipo
+          <code>Object</code>. Eso permite guardar números, textos, listas u objetos
+          propios, porque en Java todo objeto cuelga de <code>Object</code>. El
+          contexto se usa como un almacén de clave-valor: se guarda con un nombre
+          y se recupera con ese mismo nombre. Al leer con <code>getAttribute</code>,
+          Java devuelve de nuevo un <code>Object</code>, así que hay que convertirlo
+          al tipo real antes de operar.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">ServletContext context = getServletContext();
+
+int numveces = (int) context.getAttribute("numero_veces");
+numveces = numveces + 1;
+
+context.setAttribute("numero_veces", numveces);</code></pre>
+        </div>
+        <p>
+          Lo importante es guardar el valor actualizado. Si después de sumar se
+          vuelve a guardar <code>0</code>, el contador nunca avanza aunque el servlet
+          se ejecute muchas veces.
+        </p>
+        <p>
+          En el ejemplo de profesor, el contexto también guarda una lista con los
+          IMC calculados correctamente. La idea es la misma: leer el atributo,
+          convertirlo al tipo real, modificarlo y volver a dejarlo disponible en
+          el contexto. Si se escribe mal la clave, por ejemplo <code>lista_imc</code>
+          en vez de <code>listaIMC</code>, el contexto devolverá <code>null</code>.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">ServletContext context = getServletContext();
+
+ArrayList&lt;ImcRespuestaNueva&gt; lista =
+        (ArrayList&lt;ImcRespuestaNueva&gt;) context.getAttribute("listaIMC");
+
+lista.add(imcRespuestaNueva);
+context.setAttribute("listaIMC", lista);</code></pre>
+        </div>
+      </section>
       <section class="level2" id="ejercicio-practicar-dia-30">
         <h2>Ejercicio para practicar</h2>
         <p>
-          Crea un programa de consola que guarde nombres de alumnos en una
-          <code>List</code>, DNI únicos en un <code>Set</code> y la nota de cada
-          DNI en un <code>Map</code>. Después muestra cuántos alumnos hay,
-          cuántos DNI únicos existen y la nota asociada a un DNI concreto.
+          Haz dos prácticas cortas. Primero, crea un programa de consola que
+          guarde nombres en una <code>List</code>, DNI únicos en un <code>Set</code> y
+          notas en un <code>Map</code>. Después, revisa el servlet de IMC y comprueba
+          que el contador global del contexto se lee, se incrementa y se vuelve
+          a guardar con el valor actualizado. Si el cálculo es correcto, añade
+          también la respuesta a <code>listaIMC</code>.
         </p>
         <details>
           <summary>Solución orientativa</summary>
@@ -19990,38 +20281,44 @@ public class PracticaColecciones {
           <li>Olvidar los <code>import</code> de <code>java.util</code>.</li>
           <li>Confundir índice de lista con clave de mapa.</li>
           <li>Esperar que <code>HashSet</code> mantenga un orden concreto.</li>
-          <li>Pensar que <code>put</code> añade otra entrada aunque la clave ya exista.</li>
-          <li>Usar tipos mezclados sin genéricos, por ejemplo una colección sin <code>&lt;String&gt;</code>.</li>
+          <li>Pensar que una redirección devuelve JSON; en realidad pide al navegador otra URL.</li>
+          <li>Guardar datos privados de un usuario en <code>ServletContext</code>, que es compartido por todos.</li>
+          <li>Leer un atributo como <code>Object</code> y olvidar el casting antes de sumar o usar métodos específicos.</li>
+          <li>Usar una clave distinta al guardar y al leer, por ejemplo <code>lista_imc</code> y <code>listaIMC</code>.</li>
+          <li>Incrementar un contador y volver a guardar <code>0</code> en lugar del valor actualizado.</li>
         </ul>
       </section>
       <section class="level2" id="cierre-del-dia-30">
         <h2>Cierre del día</h2>
         <p>
-          El avance del día es aprender a escoger la herramienta adecuada:
-          <code>List</code> cuando importa la posición, <code>Set</code> cuando
-          importa no repetir, y <code>Map</code> cuando se necesita recuperar un
-          valor mediante una clave.
+          El avance del día es aprender a escoger dónde vive cada dato:
+          <code>List</code>, <code>Set</code> y <code>Map</code> organizan información en
+          memoria; <code>request</code>, <code>session</code> y <code>context</code> deciden cuánto
+          dura esa información dentro de una aplicación Java Web.
         </p>
       </section>
     </section>
+    <!-- Bloques de ampliación compactados tras integrar su contenido principal en los días 26-30. -->
     <section
       class="level1"
       id="ampliacion-java---herencia-modificadores-y-librerias-jar"
     >
-      <h1>Ampliación Java - Herencia, modificadores y librerías JAR</h1>
+      <h1>Ampliación Java integrada en días 26-30</h1>
       <p>
-        El segundo bloque de Java sube el nivel: ya no se estudia solo una clase
-        aislada, sino como varias clases se relacionan, como se comparte estado
-        y como se empaqueta el trabajo final para reutilizarlo en otro proyecto.
+        Esta ampliación ya no se mantiene como un capítulo independiente para
+        evitar duplicar teoría. Sus ideas principales quedan repartidas donde se
+        estudian: POO básica en el Día 26, jerarquía Java y modificadores en el
+        Día 27, modelos de datos en el Día 28 y <code>Object</code> con casting en
+        el Día 30.
       </p>
       <section class="level2 quick-summary" id="resumen-rapido-ampliacion-java">
-        <h2>Resumen rapido</h2>
+        <h2>Resumen rápido</h2>
         <ul>
-          <li><strong>Que se vio:</strong> herencia, <code>extends</code>, <code>Object</code>, <code>super</code>, <code>final</code>, <code>static</code> y archivos JAR.</li>
-          <li><strong>Concepto que importa:</strong> heredar permite reutilizar una estructura comun sin copiarla.</li>
-          <li><strong>Error a evitar:</strong> usar herencia para cualquier parecido superficial entre clases.</li>
-          <li><strong>Practica:</strong> modelar <code>Documento</code>, <code>Dni</code>, <code>Nie</code> y exportar una libreria.</li>
-          <li><strong>Debe quedar claro:</strong> un JAR permite llevar clases compiladas a otro proyecto.</li>
+          <li><strong>Qué se vio:</strong> <code>extends</code>, <code>Object</code>, <code>super</code>, <code>final</code>, <code>static</code> y JAR.</li>
+          <li><strong>Concepto que importa:</strong> la POO se entiende mejor cuando cada idea aparece junto a una práctica real.</li>
+          <li><strong>Error a evitar:</strong> estudiar la ampliación como tema aislado y olvidar en qué día se usa.</li>
+          <li><strong>Práctica:</strong> volver a Día 26 y Día 27 para repasar clase, herencia, modificadores y empaquetado.</li>
+          <li><strong>Debe quedar claro:</strong> lo obligatorio está integrado en los días; esta sección solo conserva trazabilidad.</li>
         </ul>
       </section>
       <section class="level2 study-levels" id="niveles-de-estudio-ampliacion-java">
@@ -20029,221 +20326,38 @@ public class PracticaColecciones {
         <div class="study-level-grid">
           <article class="study-level-item">
             <strong>Esencial</strong>
-            <p><code>extends</code>, <code>Object</code>, <code>super</code>, <code>final</code> y <code>static</code>.</p>
+            <p>Día 26: clase, objeto, constructor, <code>this</code> y herencia básica.</p>
           </article>
           <article class="study-level-item">
-            <strong>Practica</strong>
-            <p>Crear una jerarquia de documentos y comprobar que las clases hijas reutilizan codigo.</p>
+            <strong>Práctica</strong>
+            <p>Día 27: reconocer <code>Object</code>, <code>super</code>, <code>final</code>, <code>static</code>, JAR y Maven en contexto.</p>
           </article>
           <article class="study-level-item">
-            <strong>Arquitectura</strong>
-            <p>Exportar un proyecto como JAR e importarlo desde otro proyecto mediante Build Path.</p>
+            <strong>Ampliación</strong>
+            <p>Día 30: recuperar valores del contexto como <code>Object</code> y convertirlos al tipo real.</p>
           </article>
         </div>
-      </section>
-      <section class="level2" id="mapa-de-estudio-ampliacion-java">
-        <h2>Mapa de estudio de la ampliación</h2>
-        <div class="java-stack" aria-label="Mapa visual de herencia y empaquetado en Java">
-          <div class="java-stack-row">
-            <div class="java-stack-card">
-              <strong>Clase padre</strong>
-              <span><code>Documento</code> agrupa lo que comparten DNI, NIE y Pasaporte.</span>
-            </div>
-            <span class="java-stack-arrow" aria-hidden="true">&rarr;</span>
-            <div class="java-stack-card">
-              <strong>Clases hijas</strong>
-              <span><code>Dni extends Documento</code> hereda atributos y metodos comunes.</span>
-            </div>
-            <span class="java-stack-arrow" aria-hidden="true">&rarr;</span>
-            <div class="java-stack-card">
-              <strong>Librería</strong>
-              <span>Las clases compiladas se agrupan en un <code>.jar</code> reutilizable.</span>
-            </div>
-          </div>
-          <div class="java-stack-note">
-            La herencia evita copiar codigo; el JAR evita copiar proyectos enteros.
-          </div>
-        </div>
-        <dl class="micro-lesson cognitive-row">
-          <div class="signal-idea">
-            <dt>Idea clave</dt>
-            <dd>Una clase hija es un caso mas concreto de una clase padre.</dd>
-          </div>
-          <div class="signal-rule">
-            <dt>Regla práctica</dt>
-            <dd>Usa <code>extends</code> solo si la frase "es un tipo de" tiene sentido.</dd>
-          </div>
-          <div class="signal-code">
-            <dt>Código que lo demuestra</dt>
-            <dd><code>public class Dni extends Documento</code>.</dd>
-          </div>
-          <div class="signal-warning">
-            <dt>Cuidado</dt>
-            <dd><code>static</code> pertenece a la clase, no a cada objeto individual.</dd>
-          </div>
-          <div class="signal-check">
-            <dt>Comprueba</dt>
-            <dd>Si dos objetos cambian el mismo dato <code>static</code>, los dos ven el cambio.</dd>
-          </div>
-        </dl>
-      </section>
-      <section class="level2" id="herencia-object-super-ampliacion-java">
-        <h2>Herencia, <code>Object</code> y <code>super</code></h2>
-        <p>
-          La herencia permite construir una jerarquia. Si <code>Dni</code> hereda
-          de <code>Documento</code>, puede reutilizar lo comun y añadir lo propio.
-          Toda clase Java hereda de forma implicita de <code>Object</code>, la
-          raiz universal. <code>super</code> llama al constructor o a miembros de
-          la clase padre.
-        </p>
-        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
-          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">public class Documento {
-
-    private String numero;
-
-    public Documento(String numero) {
-        this.numero = numero;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-}
-
-public class Dni extends Documento {
-
-    private char letra;
-
-    public Dni(String numero, char letra) {
-        super(numero);
-        this.letra = letra;
-    }
-
-    public char getLetra() {
-        return letra;
-    }
-}</code></pre>
-        </div>
-        <p>
-          La llamada <code>super(numero)</code> no crea otra clase: inicializa la
-          parte heredada desde <code>Documento</code>.
-        </p>
-      </section>
-      <section class="level2" id="final-static-ampliacion-java">
-        <h2>Modificadores <code>final</code> y <code>static</code></h2>
-        <p>
-          <code>final</code> fija un valor para que no se reasigne. Es util para
-          constantes como la cadena de letras del DNI. <code>static</code> coloca
-          el dato en la clase, compartido por todas las instancias.
-        </p>
-        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
-          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">public class Dni extends Documento {
-
-    public static final String LETRAS_DNI = "TRWAGMYFPDXBNJZSQVHLCKE";
-    private static int totalDocumentosCreados = 0;
-
-    private char letra;
-
-    public Dni(String numero) {
-        super(numero);
-        totalDocumentosCreados++;
-        this.letra = calcularLetra(numero);
-    }
-
-    private char calcularLetra(String numero) {
-        int posicion = Integer.parseInt(numero) % 23;
-        return LETRAS_DNI.charAt(posicion);
-    }
-}</code></pre>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Modificador</th>
-              <th>Lectura correcta</th>
-              <th>Riesgo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>final</code></td>
-              <td>Este valor no se reasigna despues de inicializarse.</td>
-              <td>Intentar cambiarlo provoca error de compilacion.</td>
-            </tr>
-            <tr>
-              <td><code>static</code></td>
-              <td>Este miembro pertenece a la clase completa.</td>
-              <td>Confundir estado compartido con dato individual de cada objeto.</td>
-            </tr>
-            <tr>
-              <td><code>static final</code></td>
-              <td>Constante de clase.</td>
-              <td>Usarla para datos que realmente deberian cambiar por objeto.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-      <section class="level2" id="jar-build-path-ampliacion-java">
-        <h2>JAR: empaquetar para reutilizar</h2>
-        <p>
-          Java compila los archivos <code>.java</code> en archivos
-          <code>.class</code>. Cuando un conjunto de clases compiladas debe viajar
-          como libreria, se empaqueta como <strong>JAR</strong>
-          (<em>Java ARchive</em>). Un proyecto independiente, por ejemplo una
-          Gestoria, puede importar ese JAR en su <code>Build Path</code> y usar la
-          validacion de documentos sin reescribirla.
-        </p>
-        <div class="concept-visual" aria-label="Flujo visual de exportacion de una libreria Java">
-          <span class="concept-visual-node"><code>.java</code></span>
-          <span class="concept-visual-arrow" aria-hidden="true">&rarr;</span>
-          <span class="concept-visual-node"><code>javac</code></span>
-          <span class="concept-visual-arrow" aria-hidden="true">&rarr;</span>
-          <span class="concept-visual-node"><code>.class</code></span>
-          <span class="concept-visual-arrow" aria-hidden="true">&rarr;</span>
-          <span class="concept-visual-node"><code>.jar</code></span>
-          <span class="concept-visual-arrow" aria-hidden="true">&rarr;</span>
-          <span class="concept-visual-node">Build Path</span>
-          <span class="concept-visual-note">El JAR es la forma limpia de transportar codigo compilado y reutilizable entre proyectos Java.</span>
-        </div>
-      </section>
-      <section class="level2" id="errores-frecuentes-ampliacion-java">
-        <h2>Errores frecuentes</h2>
-        <ul>
-          <li>Crear herencia solo porque dos clases se parecen visualmente, no porque compartan naturaleza.</li>
-          <li>Olvidar que toda clase hereda de <code>Object</code>.</li>
-          <li>Usar <code>static</code> para datos que deberian ser propios de cada objeto.</li>
-          <li>Copiar clases entre proyectos en lugar de empaquetar una libreria JAR.</li>
-        </ul>
-      </section>
-      <section class="level2" id="cierre-ampliacion-java">
-        <h2>Cierre de la ampliación</h2>
-        <p>
-          El salto del dia es pasar de clases aisladas a piezas reutilizables.
-          <code>extends</code> organiza relaciones, <code>super</code> conecta con
-          el padre, <code>final</code> protege constantes, <code>static</code>
-          comparte estado y el JAR convierte el trabajo en una libreria portable.
-        </p>
       </section>
     </section>
     <section
       class="level1"
       id="ampliacion-java-web---maven-tomcat-y-servlets"
     >
-      <h1>Ampliación Java web - Maven, Tomcat y Servlets</h1>
+      <h1>Ampliación Java web integrada en días 27-30</h1>
       <p>
-        El tercer bloque cambia el escenario: Java deja de ser solo consola o
-        libreria local y empieza a responder peticiones web. Aparecen Maven,
-        la estructura de una aplicacion web, Apache Tomcat y los Servlets como
-        punto de entrada dinamico.
+        Esta ampliación queda como índice de repaso. Maven, Tomcat, Servlets,
+        estado HTTP, JSON, CORS, redirecciones y contexto ya están desarrollados
+        en los días 27, 28, 29 y 30 para que el alumno estudie cada concepto junto
+        al ejercicio donde aparece.
       </p>
       <section class="level2 quick-summary" id="resumen-rapido-ampliacion-java-web">
-        <h2>Resumen rapido</h2>
+        <h2>Resumen rápido</h2>
         <ul>
-          <li><strong>Que se vio:</strong> Maven, <code>pom.xml</code>, dependencias, contenido estatico, contenido dinamico, Tomcat, Servlets y codigos de estado HTTP.</li>
-          <li><strong>Concepto que importa:</strong> una aplicacion web Java necesita un servidor que reciba la peticion.</li>
-          <li><strong>Error a evitar:</strong> pensar que una clase Java responde HTTP por si sola.</li>
-          <li><strong>Practica:</strong> ubicar HTML/CSS/JS en <code>webapp</code> y Java dinamico en <code>src/main/java</code>.</li>
-          <li><strong>Debe quedar claro:</strong> navegador, Tomcat, Servlet y <code>status code</code> tienen responsabilidades distintas.</li>
+          <li><strong>Qué se vio:</strong> estructura web Java, Tomcat, Servlets, Maven, estados HTTP y separación estático/dinámico.</li>
+          <li><strong>Concepto que importa:</strong> Java responde por web cuando Tomcat recibe una ruta y la asocia a un Servlet.</li>
+          <li><strong>Error a evitar:</strong> repetir aquí lo que ya está explicado dentro de cada día.</li>
+          <li><strong>Práctica:</strong> revisar Día 27 para Servlet, Día 28 para JSON, Día 29 para fetch/CORS y Día 30 para contexto.</li>
+          <li><strong>Debe quedar claro:</strong> este bloque no añade obligación nueva; orienta el repaso.</li>
         </ul>
       </section>
       <section class="level2 study-levels" id="niveles-de-estudio-ampliacion-java-web">
@@ -20251,292 +20365,17 @@ public class Dni extends Documento {
         <div class="study-level-grid">
           <article class="study-level-item">
             <strong>Esencial</strong>
-            <p>Maven, <code>pom.xml</code>, Tomcat, puerto 8080, Servlet y respuesta HTTP.</p>
+            <p>Día 27: Tomcat, <code>webapp</code>, <code>@WebServlet</code>, <code>request</code>, <code>response</code> y status.</p>
           </article>
           <article class="study-level-item">
-            <strong>Practica</strong>
-            <p>Crear una ruta como <code>/hola</code> y comprobar la respuesta en el navegador.</p>
+            <strong>Práctica</strong>
+            <p>Día 28 y Día 29: devolver JSON desde Java y consumirlo con JavaScript.</p>
           </article>
           <article class="study-level-item">
-            <strong>Arquitectura</strong>
-            <p>Distinguir contenido estatico del contenido dinamico que se ejecuta en servidor.</p>
+            <strong>Ampliación</strong>
+            <p>Día 30: redirecciones, scopes, listeners, contexto y persistencia final.</p>
           </article>
         </div>
-      </section>
-      <section class="level2" id="mapa-de-estudio-ampliacion-java-web">
-        <h2>Mapa de estudio de la ampliación</h2>
-        <div class="concept-visual" aria-label="Flujo visual de una peticion web Java">
-          <span class="concept-visual-node">Navegador</span>
-          <span class="concept-visual-arrow" aria-hidden="true">&rarr;</span>
-          <span class="concept-visual-node">HTTP</span>
-          <span class="concept-visual-arrow" aria-hidden="true">&rarr;</span>
-          <span class="concept-visual-node">Tomcat :8080</span>
-          <span class="concept-visual-arrow" aria-hidden="true">&rarr;</span>
-          <span class="concept-visual-node">Servlet</span>
-          <span class="concept-visual-arrow" aria-hidden="true">&rarr;</span>
-          <span class="concept-visual-node">Respuesta + status</span>
-          <span class="concept-visual-note">El navegador pide; Tomcat recibe; el Servlet ejecuta Java y devuelve una respuesta con codigo de estado.</span>
-        </div>
-        <dl class="micro-lesson cognitive-row">
-          <div class="signal-idea">
-            <dt>Idea clave</dt>
-            <dd>Maven evita importar JARs a mano y Tomcat permite que Java responda por red.</dd>
-          </div>
-          <div class="signal-rule">
-            <dt>Regla práctica</dt>
-            <dd>Dependencias en <code>pom.xml</code>; contenido estatico en <code>webapp</code>; Java servidor en <code>src/main/java</code>.</dd>
-          </div>
-          <div class="signal-code">
-            <dt>Código que lo demuestra</dt>
-            <dd><code>@WebServlet("/hola")</code> conecta una URL con una clase Java.</dd>
-          </div>
-          <div class="signal-warning">
-            <dt>Cuidado</dt>
-            <dd>El HTML lo interpreta el navegador; el Servlet se ejecuta en el servidor.</dd>
-          </div>
-          <div class="signal-check">
-            <dt>Comprueba</dt>
-            <dd>Abre <code>localhost:8080</code> y verifica que la ruta de la aplicacion responde.</dd>
-          </div>
-        </dl>
-      </section>
-      <section class="level2" id="maven-pom-ampliacion-java-web">
-        <h2>Maven: dependencias declaradas, no copiadas</h2>
-        <p>
-          Maven cumple tres funciones a la vez: repositorio publico de librerias,
-          tipo de proyecto con estructura conocida y cliente que descarga
-          dependencias segun lo indicado en <code>pom.xml</code>. En vez de pasar
-          JARs manualmente entre equipos, el proyecto declara lo que necesita.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Lectura de Maven</th>
-              <th>Que aporta</th>
-              <th>Por que importa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Repositorio remoto</td>
-              <td>Librerias publicas versionadas.</td>
-              <td>Todo el equipo puede descargar la misma dependencia.</td>
-            </tr>
-            <tr>
-              <td>Proyecto con <code>pom.xml</code></td>
-              <td>Configuracion declarativa.</td>
-              <td>La dependencia queda documentada en el proyecto.</td>
-            </tr>
-            <tr>
-              <td>Cliente del IDE</td>
-              <td>Descarga y actualiza paquetes.</td>
-              <td>Reduce errores por JARs copiados a mano.</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="sourceCode code-panel language-html" data-language-label="XML">
-          <pre class="sourceCode html"><code class="sourceCode html" data-start-line="1">&lt;dependencies&gt;
-  &lt;dependency&gt;
-    &lt;groupId&gt;jakarta.servlet&lt;/groupId&gt;
-    &lt;artifactId&gt;jakarta.servlet-api&lt;/artifactId&gt;
-    &lt;version&gt;6.0.0&lt;/version&gt;
-    &lt;scope&gt;provided&lt;/scope&gt;
-  &lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre>
-        </div>
-        <p>
-          <code>provided</code> indica que la API se necesita para compilar, pero
-          el servidor de aplicaciones aporta esa parte durante la ejecucion.
-        </p>
-      </section>
-      <section class="level2" id="estructura-web-ampliacion-java-web">
-        <h2>Estructura de una aplicación web Java</h2>
-        <p>
-          En una aplicacion web se separa el contenido que el navegador puede
-          recibir directamente del codigo que debe ejecutarse en el servidor.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Zona</th>
-              <th>Contenido</th>
-              <th>Quien lo interpreta</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>webapp</code></td>
-              <td>HTML, CSS, JavaScript, imagenes y otros recursos estaticos.</td>
-              <td>El navegador del usuario.</td>
-            </tr>
-            <tr>
-              <td><code>src/main/java</code></td>
-              <td>Clases Java, Servlets y logica de negocio.</td>
-              <td>El servidor, normalmente Tomcat.</td>
-            </tr>
-            <tr>
-              <td><code>pom.xml</code></td>
-              <td>Dependencias y configuracion Maven.</td>
-              <td>Maven y el IDE.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-      <section class="level2" id="tomcat-servlet-ampliacion-java-web">
-        <h2>Tomcat y Servlets: el puente entre HTTP y Java</h2>
-        <p>
-          Apache Tomcat escucha peticiones, normalmente en
-          <code>localhost:8080</code>. Si la ruta apunta a contenido estatico,
-          devuelve el archivo. Si la ruta necesita logica, invoca un Servlet.
-          El Servlet ejecuta Java en el servidor y genera una respuesta HTTP.
-        </p>
-        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
-          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">package appweb.servlet;
-
-import java.io.IOException;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
-@WebServlet("/hola")
-public class HolaServlet extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        response.setContentType("text/html;charset=UTF-8");
-        response.getWriter().println("&lt;h1&gt;Hola desde Servlet&lt;/h1&gt;");
-    }
-}</code></pre>
-        </div>
-        <p>
-          La anotacion <code>@WebServlet("/hola")</code> registra la ruta. El
-          metodo <code>doGet</code> responde a una peticion HTTP GET. La respuesta
-          no aparece por arte de magia: el codigo escribe contenido en
-          <code>response</code>.
-        </p>
-      </section>
-      <section class="level2" id="status-code-http-ampliacion-java-web">
-        <h2>Status code: cómo el servidor resume el resultado</h2>
-        <p>
-          El <strong>status code</strong> es el numero que viaja en la respuesta
-          HTTP para indicar que ha pasado con la peticion. El navegador puede
-          recibir HTML correcto, un JSON, una redireccion o un error; el codigo
-          de estado permite entenderlo sin leer todo el cuerpo de la respuesta.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Familia</th>
-              <th>Lectura sencilla</th>
-              <th>Ejemplos importantes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>2xx</code></td>
-              <td>La peticion se ha resuelto correctamente.</td>
-              <td><code>200 OK</code>, <code>201 Created</code>, <code>204 No Content</code>.</td>
-            </tr>
-            <tr>
-              <td><code>3xx</code></td>
-              <td>El cliente debe ir a otra direccion o usar una version redirigida.</td>
-              <td><code>301 Moved Permanently</code>, <code>302 Found</code>, <code>304 Not Modified</code>.</td>
-            </tr>
-            <tr>
-              <td><code>4xx</code></td>
-              <td>La peticion del cliente no se puede atender tal como llega.</td>
-              <td><code>400 Bad Request</code>, <code>401 Unauthorized</code>, <code>403 Forbidden</code>, <code>404 Not Found</code>.</td>
-            </tr>
-            <tr>
-              <td><code>5xx</code></td>
-              <td>El servidor ha fallado al procesar una peticion que llego hasta el.</td>
-              <td><code>500 Internal Server Error</code>, <code>503 Service Unavailable</code>.</td>
-            </tr>
-          </tbody>
-        </table>
-        <dl class="micro-lesson cognitive-row">
-          <div class="signal-idea">
-            <dt>Idea clave</dt>
-            <dd>El status no es decoracion: es el contrato minimo de la respuesta HTTP.</dd>
-          </div>
-          <div class="signal-rule">
-            <dt>Regla práctica</dt>
-            <dd><code>200</code> significa respuesta correcta; <code>404</code> significa ruta no encontrada; <code>500</code> significa fallo del servidor.</dd>
-          </div>
-          <div class="signal-code">
-            <dt>Código que lo demuestra</dt>
-            <dd><code>response.setStatus(HttpServletResponse.SC_OK)</code>.</dd>
-          </div>
-          <div class="signal-warning">
-            <dt>Cuidado</dt>
-            <dd>No uses <code>200 OK</code> para esconder errores: confunde al navegador, al usuario y a quien depura.</dd>
-          </div>
-          <div class="signal-check">
-            <dt>Comprueba</dt>
-            <dd>En DevTools, pestaña Network, revisa columna <code>Status</code> de cada peticion.</dd>
-          </div>
-        </dl>
-        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
-          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-
-    String nombre = request.getParameter("nombre");
-
-    if (nombre == null || nombre.isBlank()) {
-        response.sendError(
-            HttpServletResponse.SC_BAD_REQUEST,
-            "Falta el parametro nombre"
-        );
-        return;
-    }
-
-    response.setStatus(HttpServletResponse.SC_OK);
-    response.setContentType("text/html;charset=UTF-8");
-    response.getWriter().println("&lt;h1&gt;Hola " + nombre + "&lt;/h1&gt;");
-}</code></pre>
-        </div>
-        <p>
-          En este ejemplo, si falta el parametro <code>nombre</code>, el Servlet
-          responde con <code>400 Bad Request</code>. Si el parametro existe,
-          responde con <code>200 OK</code> y escribe el HTML de salida.
-        </p>
-      </section>
-      <section class="level2" id="ruta-peticion-respuesta-ampliacion-java-web">
-        <h2>Recorrido completo de una petición</h2>
-        <ol>
-          <li>El usuario escribe una URL en el navegador.</li>
-          <li>El navegador crea una peticion HTTP.</li>
-          <li>Tomcat recibe la peticion en el puerto configurado.</li>
-          <li>Tomcat decide si devuelve un recurso estatico o invoca un Servlet.</li>
-          <li>El Servlet ejecuta Java y construye la respuesta.</li>
-          <li>La respuesta incluye un codigo de estado: <code>200</code>, <code>3xx</code>, <code>404</code>, <code>500</code> u otro.</li>
-          <li>El navegador recibe HTML, JSON u otro contenido y lo muestra o procesa segun el resultado.</li>
-        </ol>
-      </section>
-      <section class="level2" id="errores-frecuentes-ampliacion-java-web">
-        <h2>Errores frecuentes</h2>
-        <ul>
-          <li>Meter logica de servidor en una carpeta pensada para recursos estaticos.</li>
-          <li>Creer que Maven descarga dependencias sin que esten declaradas en <code>pom.xml</code>.</li>
-          <li>Confundir el puerto de Tomcat con una ruta de la aplicacion.</li>
-          <li>Devolver <code>200 OK</code> aunque realmente falten datos o haya error.</li>
-          <li>Olvidar que el Servlet vive en servidor y no se ve como codigo fuente desde el navegador.</li>
-          <li>Esperar respuesta dinamica sin mapear una URL hacia el Servlet.</li>
-        </ul>
-      </section>
-      <section class="level2" id="cierre-ampliacion-java-web">
-        <h2>Cierre de la ampliación</h2>
-        <p>
-          Este bloque cierra la transicion hacia backend web: Maven organiza
-          dependencias, Tomcat escucha peticiones y el Servlet conecta una ruta
-          HTTP con codigo Java. A partir de aqui, la pregunta ya no es solo
-          "que calcula mi clase", sino "que ruta pide el navegador y que respuesta
-          debe generar el servidor".
-        </p>
       </section>
     </section>
     <!--
