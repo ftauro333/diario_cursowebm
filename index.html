@@ -21343,6 +21343,21 @@ DIARIO_CURSOWEBM: controladores de laboratorios interactivos
               return;
             }
 
+            // GitHub Pages no publica la carpeta profe; conserva la captura para evitar iframes 404.
+            if (sourcePath.startsWith("profe/")) {
+              trace.querySelectorAll("br").forEach((br) => {
+                const textNode = br.nextSibling;
+                if (
+                  textNode?.nodeType === Node.TEXT_NODE &&
+                  textNode.textContent.includes("Tipo de vista:")
+                ) {
+                  textNode.textContent =
+                    " Tipo de vista: captura validada; fuente real no publicada en GitHub Pages";
+                }
+              });
+              return;
+            }
+
             const title =
               image.getAttribute("alt") ||
               section.querySelector("h2")?.textContent.trim() ||
