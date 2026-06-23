@@ -20498,10 +20498,10 @@ DIARIO_CURSOWEBM: revision editorial 2026-06-23 - OpositaTest, arquitectura mult
     >
       <h1 data-day-date="23/06/2026">Día 31 - Refactorización, arquitectura multicapa y UML</h1>
       <p>
-        Esta jornada cambia el foco: ya no se trata solo de escribir código, sino
-        de analizar una aplicación existente y decidir cómo debería organizarse
-        para crecer. El ejercicio parte de una web estática de tests de
-        oposiciones y plantea mover preguntas, corrección y resultados al
+        Esta jornada marca un punto de inflexión: ya no se trata solo de escribir
+        código, sino de analizar una aplicación existente y decidir cómo debería
+        organizarse para crecer. El ejercicio parte de una web estática de tests
+        de oposiciones y plantea mover preguntas, corrección y resultados al
         servidor Java.
       </p>
       <section class="level2 quick-summary" id="resumen-rapido-dia-31">
@@ -20686,6 +20686,13 @@ public record ResultadoCorreccion(
           preparar la respuesta. La lógica de corrección vive en el servicio. La
           obtención de preguntas vive en el repositorio.
         </p>
+        <p>
+          La idea práctica es separar el edificio en plantas: el navegador pide,
+          el servlet actúa como controlador de entrada, el servicio toma las
+          decisiones del negocio y el repositorio queda como almacén. Si más
+          adelante las preguntas pasan de memoria a SQL, el cambio debería
+          concentrarse en el repositorio, no repartirse por todos los servlets.
+        </p>
         <table>
           <thead>
             <tr>
@@ -20857,6 +20864,48 @@ CorregirTestServlet --- TestService</code></pre>
           repositorio las obtiene, el servicio decide qué hacer con ellas y los
           servlets solo exponen operaciones HTTP. Si el diagrama obliga a una
           clase a hacerlo todo, el diseño todavía no está bien separado.
+        </p>
+      </section>
+      <section class="level2" id="documentacion-uml-dia-31">
+        <h2>Documentación UML: qué aporta cada diagrama</h2>
+        <p>
+          UML no se estudia para memorizar símbolos, sino para evitar que el
+          programador tenga que adivinar la arquitectura. El diagrama de clases
+          es el más útil en este ejercicio porque muestra datos, métodos y
+          dependencias antes de empezar a crear ficheros Java.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Diagrama</th>
+              <th>Sirve para</th>
+              <th>Ejemplo en OpositaTest</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Casos de uso</td>
+              <td>Ver qué puede hacer el usuario.</td>
+              <td>Realizar un test y consultar el resultado.</td>
+            </tr>
+            <tr>
+              <td>Actividad</td>
+              <td>Ordenar un proceso paso a paso.</td>
+              <td>Elegir test, contestar preguntas, enviar y recibir nota.</td>
+            </tr>
+            <tr>
+              <td>Clases</td>
+              <td>Definir el esqueleto del código.</td>
+              <td><code>Pregunta</code>, <code>TestService</code>, <code>TestRepository</code> y servlets.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          En un equipo profesional, el analista debería dejar este plano lo
+          bastante claro para que un programador junior no invente la
+          arquitectura sobre la marcha. Su trabajo sería completar métodos,
+          respetar responsabilidades y preguntar cuando el diagrama no encaje con
+          el código real.
         </p>
       </section>
       <section class="level2" id="seguridad-serializacion-dia-31">
