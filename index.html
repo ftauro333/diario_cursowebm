@@ -4434,6 +4434,14 @@ DIARIO_CURSOWEBM: indice editorial generado
             Día 30 - Colecciones, redirecciones y contexto Java Web
           </a>
         </li>
+        <li>
+          <a
+            href="#dia-31---refactorizacion-arquitectura-multicapa-y-uml"
+            id="toc-dia-31---refactorizacion-arquitectura-multicapa-y-uml"
+          >
+            Día 31 - Refactorización, arquitectura multicapa y UML
+          </a>
+        </li>
       </ul>
     </nav>
     <section class="level1 front-section" id="portada">
@@ -4564,6 +4572,11 @@ DIARIO_CURSOWEBM: indice editorial generado
               <strong>List, Set, Map, redirecciones, scopes y contexto</strong>
               <span>Dia 30: organizar datos y entender donde vive la informacion en Java Web.</span>
             </a>
+            <a class="study-topic-card" href="#dia-31---refactorizacion-arquitectura-multicapa-y-uml">
+              <b>Diseño de aplicaciones</b>
+              <strong>Refactorización, capas, servlets, service, repository y UML</strong>
+              <span>Dia 31: pasar de una web estatica a una arquitectura Java Web organizada.</span>
+            </a>
           </div>
         </div>
       </section>
@@ -4593,6 +4606,7 @@ DIARIO_CURSOWEBM: indice editorial generado
             <tr><td>JSON con Gson y records</td><td><a href="#dia-28---parametros-http-modelos-de-datos-y-serializacion-json">Día 28</a></td><td>Crear un <code>record</code> y devolverlo como <code>application/json</code>.</td></tr>
             <tr><td>CORS, SPA y JSP</td><td><a href="#dia-29---apis-rest-consumo-con-javascript-y-seguridad-cors">Día 29</a></td><td>Comparar <code>fetch</code> con <code>forward</code> a JSP.</td></tr>
             <tr><td><code>List</code>, <code>Set</code>, <code>Map</code>, scopes y contexto</td><td><a href="#dia-30---colecciones-java-list-set-y-map">Día 30</a></td><td>Guardar IMC en <code>listaIMC</code> y recorrerla con <code>for-each</code>.</td></tr>
+            <tr><td>Refactorización, capas y UML</td><td><a href="#dia-31---refactorizacion-arquitectura-multicapa-y-uml">Día 31</a></td><td>Separar una web de tests en modelo, servlets, servicio y repositorio.</td></tr>
           </tbody>
         </table>
       </section>
@@ -20472,6 +20486,436 @@ public class PracticaColecciones {
           <code>List</code>, <code>Set</code> y <code>Map</code> organizan información en
           memoria; <code>request</code>, <code>session</code> y <code>context</code> deciden cuánto
           dura esa información dentro de una aplicación Java Web.
+        </p>
+      </section>
+    </section>
+    <!--
+DIARIO_CURSOWEBM: revision editorial 2026-06-23 - OpositaTest, arquitectura multicapa y UML
+-->
+    <section
+      class="level1 day-section"
+      id="dia-31---refactorizacion-arquitectura-multicapa-y-uml"
+    >
+      <h1 data-day-date="23/06/2026">Día 31 - Refactorización, arquitectura multicapa y UML</h1>
+      <p>
+        Esta jornada cambia el foco: ya no se trata solo de escribir código, sino
+        de analizar una aplicación existente y decidir cómo debería organizarse
+        para crecer. El ejercicio parte de una web estática de tests de
+        oposiciones y plantea mover preguntas, corrección y resultados al
+        servidor Java.
+      </p>
+      <section class="level2 quick-summary" id="resumen-rapido-dia-31">
+        <h2>Resumen rápido</h2>
+        <ul>
+          <li><strong>Qué se vio:</strong> análisis de OpositaTest, refactorización, capas, servlets, servicios, repositorios y UML.</li>
+          <li><strong>Concepto que importa:</strong> el navegador muestra la interfaz, pero la lógica sensible debe vivir en el servidor.</li>
+          <li><strong>Error a evitar:</strong> enviar al cliente la respuesta correcta de cada pregunta dentro del JSON.</li>
+          <li><strong>Práctica:</strong> dibujar las clases y separar qué es modelo, qué es servlet y qué es lógica de negocio.</li>
+          <li><strong>Debe quedar claro:</strong> un servlet recibe HTTP; un servicio decide; un repositorio obtiene datos.</li>
+        </ul>
+      </section>
+      <section class="level2 study-levels" id="niveles-de-estudio-dia-31">
+        <h2>Niveles de estudio</h2>
+        <div class="study-level-grid">
+          <article class="study-level-item">
+            <strong>Esencial</strong>
+            <p>Entender por qué una web de tests no debe dejar preguntas y respuestas correctas expuestas en el código del navegador.</p>
+          </article>
+          <article class="study-level-item">
+            <strong>Práctica</strong>
+            <p>Proponer clases Java sencillas: <code>Pregunta</code>, <code>TestOposicion</code>, <code>ResultadoCorreccion</code>, repositorio, servicio y tres servlets.</p>
+          </article>
+          <article class="study-level-item">
+            <strong>Ampliación</strong>
+            <p>Leer el diseño como un diagrama UML: relaciones, dependencias, responsabilidades y datos que no deben serializarse.</p>
+          </article>
+        </div>
+      </section>
+      <section class="level2" id="trazabilidad-dia-31">
+        <h2>Trazabilidad del día</h2>
+        <p>
+          El ejercicio de referencia está en <code>alumno/opositatest/opositaweb</code>
+          y se usa como material autorizado del alumno para explicar la
+          refactorización. La fuente de nivel Java Web sigue siendo
+          <code>profe/f11webjava</code>: servlets, records, JSON, servicios sencillos
+          y separación básica de responsabilidades. No se modifica <code>profe</code>.
+        </p>
+      </section>
+      <section class="level2" id="problema-opositatest-dia-31">
+        <h2>Problema de partida: web estática con lógica visible</h2>
+        <p>
+          OpositaTest aparece como una página HTML estática con enlaces a varios
+          tests, modo claro/oscuro y una portada preparada con clases visuales.
+          Como prototipo sirve para navegar, pero si las preguntas y las
+          soluciones están en el cliente, cualquier persona puede inspeccionar el
+          código y descubrir las respuestas.
+        </p>
+        <p>
+          La refactorización consiste en conservar la idea que ya funciona y
+          cambiar su organización interna: la página debe pedir datos al servidor,
+          el servidor debe preparar las preguntas y la corrección debe hacerse en
+          Java. Eso mejora mantenimiento y evita que la respuesta correcta viaje
+          al navegador antes de tiempo.
+        </p>
+      </section>
+      <section class="level2" id="abstraccion-dia-31">
+        <h2>Abstracción: decidir qué existe en el sistema</h2>
+        <p>
+          Antes de programar conviene separar el <em>qué</em> del <em>cómo</em>. El
+          sistema no necesita representar toda la realidad de una oposición; solo
+          necesita las piezas útiles para hacer tests: preguntas, opciones,
+          tests, respuestas del usuario y resultado de corrección.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Responsabilidad</th>
+              <th>No debe hacer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>Pregunta</code></td>
+              <td>Guardar enunciado, opciones y respuesta correcta en servidor.</td>
+              <td>Pintar HTML o leer HTTP.</td>
+            </tr>
+            <tr>
+              <td><code>TestOposicion</code></td>
+              <td>Agrupar preguntas bajo un identificador y un título.</td>
+              <td>Corregir por sí mismo una petición web.</td>
+            </tr>
+            <tr>
+              <td><code>ResultadoCorreccion</code></td>
+              <td>Representar total, aciertos, errores y nota.</td>
+              <td>Conocer cómo se almacena el catálogo de tests.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="level2" id="modelo-datos-dia-31">
+        <h2>Modelo de datos mínimo con records</h2>
+        <p>
+          Para este nivel, los <code>record</code> son suficientes para modelar datos.
+          La clave de seguridad está en distinguir el modelo interno, que sí
+          conoce la respuesta correcta, del modelo que se envía al navegador,
+          que no debe incluirla.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.List;
+
+/**
+ * Pregunta completa usada dentro del servidor.
+ * Incluye la respuesta correcta porque Java la necesita para corregir.
+ */
+public record Pregunta(
+        int id,
+        String enunciado,
+        List&lt;String&gt; opciones,
+        int indiceRespuestaCorrecta) {
+}
+
+/**
+ * Pregunta segura para enviar al navegador.
+ * No contiene el índice de la respuesta correcta.
+ */
+public record PreguntaVista(
+        int id,
+        String enunciado,
+        List&lt;String&gt; opciones) {
+}
+
+/**
+ * Resultado final que puede devolverse al usuario tras corregir.
+ */
+public record ResultadoCorreccion(
+        int idTest,
+        int totalPreguntas,
+        int aciertos,
+        int errores,
+        double nota) {
+}</code></pre>
+        </div>
+        <p>
+          Esta separación evita el error más importante del día: no basta con
+          mover las preguntas al servidor si después se serializa todo el objeto
+          completo y se envía también la solución en el JSON.
+        </p>
+      </section>
+      <section class="level2" id="get-post-dia-31">
+        <h2>Semántica HTTP: cuándo usar <code>GET</code> y cuándo usar <code>POST</code></h2>
+        <p>
+          La elección del método HTTP debe tener sentido. Pedir el listado de
+          tests o las preguntas de un test es una consulta, así que encaja con
+          <code>GET</code>. Enviar las respuestas del alumno para corregirlas cambia
+          el contexto de la operación y manda datos en el cuerpo de la petición,
+          así que encaja con <code>POST</code>.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Ruta orientativa</th>
+              <th>Método</th>
+              <th>Responsabilidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>/tests</code></td>
+              <td><code>GET</code></td>
+              <td>Devolver catálogo de tests disponibles.</td>
+            </tr>
+            <tr>
+              <td><code>/tests?id=1</code></td>
+              <td><code>GET</code></td>
+              <td>Devolver preguntas de un test sin respuestas correctas.</td>
+            </tr>
+            <tr>
+              <td><code>/tests/corregir</code></td>
+              <td><code>POST</code></td>
+              <td>Recibir respuestas del usuario y devolver resultado.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="level2" id="arquitectura-multicapa-dia-31">
+        <h2>Arquitectura multicapa: servlet, servicio y repositorio</h2>
+        <p>
+          El servlet no debe convertirse en una clase enorme. Su trabajo es
+          recibir la petición HTTP, comprobar datos básicos, llamar al servicio y
+          preparar la respuesta. La lógica de corrección vive en el servicio. La
+          obtención de preguntas vive en el repositorio.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Capa</th>
+              <th>Clase orientativa</th>
+              <th>Qué hace</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Controlador HTTP</td>
+              <td><code>ObtenerTestsServlet</code>, <code>ObtenerTestServlet</code>, <code>CorregirTestServlet</code></td>
+              <td>Lee parámetros, valida lo mínimo y devuelve JSON.</td>
+            </tr>
+            <tr>
+              <td>Servicio</td>
+              <td><code>TestService</code></td>
+              <td>Aplica reglas: preparar preguntas seguras y corregir respuestas.</td>
+            </tr>
+            <tr>
+              <td>Repositorio</td>
+              <td><code>TestRepository</code></td>
+              <td>Obtiene tests desde memoria, fichero o base de datos.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.ArrayList;
+import java.util.List;
+
+public class TestService {
+
+    private final TestRepository repository;
+
+    public TestService(TestRepository repository) {
+        this.repository = repository;
+    }
+
+    /**
+     * Devuelve el catálogo de tests disponibles para la portada.
+     */
+    public List&lt;TestOposicion&gt; obtenerTodosLosTests() {
+        return repository.obtenerTodos();
+    }
+
+    /**
+     * Prepara un test para el navegador ocultando la respuesta correcta.
+     */
+    public List&lt;PreguntaVista&gt; obtenerPreguntasVisibles(int idTest) {
+        TestOposicion test = repository.obtenerPorId(idTest);
+
+        if (test == null) {
+            throw new IllegalArgumentException("Test no encontrado");
+        }
+
+        List&lt;PreguntaVista&gt; preguntasVisibles = new ArrayList&lt;&gt;();
+
+        for (Pregunta pregunta : test.preguntas()) {
+            PreguntaVista preguntaVista = new PreguntaVista(
+                    pregunta.id(),
+                    pregunta.enunciado(),
+                    pregunta.opciones());
+
+            preguntasVisibles.add(preguntaVista);
+        }
+
+        return preguntasVisibles;
+    }
+
+    /**
+     * Corrige las respuestas enviadas por el usuario contra el modelo interno.
+     */
+    public ResultadoCorreccion corregirTest(int idTest, List&lt;Integer&gt; respuestasUsuario) {
+        TestOposicion test = repository.obtenerPorId(idTest);
+
+        if (test == null) {
+            throw new IllegalArgumentException("Test no encontrado");
+        }
+
+        int aciertos = 0;
+        for (int i = 0; i &lt; test.preguntas().size(); i++) {
+            Pregunta pregunta = test.preguntas().get(i);
+            if (i &lt; respuestasUsuario.size()
+                    &amp;&amp; respuestasUsuario.get(i) == pregunta.indiceRespuestaCorrecta()) {
+                aciertos++;
+            }
+        }
+
+        int total = test.preguntas().size();
+        int errores = total - aciertos;
+        double nota = total == 0 ? 0 : (aciertos * 10.0) / total;
+
+        return new ResultadoCorreccion(idTest, total, aciertos, errores, nota);
+    }
+}</code></pre>
+        </div>
+      </section>
+      <section class="level2" id="servlets-opositatest-dia-31">
+        <h2>Servlets propuestos</h2>
+        <p>
+          Los servlets son la frontera con HTTP. No deberían contener toda la
+          lógica del test. Si el código de corrección está dentro de
+          <code>doPost</code>, será más difícil probarlo y mantenerlo.
+        </p>
+        <ul>
+          <li><strong><code>ObtenerTestsServlet</code>:</strong> responde a <code>GET /tests</code> con el catálogo.</li>
+          <li><strong><code>ObtenerTestServlet</code>:</strong> responde a <code>GET /tests?id=...</code> con preguntas sin solución.</li>
+          <li><strong><code>CorregirTestServlet</code>:</strong> responde a <code>POST /tests/corregir</code> con aciertos, errores y nota.</li>
+        </ul>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">/**
+ * Servlet encargado de recibir respuestas del test y delegar la corrección.
+ */
+@WebServlet("/tests/corregir")
+public class CorregirTestServlet extends HttpServlet {
+
+    private TestService service;
+
+    /**
+     * Prepara el servicio cuando Tomcat crea el servlet.
+     */
+    public void init() {
+        TestRepository repository = new TestRepository();
+        service = new TestService(repository);
+    }
+
+    /**
+     * Recibe las respuestas del usuario y devuelve un resultado JSON.
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        response.setContentType("application/json");
+
+        int idTest = Integer.parseInt(request.getParameter("idTest"));
+        List&lt;Integer&gt; respuestas = leerRespuestas(request);
+
+        ResultadoCorreccion resultado = service.corregirTest(idTest, respuestas);
+        String json = new Gson().toJson(resultado);
+
+        response.getWriter().print(json);
+    }
+}</code></pre>
+        </div>
+        <p>
+          El ejemplo es orientativo: en una práctica real habría que validar
+          nulos y formatos antes de convertir con <code>Integer.parseInt</code>, como
+          ya se trabajó en días anteriores.
+        </p>
+      </section>
+      <section class="level2" id="uml-dia-31">
+        <h2>UML: plano antes de programar</h2>
+        <p>
+          UML ayuda a pensar antes de escribir código. En este ejercicio, el
+          diagrama de clases no busca decorar el documento: sirve para decidir
+          qué clases existen, qué datos guarda cada una y qué dependencias son
+          razonables.
+        </p>
+        <div class="sourceCode code-panel language-text" data-language-label="UML">
+          <pre class="sourceCode text"><code class="sourceCode text" data-start-line="1">TestOposicion 1 --- * Pregunta
+TestRepository --- TestOposicion
+TestService --- TestRepository
+TestService --- ResultadoCorreccion
+ObtenerTestsServlet --- TestService
+ObtenerTestServlet --- TestService
+CorregirTestServlet --- TestService</code></pre>
+        </div>
+        <p>
+          La lectura práctica es sencilla: el test contiene preguntas, el
+          repositorio las obtiene, el servicio decide qué hacer con ellas y los
+          servlets solo exponen operaciones HTTP. Si el diagrama obliga a una
+          clase a hacerlo todo, el diseño todavía no está bien separado.
+        </p>
+      </section>
+      <section class="level2" id="seguridad-serializacion-dia-31">
+        <h2>Seguridad al serializar JSON</h2>
+        <p>
+          El punto más delicado del día es la serialización. Gson convierte un
+          objeto Java a texto JSON. Si el objeto contiene
+          <code>indiceRespuestaCorrecta</code>, ese dato viaja al navegador. Por eso
+          se usa un objeto de salida distinto, como <code>PreguntaVista</code>, que
+          conserva enunciado y opciones pero elimina la solución.
+        </p>
+        <p>
+          La regla de estudio es clara: el cliente puede ver lo necesario para
+          contestar; el servidor debe conservar lo necesario para corregir.
+        </p>
+      </section>
+      <section class="level2" id="ejercicio-practicar-dia-31">
+        <h2>Ejercicio para practicar</h2>
+        <p>
+          Rehaz el análisis de OpositaTest sin programar todavía. Escribe una
+          lista de clases normales, marca cuáles serían servlets y explica en una
+          frase qué responsabilidad tiene cada una. Después dibuja el diagrama de
+          clases mínimo y comprueba que ninguna clase mezcla HTML, HTTP,
+          corrección y almacenamiento a la vez.
+        </p>
+        <details>
+          <summary>Pistas y solución orientativa</summary>
+          <ol>
+            <li><strong>Pista 1:</strong> si una clase extiende <code>HttpServlet</code>, pertenece a la capa HTTP.</li>
+            <li><strong>Pista 2:</strong> si una clase corrige preguntas, probablemente es servicio, no servlet.</li>
+            <li><strong>Pista 3:</strong> si una clase obtiene datos, piensa en repositorio.</li>
+          </ol>
+          <ul>
+            <li><strong>Records:</strong> <code>Pregunta</code>, <code>PreguntaVista</code>, <code>TestOposicion</code> y <code>ResultadoCorreccion</code>.</li>
+            <li><strong>Repositorio:</strong> <code>TestRepository</code>, encargado de obtener los tests.</li>
+            <li><strong>Servicio:</strong> <code>TestService</code>, encargado de preparar preguntas visibles y corregir.</li>
+            <li><strong>Servlets:</strong> <code>ObtenerTestsServlet</code>, <code>ObtenerTestServlet</code> y <code>CorregirTestServlet</code>.</li>
+          </ul>
+        </details>
+      </section>
+      <section class="level2" id="errores-frecuentes-dia-31">
+        <h2>Errores frecuentes</h2>
+        <ul>
+          <li>Confundir refactorizar con rehacer todo desde cero.</li>
+          <li>Poner la lógica de corrección dentro del HTML o del JavaScript.</li>
+          <li>Crear un servlet que también almacena datos, corrige, genera HTML y decide reglas.</li>
+          <li>Usar <code>GET</code> para enviar todas las respuestas del alumno.</li>
+          <li>Serializar el objeto interno <code>Pregunta</code> y exponer <code>indiceRespuestaCorrecta</code>.</li>
+          <li>Dibujar UML sin responsabilidades claras para cada clase.</li>
+          <li>Olvidar que el repositorio puede cambiar de memoria a base de datos sin cambiar la idea del servicio.</li>
+        </ul>
+      </section>
+      <section class="level2" id="cierre-del-dia-31">
+        <h2>Cierre del día</h2>
+        <p>
+          El avance importante es pensar como diseñador de software: una web que
+          funciona puede necesitar una arquitectura mejor. En OpositaTest, el
+          navegador debe presentar preguntas, el servlet debe atender HTTP, el
+          servicio debe corregir y el repositorio debe suministrar los datos.
         </p>
       </section>
     </section>
