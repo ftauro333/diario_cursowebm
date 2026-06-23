@@ -20638,6 +20638,12 @@ DIARIO_CURSOWEBM: revision editorial 2026-06-23 - OpositaTest, arquitectura mult
           corregir, pero al navegador debería enviar una versión sin solución,
           como <code>PreguntaVista</code>.
         </p>
+        <p>
+          La corrección se cierra en el servidor: el alumno envía sus opciones
+          mediante <code>POST</code>, Java compara esas respuestas con el modelo
+          interno y solo devuelve el resultado. La respuesta correcta no viaja en
+          la ida, sino que se queda protegida dentro de la aplicación.
+        </p>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.List;
 
@@ -20708,6 +20714,13 @@ public record PreguntaVista(
           servlets. Al principio parece rápido, pero enseguida mezcla validación,
           reglas de negocio, acceso a datos y respuesta HTTP. La solución vista
           en clase es separar responsabilidades.
+        </p>
+        <p>
+          La capa de servicio es el núcleo de la lógica de negocio. En OpositaTest
+          tendría métodos como <code>obtenerTodosLosTests()</code>,
+          <code>obtenerTestPorId()</code> y <code>corregirTest()</code>. Si necesita
+          preguntas guardadas, no consulta directamente desde el servlet: llama al
+          repositorio, que es el almacén de datos.
         </p>
         <table>
           <thead>
@@ -20898,10 +20911,16 @@ CorregirTestServlet --- TestService</code></pre>
         <h2>Ejercicio 2: herencia, sobrescritura y polimorfismo</h2>
         <p>
           El segundo ejercicio del día usa una idea ya conocida, el DNI, para
-          introducir una idea nueva: una clase hija puede heredar de una clase
-          padre y cambiar el comportamiento de un método concreto. En el material
-          del profesor, <code>Nie</code> hereda de <code>Dni</code> y sobrescribe
-          <code>calcularLetra()</code>.
+          introducir una idea nueva. La herencia permite que <code>Nie</code>
+          reciba atributos y métodos de <code>Dni</code> mediante <code>extends</code>;
+          el polimorfismo aparece cuando <code>Nie</code> da una forma propia al
+          método heredado <code>calcularLetra()</code>.
+        </p>
+        <p>
+          La diferencia práctica es importante: heredar es recibir estructura;
+          sobrescribir es cambiar comportamiento. Por eso <code>Nie</code> conserva
+          <code>numero</code> y <code>letra</code>, añade <code>prefijo</code> y redefine
+          el cálculo con <code>@Override</code>.
         </p>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">public class Dni {
@@ -20948,10 +20967,16 @@ CorregirTestServlet --- TestService</code></pre>
 }</code></pre>
         </div>
         <p>
+          <code>@Override</code> le dice al compilador que este método pretende
+          sustituir al del padre. Si el nombre o los parámetros no coinciden,
+          Java avisará. Cuando se llame a <code>calcularLetra()</code>, Java buscará
+          primero la versión más concreta: si el objeto es <code>Nie</code>, ejecuta
+          la de <code>Nie</code>; si esa versión no existe, sube a <code>Dni</code>.
+        </p>
+        <p>
           El ejemplo de <code>Nie</code> devuelve siempre <code>'W'</code>. Eso no debe
           estudiarse como algoritmo real de NIE, sino como demostración de
-          sobrescritura: Java llama primero al método de la clase más concreta.
-          Si el hijo no tuviera ese método, se usaría el heredado del padre.
+          sobrescritura y resolución dinámica.
         </p>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">public class MainPolimorfismo {
@@ -20978,21 +21003,6 @@ CorregirTestServlet --- TestService</code></pre>
           <pre class="sourceCode text"><code class="sourceCode text" data-start-line="1">Estoy en calcularLetra de NIE
 La letra del NIE es W</code></pre>
         </div>
-      </section>
-      <section class="level2" id="polimorfismo-concepto-dia-31">
-        <h2>Qué significa polimorfismo aquí</h2>
-        <p>
-          Polimorfismo significa muchas formas. En este nivel basta con entender
-          una regla: si llamas a un método sobre un objeto, Java busca la versión
-          más específica disponible. En un <code>Dni</code>, <code>calcularLetra()</code>
-          usa la secuencia del DNI. En un <code>Nie</code>, si existe una versión
-          sobrescrita con <code>@Override</code>, se ejecuta esa versión.
-        </p>
-        <p>
-          <code>@Override</code> ayuda al compilador a detectar errores. Si escribes
-          mal el nombre del método o cambias sus parámetros, Java avisará de que
-          realmente no estás sobrescribiendo nada.
-        </p>
       </section>
       <section class="level2" id="ejercicio-practicar-dia-31">
         <h2>Ejercicio para practicar</h2>
