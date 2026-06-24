@@ -998,9 +998,9 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         border: 1px solid #d4e3f6;
         border-radius: 10px;
         box-shadow: 0 18px 42px rgba(16, 24, 39, 0.08);
-        gap: 14px;
-        /* DIARIO_CURSOWEBM: evita tarjetas demasiado estrechas en ejemplos con URL o fetch. */
-        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 12px;
+        /* DIARIO_CURSOWEBM: permite cinco señales en portátil sin partir la fila en 4 + 1. */
+        grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
         margin-top: 18px;
         overflow: visible;
         padding: 14px;
@@ -1027,8 +1027,8 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         display: flex;
         flex-direction: column;
         min-width: 0;
-        min-height: 136px;
-        padding: 14px 14px 16px;
+        min-height: 124px;
+        padding: 12px 12px 14px;
         position: relative;
       }
 
@@ -1090,7 +1090,7 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         }
 
         .micro-lesson.cognitive-row {
-          grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
         }
       }
 
@@ -4069,6 +4069,313 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         }
 
       }
+
+      /*
+       * DIARIO_CURSOWEBM: capa editorial premium 2026.
+       * Ajusta acabado visual sin cambiar estructura, contenido ni dependencias.
+       */
+      :root {
+        --paper: #f6f8fb;
+        --paper-2: #edf3f8;
+        --surface: #ffffff;
+        --surface-soft: #fbfcfe;
+        --ink: #101726;
+        --ink-2: #243147;
+        --muted: #64748b;
+        --line: #d8e1ee;
+        --line-strong: #b9c7da;
+        --navy: #081323;
+        --blue: #2557d6;
+        --teal: #087c7a;
+        --green: #14795b;
+        --amber: #b97714;
+        --rose: #b73a57;
+        --gold: #c59a3d;
+        --code-bg: #f4f7fc;
+        --code-ink: #121b2d;
+        --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
+        --shadow-lift: 0 24px 64px rgba(15, 23, 42, 0.14);
+      }
+
+      html {
+        background:
+          linear-gradient(180deg, #ffffff 0%, #f7f9fc 38%, #edf3f8 100%);
+      }
+
+      body {
+        background: transparent;
+      }
+
+      body.editorial-document::before {
+        background: linear-gradient(90deg, var(--teal), var(--blue), var(--gold));
+        content: "";
+        height: 7px;
+        inset: 0 0 auto;
+        pointer-events: none;
+        position: fixed;
+        z-index: 70;
+      }
+
+      ::selection {
+        background: rgba(37, 87, 214, 0.18);
+        color: var(--ink);
+      }
+
+      body > :not(.cover):not(#TOC) {
+        max-width: 1180px;
+      }
+
+      .cover {
+        background:
+          linear-gradient(135deg, rgba(8, 19, 35, 0.98), rgba(16, 49, 63, 0.95)),
+          linear-gradient(90deg, #081323, #087c7a 58%, #c59a3d);
+        box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.16);
+        min-height: min(92vh, 860px);
+        overflow: hidden;
+      }
+
+      .cover::before {
+        border-color: rgba(255, 255, 255, 0.28);
+        inset: 30px;
+      }
+
+      .cover::after {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+        content: "";
+        inset: 58px max(36px, calc((100vw - 1180px) / 2)) auto;
+        opacity: 0.72;
+        pointer-events: none;
+        position: absolute;
+        top: auto;
+        bottom: 64px;
+      }
+
+      .cover-kicker {
+        border-left-color: var(--gold);
+        color: #dff8f5;
+        max-width: 760px;
+      }
+
+      .cover h1 {
+        max-width: 980px;
+        text-shadow: 0 22px 42px rgba(0, 0, 0, 0.24);
+      }
+
+      .cover-subtitle {
+        color: #f6f9fd;
+        font-weight: 620;
+      }
+
+      .cover p:not(.cover-kicker):not(.cover-subtitle):not(.cover-note) {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.24);
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.14);
+      }
+
+      #TOC {
+        background:
+          linear-gradient(180deg, #ffffff, #f8fbff);
+        box-shadow: 0 14px 38px rgba(15, 23, 42, 0.06);
+      }
+
+      #TOC li {
+        background: #ffffff;
+        box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+        transition:
+          border-color 160ms ease,
+          box-shadow 160ms ease,
+          transform 160ms ease;
+      }
+
+      #TOC li:hover {
+        border-color: rgba(37, 87, 214, 0.35);
+        box-shadow: 0 16px 32px rgba(15, 23, 42, 0.09);
+        transform: translateY(-1px);
+      }
+
+      #TOC a {
+        min-height: 54px;
+      }
+
+      section.level1 > h1 {
+        margin-top: 56px;
+      }
+
+      section.level1[id^="dia-"] > h1 {
+        background:
+          linear-gradient(135deg, rgba(8, 19, 35, 0.98), rgba(21, 69, 75, 0.94)),
+          linear-gradient(90deg, var(--navy), var(--teal), var(--gold));
+        box-shadow: var(--shadow-lift);
+        overflow: hidden;
+      }
+
+      section.level1[id^="dia-"] > h1::after {
+        text-shadow: none;
+      }
+
+      section.level1[id^="dia-"] > h1 + p {
+        color: var(--ink-2);
+        font-size: 1.04rem;
+        max-width: 920px;
+      }
+
+      h2 {
+        border-top-color: rgba(184, 198, 218, 0.85);
+        color: #172033;
+      }
+
+      h2::after {
+        background: linear-gradient(90deg, var(--teal), var(--blue), transparent);
+        content: "";
+        display: block;
+        height: 3px;
+        margin-top: 10px;
+        max-width: 138px;
+      }
+
+      .quick-summary h2::after,
+      .study-levels h2::after,
+      .interactive-lab h2::after {
+        display: none;
+      }
+
+      .quick-summary,
+      .study-levels {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 253, 0.96));
+        box-shadow: var(--shadow-soft);
+      }
+
+      .quick-summary li::marker {
+        color: var(--green);
+      }
+
+      .study-level-item,
+      .study-topic-card,
+      .editorial-rule-card,
+      .day-study-card,
+      .concept-visual,
+      .trace-card,
+      .micro-lesson {
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.055);
+      }
+
+      table {
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+      }
+
+      thead {
+        background: linear-gradient(90deg, var(--navy), #143448);
+      }
+
+      th {
+        font-size: 0.86rem;
+        letter-spacing: 0.02em;
+      }
+
+      tbody tr:nth-child(even) {
+        background: #f8fbfe;
+      }
+
+      tbody tr:hover {
+        background: #f1f6fb;
+      }
+
+      code {
+        background: #eaf1ff;
+        border-color: #d3e0f5;
+        color: #174f93;
+      }
+
+      div.sourceCode,
+      pre {
+        border-color: #cfdbea;
+        box-shadow: 0 16px 38px rgba(15, 23, 42, 0.095);
+      }
+
+      div.sourceCode.code-panel {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 247, 252, 0.98));
+        box-shadow: 0 18px 46px rgba(15, 23, 42, 0.1);
+      }
+
+      .code-language-badge {
+        border-color: rgba(148, 163, 184, 0.46);
+        box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+      }
+
+      section.level2 > details {
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--blue);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-soft);
+        margin: 16px 0 22px;
+        padding: 12px 14px;
+      }
+
+      section.level2 > details > summary {
+        color: var(--ink);
+        font-weight: 850;
+        letter-spacing: 0.01em;
+        min-height: 32px;
+        padding: 4px 0;
+      }
+
+      section.level2 > details[open] > summary {
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+      }
+
+      blockquote {
+        background: #fffaf0;
+        border: 1px solid #f0d49a;
+        border-left: 4px solid var(--gold);
+        border-radius: var(--radius);
+        padding: 12px 16px;
+      }
+
+      img,
+      .visual-panel figure,
+      .live-source-preview,
+      .pdf-reference-card {
+        box-shadow: var(--shadow-lift);
+      }
+
+      figcaption {
+        color: #56657a;
+      }
+
+      @media (max-width: 760px) {
+        body > :not(.cover):not(#TOC) {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .cover {
+          min-height: 82vh;
+          padding-top: 62px;
+        }
+
+        .cover::before {
+          inset: 18px;
+        }
+
+        .cover::after {
+          display: none;
+        }
+
+        section.level1[id^="dia-"] > h1[data-day-date]::after {
+          margin-top: 12px;
+          position: static;
+        }
+      }
     </style>
     <!--
 DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.print.css
@@ -4170,16 +4477,15 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.print.css
     </header>
     <section class="cover">
       <p class="cover-kicker">
-        Documento de estudio &middot; generado el 2026-05-27 &middot; actualizado
-        con clase del 2026-06-22
+        Documento de estudio &middot; actualizado el 2026-06-24
       </p>
       <h1>DIARIO CURSOWEBM</h1>
       <p class="cover-subtitle">
-        Gu&iacute;a de estudio basada en el material del profesor
+        Desarrollo de aplicaciones web
       </p>
       <p>
         <strong> Curso: </strong>
-        CURSOWEBM
+        Desarrollo de aplicaciones web
       </p>
       <p>
         <strong> Identificador: </strong>
@@ -4483,12 +4789,12 @@ DIARIO_CURSOWEBM: indice editorial generado
       <h1>Portada</h1>
       <p>
         <strong> DIARIO CURSOWEBM </strong>
-        es una guia de estudio basada en el material del profesor.
+        Desarrollo de aplicaciones web.
       </p>
       <ul>
         <li>
           <strong> Curso: </strong>
-          CURSOWEBM.
+          Desarrollo de aplicaciones web.
         </li>
         <li>
           <strong> Identificador tecnico: </strong>
@@ -4505,8 +4811,8 @@ DIARIO_CURSOWEBM: indice editorial generado
           solo como material del alumno autorizado de forma expresa.
         </li>
         <li>
-          <strong> Fecha de generacion: </strong>
-          2026-05-27.
+          <strong> Fecha de actualizacion: </strong>
+          2026-06-24.
         </li>
         <li>
           <strong> Version: </strong>
@@ -18701,6 +19007,11 @@ public class ProgramaDni {
               <td>Importar como carpeta plana y perder configuracion del proyecto.</td>
             </tr>
             <tr>
+              <td><strong>Local History</strong></td>
+              <td>Comparar una version reciente del archivo desde el IDE.</td>
+              <td>Reescribir codigo sin revisar que cambio exactamente.</td>
+            </tr>
+            <tr>
               <td><strong>Rama master/produccion</strong></td>
               <td>Conservar la version estable que deberia funcionar.</td>
               <td>Probar cambios arriesgados directamente en produccion.</td>
@@ -18877,6 +19188,11 @@ public class ImcConExcepcion {
           Dentro del constructor, <code>this.nombre</code> es el atributo del
           nuevo objeto. <code>nombre</code> sin <code>this</code> es el parametro
           recibido por el constructor.
+        </p>
+        <p>
+          Una clase puede tener varios constructores con el mismo nombre si
+          reciben parametros distintos. Esa sobrecarga permite crear objetos con
+          menos datos al principio o con todos los datos ya preparados.
         </p>
       </section>
 
@@ -19674,6 +19990,10 @@ if (numeroTexto == null || numeroTexto.isBlank()) {
           El <code>record</code> es adecuado cuando la clase solo representa datos
           de respuesta. No sustituye a todas las clases Java, pero sí evita
           escribir una clase larga cuando solo se necesita transportar valores.
+          Además, Java genera constructor, accesores, <code>equals()</code>,
+          <code>hashCode()</code> y <code>toString()</code>; por eso un
+          <code>record</code> se imprime de forma legible sin programar esos
+          métodos a mano.
         </p>
       </section>
       <section class="level2" id="gson-serializacion-dia-28">
@@ -21283,6 +21603,12 @@ http://localhost:8080/appwebprofe/LetraDni?numero=164165&amp;tipoDocumento=NIE&a
             </tr>
           </tbody>
         </table>
+        <p>
+          El <code>prefijo</code> del NIE llega como texto igual que el
+          <code>numero</code>. Si el modelo guarda un <code>char</code>, la
+          adaptacion debe hacerse al construir el <code>Nie</code>, no despues de
+          calcular la letra.
+        </p>
       </section>
 
       <section class="level2" id="validar-documento-dia-32">
@@ -21322,6 +21648,10 @@ http://localhost:8080/appwebprofe/LetraDni?numero=164165&amp;tipoDocumento=NIE&a
           basta con leerlo así: si llega <code>DNI</code>, crea <code>Dni</code>; si
           llega <code>NIE</code>, crea <code>Nie</code>; si llega otra cosa, lanza
           una excepción.
+          La firma <code>throws Exception</code> también forma parte del diseño:
+          <code>validar()</code> no escribe la respuesta HTTP; si detecta un
+          problema, lo propaga y <code>doGet()</code> lo convierte en
+          <code>400 Bad Request</code> dentro del <code>catch</code>.
         </p>
       </section>
 
@@ -21442,9 +21772,19 @@ public char calcularLetra() {
               <td>El <code>try/catch</code> convierte el fallo en <code>400 Bad Request</code>.</td>
             </tr>
             <tr>
+              <td>Enviar letras en <code>numero</code></td>
+              <td><code>Integer.parseInt(...)</code> puede lanzar <code>NumberFormatException</code>.</td>
+              <td>Ese fallo es de petición: se captura y se responde <code>400</code>.</td>
+            </tr>
+            <tr>
               <td>Acceder a <code>prefijo</code> o <code>nota</code> desde una variable padre</td>
               <td>Ese atributo solo existe en la clase hija.</td>
               <td>Comprueba con <code>instanceof</code> y después castea al tipo hijo.</td>
+            </tr>
+            <tr>
+              <td>Castear sin comprobar</td>
+              <td>Forzar <code>(Alumno)</code> sobre una <code>Persona</code> real puede lanzar <code>ClassCastException</code>.</td>
+              <td>Primero <code>instanceof</code>; después el casting.</td>
             </tr>
           </tbody>
         </table>
@@ -21591,7 +21931,7 @@ nie2.prefijo = 'Y';</code></pre>
       </section>
 
       <section class="level2" id="persona-alumno-casting-dia-32">
-        <h2>Ejercicio 3: Persona, Alumno, equals y List&lt;Persona&gt;</h2>
+        <h2>Ejercicio 3: Object, Persona, Alumno y List&lt;Persona&gt;</h2>
         <p>
           El último bloque ya no pertenece al Servlet. Es un ejercicio de Java
           básico para practicar herencia, métodos heredados de <code>Object</code>,
@@ -21599,6 +21939,12 @@ nie2.prefijo = 'Y';</code></pre>
           bucle <code>for-each</code>. <code>Alumno</code> hereda de
           <code>Persona</code>: por eso una lista de personas puede contener
           personas normales y alumnos.
+        </p>
+        <p>
+          El orden de estudio es: primero se sobrescriben métodos heredados de
+          <code>Object</code> para que los objetos se impriman y se comparen bien;
+          después se comprueba el tipo real con <code>instanceof</code> antes de
+          acceder a lo que solo existe en <code>Alumno</code>.
         </p>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.Objects;
