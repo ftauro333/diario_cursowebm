@@ -296,9 +296,10 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
       body > :not(.cover):not(#TOC) {
         margin-left: auto;
         margin-right: auto;
-        max-width: 1060px;
-        padding-left: 34px;
-        padding-right: 34px;
+        /* DIARIO_CURSOWEBM: ancho de lectura ajustado para portatiles de 15" y tarjetas de repaso. */
+        max-width: 1240px;
+        padding-left: 24px;
+        padding-right: 24px;
       }
 
       .cover {
@@ -313,7 +314,7 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         display: grid;
         grid-template-columns: minmax(0, 1fr);
         min-height: 92vh;
-        padding: 72px max(36px, calc((100vw - 1060px) / 2)) 58px;
+        padding: 72px max(36px, calc((100vw - 1240px) / 2)) 58px;
         position: relative;
       }
 
@@ -626,7 +627,7 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         letter-spacing: 0;
         line-height: 1.04;
         margin: 48px auto 18px;
-        max-width: 1060px;
+        max-width: 1240px;
         text-wrap: balance;
       }
 
@@ -794,6 +795,11 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         font-weight: 850;
         letter-spacing: 0.08em;
         text-transform: uppercase;
+      }
+
+      /* DIARIO_CURSOWEBM: los desplegables deben indicar que se pueden abrir. */
+      details > summary {
+        cursor: pointer;
       }
 
       section.level2[id^="mapa-de-estudio-dia"] details {
@@ -993,9 +999,10 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         border-radius: 10px;
         box-shadow: 0 18px 42px rgba(16, 24, 39, 0.08);
         gap: 14px;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
+        /* DIARIO_CURSOWEBM: evita tarjetas demasiado estrechas en ejemplos con URL o fetch. */
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
         margin-top: 18px;
-        overflow: hidden;
+        overflow: visible;
         padding: 14px;
         position: relative;
       }
@@ -1019,6 +1026,7 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         box-shadow: 0 10px 22px rgba(16, 24, 39, 0.055);
         display: flex;
         flex-direction: column;
+        min-width: 0;
         min-height: 136px;
         padding: 14px 14px 16px;
         position: relative;
@@ -1060,6 +1068,8 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         color: var(--ink);
         font-size: 0.92rem;
         line-height: 1.5;
+        min-width: 0;
+        overflow-wrap: anywhere;
       }
 
       .micro-lesson.cognitive-row code {
@@ -1068,6 +1078,8 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
         line-height: 1.65;
+        overflow-wrap: anywhere;
+        white-space: normal;
       }
 
       @media (max-width: 1100px) {
@@ -1078,7 +1090,7 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         }
 
         .micro-lesson.cognitive-row {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
         }
       }
 
@@ -1479,7 +1491,8 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         right: 12px;
         text-transform: uppercase;
         top: 10px;
-        z-index: 2;
+        /* DIARIO_CURSOWEBM: queda por encima de la banda de ampliacion lateral. */
+        z-index: 4;
       }
 
       .code-language-badge::before {
@@ -1587,6 +1600,20 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
 
       figure {
         margin: 24px 0;
+      }
+
+      .uml-diagram-figure {
+        /* DIARIO_CURSOWEBM: los diagramas UML necesitan conservar tamaño de lectura. */
+        overflow-x: auto;
+        padding-bottom: 8px;
+      }
+
+      .uml-diagram-figure img {
+        margin-left: 0;
+        margin-right: 0;
+        max-width: none;
+        min-width: 1120px;
+        width: 100%;
       }
 
       figcaption {
@@ -4439,7 +4466,15 @@ DIARIO_CURSOWEBM: indice editorial generado
             href="#dia-31---refactorizacion-arquitectura-multicapa-y-uml"
             id="toc-dia-31---refactorizacion-arquitectura-multicapa-y-uml"
           >
-            Día 31 - Arquitectura multicapa, UML y polimorfismo
+            Día 31 - Diseño Java Web, capas y polimorfismo
+          </a>
+        </li>
+        <li>
+          <a
+            href="#dia-32---polimorfismo-aplicado-al-servlet-letradni"
+            id="toc-dia-32---polimorfismo-aplicado-al-servlet-letradni"
+          >
+            Día 32 - LetraDni, NIE, polimorfismo e instanceof
           </a>
         </li>
       </ul>
@@ -4574,8 +4609,13 @@ DIARIO_CURSOWEBM: indice editorial generado
             </a>
             <a class="study-topic-card" href="#dia-31---refactorizacion-arquitectura-multicapa-y-uml">
               <b>Diseño de aplicaciones</b>
-              <strong>Refactorización, capas, servlets, UML y polimorfismo</strong>
-              <span>Dia 31: diseñar una app Java Web y reconocer sobrescritura con DNI/NIE.</span>
+              <strong>Diseño Java Web, capas, UML y polimorfismo</strong>
+              <span>Dia 31: refactorizar OpositaTest y comprobar polimorfismo con DNI/NIE.</span>
+            </a>
+            <a class="study-topic-card" href="#dia-32---polimorfismo-aplicado-al-servlet-letradni">
+              <b>Java Web aplicado</b>
+              <strong>Servlet, DNI/NIE, casting e instanceof</strong>
+              <span>Dia 32: resolver primero <code>LetraDni</code> y después practicar herencia con <code>Persona</code>/<code>Alumno</code>.</span>
             </a>
           </div>
         </div>
@@ -4606,7 +4646,8 @@ DIARIO_CURSOWEBM: indice editorial generado
             <tr><td>JSON con Gson y records</td><td><a href="#dia-28---parametros-http-modelos-de-datos-y-serializacion-json">Día 28</a></td><td>Crear un <code>record</code> y devolverlo como <code>application/json</code>.</td></tr>
             <tr><td>CORS, SPA y JSP</td><td><a href="#dia-29---apis-rest-consumo-con-javascript-y-seguridad-cors">Día 29</a></td><td>Comparar <code>fetch</code> con <code>forward</code> a JSP.</td></tr>
             <tr><td><code>List</code>, <code>Set</code>, <code>Map</code>, scopes y contexto</td><td><a href="#dia-30---colecciones-java-list-set-y-map">Día 30</a></td><td>Guardar IMC en <code>listaIMC</code> y recorrerla con <code>for-each</code>.</td></tr>
-            <tr><td>Refactorización, capas, UML y polimorfismo</td><td><a href="#dia-31---refactorizacion-arquitectura-multicapa-y-uml">Día 31</a></td><td>Separar OpositaTest en capas y probar <code>@Override</code> con <code>Dni</code>/<code>Nie</code>.</td></tr>
+            <tr><td>Diseño Java Web, capas, UML y polimorfismo</td><td><a href="#dia-31---refactorizacion-arquitectura-multicapa-y-uml">Día 31</a></td><td>Separar OpositaTest en capas y comprobar <code>@Override</code> con <code>Dni</code>/<code>Nie</code>.</td></tr>
+            <tr><td>Polimorfismo, casting e <code>instanceof</code></td><td><a href="#dia-32---polimorfismo-aplicado-al-servlet-letradni">Día 32</a></td><td>Resolver <code>LetraDni</code> con DNI/NIE y contar alumnos dentro de una <code>List&lt;Persona&gt;</code>.</td></tr>
           </tbody>
         </table>
       </section>
@@ -18706,6 +18747,20 @@ public class ImcBasico {
           Si el usuario escribe una letra o usa un formato que el lector no
           entiende, el programa puede lanzar una excepcion.
         </p>
+        <p>
+          La misma disciplina de tipos aparece al leer otros datos. Si se pide
+          una letra de DNI con <code>Scanner</code>, Java puede recibir primero un
+          <code>String</code>; para guardar solo un carácter se toma la primera
+          posición con <code>charAt(0)</code>. Esta diferencia entre texto y carácter
+          es pequeña, pero evita muchos errores al empezar.
+        </p>
+        <p>
+          En las condiciones se usa el operador lógico <code>&amp;&amp;</code>, por
+          ejemplo <code>peso &gt; 0 &amp;&amp; altura &gt; 0</code>. No conviene
+          cambiarlo por <code>&amp;</code>: aunque puede aparecer con booleanos,
+          evalúa ambos lados y no es la forma normal de escribir validaciones
+          iniciales.
+        </p>
       </section>
       <section class="level2" id="excepciones-dia-26">
         <h2>Excepciones: cuando el flujo normal se rompe</h2>
@@ -18973,6 +19028,13 @@ public class Dni extends Documento {
           disponibles. En el curso se estudia como idea práctica de organización,
           no como una capa avanzada de arquitectura.
         </p>
+        <p>
+          La documentación profesional de métodos se apoya en comentarios
+          Javadoc: bloques <code>/** ... */</code> con etiquetas como
+          <code>@param</code> o <code>@return</code>. En este punto no hace falta
+          dominar Javadoc, pero sí reconocer por qué algunos comentarios delante
+          de métodos públicos tienen una forma tan concreta.
+        </p>
         <dl class="micro-lesson cognitive-row">
           <div class="signal-idea">
             <dt>Idea clave</dt>
@@ -19206,7 +19268,9 @@ public class Dni extends Documento {
           En una aplicación web Java, Tomcat no ejecuta cualquier clase al azar:
           busca una ruta registrada y delega la petición en el Servlet asociado.
           La anotación <code>@WebServlet("/HolaServlet")</code> une una URL con
-          una clase Java concreta.
+          una clase Java concreta. El puerto, por ejemplo <code>localhost:8080</code>,
+          identifica el proceso de Tomcat; el contexto de la aplicación y la ruta
+          del Servlet completan la dirección real.
         </p>
         <table>
           <thead>
@@ -19330,6 +19394,7 @@ try {
           <li><strong>404:</strong> revisa contexto de la app y ruta de <code>@WebServlet</code>.</li>
           <li><strong>Parámetro <code>null</code>:</strong> comprueba que la URL trae exactamente la clave esperada.</li>
           <li><strong>Status siempre 200:</strong> confirma que el Servlet llama a <code>response.setStatus(400)</code> cuando faltan datos.</li>
+          <li><strong>Cambios que no aparecen:</strong> reinicia o redespliega Tomcat; el navegador puede seguir llamando a una versión anterior.</li>
         </ul>
       </section>
       <section class="level2" id="get-post-dia-27">
@@ -19389,6 +19454,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
           <li>Abre <code>http://localhost:8080/appwebprofe/HolaServlet</code> y observa el mensaje de error por falta de parámetros.</li>
           <li>Abre <code>http://localhost:8080/appwebprofe/HolaServlet?nombre=Ana&amp;edad=22</code> y comprueba la frase generada.</li>
           <li>En DevTools, pestaña Network, revisa el <code>Status</code> de cada petición.</li>
+          <li>Repite una petición en Postman si quieres ver cabeceras, cuerpo y estado sin depender de una página HTML.</li>
         </ol>
       </section>
       <section class="level2" id="errores-frecuentes-dia-27">
@@ -19400,6 +19466,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
           <li>Usar <code>200 OK</code> cuando faltan datos obligatorios.</li>
           <li>Pensar que <code>web.xml</code> es código Java; en realidad es configuración del despliegue web.</li>
           <li>Creer que el navegador ejecuta el Servlet; quien lo ejecuta es Tomcat en el servidor.</li>
+          <li>Tratar un <code>500</code> como problema de URL cuando normalmente indica una excepción no controlada en Java.</li>
         </ul>
       </section>
       <section class="level2" id="cierre-del-dia-27">
@@ -20412,11 +20479,14 @@ context.setAttribute("listaIMC", lista);</code></pre>
           también la respuesta a <code>listaIMC</code>.
         </p>
         <details>
-          <summary>Pistas y solución orientativa</summary>
-          <ol>
-            <li><strong>Pista 1:</strong> si solo quieres recorrer alumnos, no necesitas índice.</li>
-            <li><strong>Pista 2:</strong> si usas <code>Map</code>, piensa qué dato será la clave.</li>
-          </ol>
+          <summary>Solución correcta</summary>
+          <p>
+            La primera parte se resuelve con tres colecciones distintas:
+            <code>List</code> para mantener alumnos en orden, <code>Set</code> para
+            evitar DNI duplicados y <code>Map</code> para asociar un DNI con su
+            nota. La lista se recorre con <code>for-each</code> porque no hace falta
+            usar índices.
+          </p>
           <div class="sourceCode code-panel language-java" data-language-label="JAVA">
             <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.ArrayList;
 import java.util.HashMap;
@@ -20453,6 +20523,29 @@ public class PracticaColecciones {
     }
 }</code></pre>
           </div>
+          <p>
+            La segunda parte, dentro del Servlet de IMC, consiste en leer del
+            contexto, convertir al tipo real, modificar y volver a guardar. El
+            contador se incrementa y la lista global recibe la respuesta calculada.
+          </p>
+          <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">ServletContext context = getServletContext();
+
+int numveces = (int) context.getAttribute("numero_veces");
+numveces = numveces + 1;
+context.setAttribute("numero_veces", numveces);
+
+ArrayList&lt;ImcRespuestaNueva&gt; lista =
+        (ArrayList&lt;ImcRespuestaNueva&gt;) context.getAttribute("listaIMC");
+
+lista.add(imcRespuestaNueva);
+context.setAttribute("listaIMC", lista);</code></pre>
+          </div>
+          <p>
+            Si <code>listaIMC</code> devuelve <code>null</code>, el problema no está
+            en <code>add()</code>: normalmente significa que el listener no creó la
+            lista al arrancar o que se usó una clave distinta al guardar y al leer.
+          </p>
         </details>
       </section>
 
@@ -20470,6 +20563,7 @@ public class PracticaColecciones {
         <ul>
           <li>Olvidar los <code>import</code> de <code>java.util</code>.</li>
           <li>Confundir índice de lista con clave de mapa.</li>
+          <li>Intentar leer una <code>List</code> con <code>lista[i]</code>; en Java las listas se leen con <code>lista.get(i)</code>.</li>
           <li>Esperar que <code>HashSet</code> mantenga un orden concreto.</li>
           <li>Usar <code>for</code> con índice cuando un <code>for-each</code> sería suficiente.</li>
           <li>Pensar que una redirección devuelve JSON; en realidad pide al navegador otra URL.</li>
@@ -20490,165 +20584,120 @@ public class PracticaColecciones {
       </section>
     </section>
     <!--
-DIARIO_CURSOWEBM: revision editorial 2026-06-23 - OpositaTest, arquitectura multicapa, UML y polimorfismo
+DIARIO_CURSOWEBM: revision editorial 2026-06-23 - Dia 31 rehecho como bloque unico de estudio
 -->
     <section
       class="level1 day-section"
       id="dia-31---refactorizacion-arquitectura-multicapa-y-uml"
     >
-      <h1 data-day-date="23/06/2026">Día 31 - Arquitectura multicapa, UML y polimorfismo</h1>
+      <h1 data-day-date="23/06/2026">Día 31 - Diseño Java Web, capas y polimorfismo</h1>
       <p>
-        La sesión del 23 de junio combina dos líneas de trabajo. Primero se
-        analiza OpositaTest para aprender a pasar de una web estática a una
-        aplicación Java Web organizada por capas. Después se revisan fundamentos
-        de Java y se aterriza la herencia con el ejercicio <code>Dni</code>/<code>Nie</code>,
-        donde aparece la sobrescritura de métodos con <code>@Override</code>.
+        La clase del 23 de junio no fue una colección de temas sueltos. El hilo
+        principal fue aprender a mirar una aplicación que ya existe, detectar sus
+        problemas y proponer una estructura Java Web más segura y mantenible. A
+        partir de OpositaTest se repasaron servlets, capas, UML y conceptos de
+        Java que permiten leer mejor ese diseño: constructores, <code>this</code>,
+        herencia, <code>@Override</code> y polimorfismo.
       </p>
+
       <section class="level2 quick-summary" id="resumen-rapido-dia-31">
         <h2>Resumen rápido</h2>
         <ul>
-          <li><strong>Qué se vio:</strong> OpositaTest, abstracción, capas, UML, repaso Java, herencia y polimorfismo.</li>
-          <li><strong>Concepto que importa:</strong> diseñar antes de programar evita mezclar HTTP, lógica, datos y presentación.</li>
-          <li><strong>Error a evitar:</strong> enviar respuestas correctas al navegador o meter toda la lógica dentro de un servlet.</li>
-          <li><strong>Práctica:</strong> separar modelo/servlet/servicio/repositorio y probar <code>Dni</code>, <code>Nie</code> y <code>@Override</code>.</li>
-          <li><strong>Debe quedar claro:</strong> el cliente pide, el servlet controla, el servicio decide y el repositorio obtiene datos.</li>
+          <li><strong>Qué se vio:</strong> refactorizar OpositaTest hacia servidor, separar capas y probar polimorfismo con <code>Dni</code>/<code>Nie</code>.</li>
+          <li><strong>Concepto que importa:</strong> una aplicación crece mejor cuando cada clase tiene una responsabilidad clara.</li>
+          <li><strong>Error a evitar:</strong> enviar al navegador datos sensibles, como la respuesta correcta de un test.</li>
+          <li><strong>Práctica:</strong> diseñar clases, servlets, servicio y repositorio; después comprobar <code>@Override</code> ejecutando <code>MainPolimorfismo</code>.</li>
+          <li><strong>Debe quedar claro:</strong> el servlet recibe HTTP, el servicio decide, el repositorio obtiene datos y el modelo representa la información.</li>
         </ul>
       </section>
+
       <section class="level2 study-levels" id="niveles-de-estudio-dia-31">
         <h2>Niveles de estudio</h2>
         <div class="study-level-grid">
           <article class="study-level-item">
             <strong>Esencial</strong>
-            <p>Abstracción, refactorización, <code>GET</code>/<code>POST</code>, clases de datos, servlets y seguridad básica del JSON.</p>
+            <p>Entender por qué las respuestas correctas no deben estar en el cliente y qué papel cumplen servlet, servicio y repositorio.</p>
           </article>
           <article class="study-level-item">
             <strong>Práctica</strong>
-            <p>Proponer clases para OpositaTest y ejecutar el ejemplo del profesor con <code>Dni</code>, <code>Nie</code> y <code>MainPolimorfismo</code>.</p>
+            <p>Proponer las clases mínimas de OpositaTest y ejecutar el ejemplo <code>Dni</code>/<code>Nie</code> para ver qué método se llama.</p>
           </article>
           <article class="study-level-item">
             <strong>Ampliación</strong>
-            <p>Leer un diagrama UML como contrato de trabajo y entender que <code>@Override</code> permite especializar un método heredado.</p>
+            <p>Leer UML como plano de trabajo y distinguir herencia de polimorfismo sin convertirlo en teoría aislada.</p>
           </article>
         </div>
       </section>
+
       <section class="level2" id="trazabilidad-dia-31">
-        <h2>Trazabilidad del día</h2>
+        <h2>Material usado</h2>
         <p>
-          La parte de arquitectura usa el ejercicio <code>alumno/opositatest/opositaweb</code>
-          como material autorizado del alumno. La parte de Java se apoya en el
-          commit de profesor <code>2b14eec polimorfismo</code>, con los archivos
+          La parte de arquitectura se apoya en el ejercicio <code>alumno/opositatest/opositaweb</code>.
+          La parte de Java se contrasta con los archivos de profesor
           <code>profe/f11webjava/appwebprofe/src/main/java/appwebprofe/servlet/Dni.java</code>,
-          <code>Nie.java</code> y <code>MainPolimorfismo.java</code>. Se ha revisado el
-          material, pero no se modifica <code>profe</code>.
+          <code>Nie.java</code> y <code>MainPolimorfismo.java</code>. Esos archivos se han
+          consultado como referencia y no se han modificado.
         </p>
       </section>
-      <section class="level2" id="mapa-del-dia-31">
-        <h2>Mapa del día</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Bloque</th>
-              <th>Qué se estudia</th>
-              <th>Producto mental</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>OpositaTest</td>
-              <td>Refactorizar una web estática de tests.</td>
-              <td>Lista de clases, servlets y responsabilidades.</td>
-            </tr>
-            <tr>
-              <td>Arquitectura</td>
-              <td>Separar controlador, servicio y repositorio.</td>
-              <td>Capas claras y menos código mezclado.</td>
-            </tr>
-            <tr>
-              <td>UML</td>
-              <td>Representar el diseño antes de programar.</td>
-              <td>Plano de clases para implementar sin improvisar.</td>
-            </tr>
-            <tr>
-              <td>Repaso Java</td>
-              <td><code>main</code>, <code>args</code>, <code>java.lang</code>, constructores, primitivos y <code>this</code>.</td>
-              <td>Vocabulario base para leer los ejercicios.</td>
-            </tr>
-            <tr>
-              <td>Polimorfismo</td>
-              <td><code>Nie extends Dni</code> y sobrescribe <code>calcularLetra()</code>.</td>
-              <td>Un mismo método puede resolverse de forma distinta según el objeto.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-      <section class="level2" id="opositatest-abstraccion-dia-31">
-        <h2>Ejercicio 1: OpositaTest y abstracción</h2>
+
+      <section class="level2" id="problema-real-dia-31">
+        <h2>El problema real: una web estática no protege el test</h2>
         <p>
-          El ejercicio no pide empezar programando. Pide inspeccionar una web de
-          tests, entender cómo funciona y valorar cómo refactorizarla para que
-          las preguntas estén en el servidor. Esa palabra, <em>refactorizar</em>, no
-          significa cambiar la finalidad de la aplicación: significa reorganizar
-          una solución que ya existe para que sea más mantenible y más segura.
+          OpositaTest funciona como prototipo: muestra una portada, enlaces a
+          tests y una interfaz estática. Ese punto de partida es útil para ver la
+          experiencia de usuario, pero no basta para una aplicación de evaluación.
+          Si las preguntas, las opciones y las respuestas correctas viven en el
+          HTML o en JavaScript, cualquier persona puede abrir las herramientas del
+          navegador y leer las soluciones.
         </p>
         <p>
-          La abstracción consiste en separar lo importante de lo accesorio. Para
-          este problema no importa todavía el color de los botones ni el texto de
-          la portada. Importa saber qué entidades existen: un test tiene
-          preguntas, una pregunta tiene opciones, el alumno envía respuestas y el
-          servidor calcula un resultado.
+          Refactorizar no significa tirar la web y empezar de cero. Significa
+          conservar la finalidad del proyecto y cambiar la organización interna:
+          la página puede seguir mostrando preguntas, pero las respuestas
+          correctas y la corrección deben quedar en Java, dentro del servidor.
         </p>
         <table>
           <thead>
             <tr>
-              <th>Pregunta de análisis</th>
-              <th>Respuesta útil</th>
+              <th>Antes</th>
+              <th>Después</th>
+              <th>Por qué mejora</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Qué dato no debe ver el cliente?</td>
-              <td>La respuesta correcta de cada pregunta.</td>
+              <td>Preguntas y respuestas en el cliente.</td>
+              <td>Preguntas gestionadas por Java en el servidor.</td>
+              <td>La solución correcta deja de estar expuesta.</td>
             </tr>
             <tr>
-              <td>Qué debe pedir el navegador?</td>
-              <td>Catálogo de tests y preguntas visibles.</td>
+              <td>La página decide casi todo.</td>
+              <td>El servlet recibe y el servicio corrige.</td>
+              <td>La lógica se puede probar y mantener mejor.</td>
             </tr>
             <tr>
-              <td>Qué debe enviar el alumno?</td>
-              <td>El identificador del test y las opciones elegidas.</td>
-            </tr>
-            <tr>
-              <td>Qué debe calcular Java?</td>
-              <td>Aciertos, errores y nota.</td>
+              <td>Cada test puede acabar duplicando código.</td>
+              <td>Un repositorio entrega tests y preguntas.</td>
+              <td>Añadir tests nuevos no obliga a reescribir la arquitectura.</td>
             </tr>
           </tbody>
         </table>
       </section>
-      <section class="level2" id="seguridad-json-dia-31">
-        <h2>Seguridad: no enviar la solución en el JSON</h2>
+
+      <section class="level2" id="modelo-opositatest-dia-31">
+        <h2>Del análisis al modelo Java</h2>
         <p>
-          Si las preguntas y las soluciones están en HTML o JavaScript, cualquier
-          usuario puede inspeccionar la página y encontrar las respuestas. Mover
-          el test al servidor mejora la situación, pero solo si el JSON de salida
-          no contiene también la respuesta correcta.
-        </p>
-        <p>
-          Por eso conviene distinguir entre el modelo interno y el modelo visible.
-          El servidor puede tener una clase <code>Pregunta</code> completa para
-          corregir, pero al navegador debería enviar una versión sin solución,
-          como <code>PreguntaVista</code>.
-        </p>
-        <p>
-          La corrección se cierra en el servidor: el alumno envía sus opciones
-          mediante <code>POST</code>, Java compara esas respuestas con el modelo
-          interno y solo devuelve el resultado. La respuesta correcta no viaja en
-          la ida, sino que se queda protegida dentro de la aplicación.
+          El primer paso de abstracción es decidir qué objetos existen en el
+          problema. No se empieza por el color de la web ni por la base de datos;
+          se empieza por el vocabulario: un test contiene preguntas, cada
+          pregunta tiene opciones, el alumno envía respuestas y Java devuelve una
+          corrección.
         </p>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.List;
 
 /**
- * Pregunta completa usada solo dentro del servidor.
+ * Pregunta completa. Se usa dentro del servidor porque contiene la respuesta.
  */
 public record Pregunta(
         int id,
@@ -20658,100 +20707,110 @@ public record Pregunta(
 }
 
 /**
- * Pregunta segura para enviar al navegador.
+ * Pregunta segura para enviar al navegador: no incluye la respuesta correcta.
  */
 public record PreguntaVista(
         int id,
         String enunciado,
         List&lt;String&gt; opciones) {
+}
+
+/**
+ * Resultado final que el servidor devuelve tras corregir un test.
+ */
+public record ResultadoCorreccion(
+        int idTest,
+        int totalPreguntas,
+        int aciertos,
+        int errores,
+        double nota) {
 }</code></pre>
         </div>
-      </section>
-      <section class="level2" id="servlets-get-post-dia-31">
-        <h2>Servlets y semántica HTTP</h2>
         <p>
-          La frontera entre navegador y servidor son los servlets. En este
-          ejercicio hay tres operaciones mínimas: listar tests, obtener un test y
-          corregir respuestas. Las dos primeras piden información; la tercera
-          envía información del alumno para que Java la evalúe.
+          La clave didáctica está en <code>PreguntaVista</code>: no es una clase de
+          adorno, sino una forma sencilla de evitar que el dato sensible viaje al
+          navegador. El servidor puede conocer la respuesta correcta; el cliente
+          solo necesita enunciado y opciones.
+        </p>
+      </section>
+
+      <section class="level2" id="servlets-capas-dia-31">
+        <h2>Servlets, servicio y repositorio</h2>
+        <p>
+          El servlet es la puerta HTTP, pero no debería convertirse en toda la
+          aplicación. Si el servlet lee parámetros, corrige respuestas, busca
+          datos y construye la salida completa, el código se vuelve difícil de
+          mantener. La separación por capas evita esa mezcla.
         </p>
         <table>
           <thead>
             <tr>
-              <th>Servlet</th>
-              <th>Método</th>
               <th>Responsabilidad</th>
+              <th>Clase orientativa</th>
+              <th>Qué hace</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><code>ListadoTestsServlet</code></td>
-              <td><code>GET</code></td>
-              <td>Devolver los tests disponibles.</td>
+              <td>Entrada HTTP</td>
+              <td><code>ListadoTestsServlet</code>, <code>ObtenerTestServlet</code>, <code>CorregirTestServlet</code></td>
+              <td>Reciben la petición, validan lo mínimo y llaman al servicio.</td>
             </tr>
             <tr>
-              <td><code>ObtenerTestServlet</code></td>
-              <td><code>GET</code></td>
-              <td>Devolver preguntas visibles de un test concreto.</td>
+              <td>Lógica de negocio</td>
+              <td><code>TestService</code></td>
+              <td>Obtiene tests visibles y corrige respuestas del alumno.</td>
             </tr>
             <tr>
-              <td><code>CorregirTestServlet</code></td>
-              <td><code>POST</code></td>
-              <td>Recibir respuestas y devolver el resultado.</td>
+              <td>Origen de datos</td>
+              <td><code>TestRepository</code></td>
+              <td>Entrega tests desde memoria, fichero o base de datos.</td>
             </tr>
           </tbody>
         </table>
         <p>
-          La regla práctica es sencilla: <code>GET</code> para consultar y
-          <code>POST</code> para enviar respuestas. No es una cuestión estética;
-          ayuda a que la arquitectura sea legible y coherente con HTTP.
-        </p>
-      </section>
-      <section class="level2" id="arquitectura-multicapa-dia-31">
-        <h2>Arquitectura multicapa: controlador, servicio y repositorio</h2>
-        <p>
-          Un error habitual es escribir toda la aplicación dentro de los
-          servlets. Al principio parece rápido, pero enseguida mezcla validación,
-          reglas de negocio, acceso a datos y respuesta HTTP. La solución vista
-          en clase es separar responsabilidades.
-        </p>
-        <p>
-          La capa de servicio es el núcleo de la lógica de negocio. En OpositaTest
-          tendría métodos como <code>obtenerTodosLosTests()</code>,
-          <code>obtenerTestPorId()</code> y <code>corregirTest()</code>. Si necesita
-          preguntas guardadas, no consulta directamente desde el servlet: llama al
-          repositorio, que es el almacén de datos.
+          En esta arquitectura, <code>GET</code> se usa para pedir información: listar
+          tests u obtener las preguntas visibles de uno concreto. <code>POST</code> se
+          reserva para enviar las respuestas del alumno y corregirlas en el
+          servidor. Esa diferencia no es decorativa: expresa la intención de la
+          petición.
         </p>
         <table>
           <thead>
             <tr>
-              <th>Capa</th>
-              <th>Clase orientativa</th>
-              <th>Qué debe hacer</th>
-              <th>Qué no debe hacer</th>
+              <th>Operación</th>
+              <th>Método</th>
+              <th>Motivo</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Controlador</td>
-              <td><code>CorregirTestServlet</code></td>
-              <td>Leer HTTP, validar datos mínimos y llamar al servicio.</td>
-              <td>Calcular toda la nota a mano.</td>
+              <td>Ver catálogo de tests</td>
+              <td><code>GET</code></td>
+              <td>Solo se consulta información.</td>
             </tr>
             <tr>
-              <td>Servicio</td>
-              <td><code>TestService</code></td>
-              <td>Aplicar reglas de negocio y corregir el test.</td>
-              <td>Conocer detalles de HTML o botones.</td>
+              <td>Ver preguntas de un test</td>
+              <td><code>GET</code></td>
+              <td>El cliente pide datos visibles.</td>
             </tr>
             <tr>
-              <td>Repositorio</td>
-              <td><code>TestRepository</code></td>
-              <td>Obtener tests desde memoria, fichero o base de datos.</td>
-              <td>Decidir cómo se pinta el resultado.</td>
+              <td>Enviar respuestas</td>
+              <td><code>POST</code></td>
+              <td>El cliente manda datos para que Java los procese.</td>
             </tr>
           </tbody>
         </table>
+      </section>
+
+      <section class="level2" id="servicio-opositatest-dia-31">
+        <h2>La capa de servicio como centro de la corrección</h2>
+        <p>
+          El servicio es donde vive la regla importante: comparar las respuestas
+          del alumno con las respuestas reales guardadas en el servidor. El
+          servlet no necesita saber cómo se calcula la nota; solo necesita pedir
+          al servicio que haga su trabajo y devolver el resultado.
+        </p>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.ArrayList;
 import java.util.List;
@@ -20765,7 +20824,7 @@ public class TestService {
     }
 
     /**
-     * Prepara preguntas sin respuesta correcta para enviarlas al navegador.
+     * Devuelve preguntas preparadas para el cliente, sin enviar soluciones.
      */
     public List&lt;PreguntaVista&gt; obtenerPreguntasVisibles(int idTest) {
         TestOposicion test = repository.obtenerPorId(idTest);
@@ -20787,7 +20846,7 @@ public class TestService {
     }
 
     /**
-     * Corrige las respuestas del alumno usando el modelo interno del servidor.
+     * Corrige en servidor las respuestas enviadas por el alumno.
      */
     public ResultadoCorreccion corregirTest(int idTest, List&lt;Integer&gt; respuestasUsuario) {
         TestOposicion test = repository.obtenerPorId(idTest);
@@ -20815,41 +20874,31 @@ public class TestService {
     }
 }</code></pre>
         </div>
-      </section>
-      <section class="level2" id="uml-dia-31">
-        <h2>UML: plano antes de programar</h2>
         <p>
-          UML sirve para pensar la arquitectura antes de crear ficheros Java. En
-          este día interesan tres tipos de diagramas: casos de uso para saber qué
-          puede hacer el usuario, actividad para ordenar un proceso y clases para
-          definir el esqueleto del código.
+          Este código no introduce una tecnología nueva. Solo aplica una regla de
+          organización: el servlet controla la petición, el servicio contiene la
+          lógica y el repositorio suministra los datos.
         </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Diagrama</th>
-              <th>Pregunta que responde</th>
-              <th>Ejemplo aplicado</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Casos de uso</td>
-              <td>Qué puede hacer el usuario?</td>
-              <td>Realizar test y consultar resultado.</td>
-            </tr>
-            <tr>
-              <td>Actividad</td>
-              <td>En qué orden ocurre el proceso?</td>
-              <td>Elegir test, responder, enviar, corregir.</td>
-            </tr>
-            <tr>
-              <td>Clases</td>
-              <td>Qué clases, atributos y métodos necesita el sistema?</td>
-              <td><code>Pregunta</code>, <code>TestService</code>, <code>TestRepository</code> y servlets.</td>
-            </tr>
-          </tbody>
-        </table>
+      </section>
+
+      <section class="level2" id="uml-dia-31">
+        <h2>UML como plano de trabajo</h2>
+        <p>
+          UML aparece como una herramienta para pensar antes de crear clases al
+          azar. Un caso de uso responde qué puede hacer el usuario; un diagrama
+          de actividad ordena los pasos; un diagrama de clases fija qué piezas
+          tendrá el programa y cómo se relacionan.
+        </p>
+        <figure class="uml-diagram-figure">
+          <img
+            src="assets/diagrama-clases-minitest-ce.svg"
+            alt="Diagrama de clases MiniTest CE con records Pregunta, Test y ResultadoCorreccion, TestRepository, TestService y tres servlets conectados con HttpServlet."
+          />
+          <figcaption>
+            Diagrama orientativo de clases para MiniTest CE: modelo, repositorio,
+            servicio y servlets separados por responsabilidad.
+          </figcaption>
+        </figure>
         <div class="sourceCode code-panel language-text" data-language-label="UML">
           <pre class="sourceCode text"><code class="sourceCode text" data-start-line="1">TestOposicion 1 --- * Pregunta
 TestRepository --- TestOposicion
@@ -20860,67 +20909,65 @@ ObtenerTestServlet --- TestService
 CorregirTestServlet --- TestService</code></pre>
         </div>
         <p>
-          En un entorno profesional, este plano permite que un programador junior
-          no tenga que adivinar la arquitectura. Su tarea sería implementar los
-          métodos respetando las responsabilidades definidas.
+          Para estudiar, no hace falta memorizar todos los tipos de diagrama. Lo
+          importante es leer el plano: si <code>CorregirTestServlet</code> depende de
+          <code>TestService</code>, el servlet delega; si <code>TestService</code> depende
+          de <code>TestRepository</code>, el servicio no inventa los datos, los pide.
         </p>
       </section>
+
       <section class="level2" id="repaso-java-dia-31">
-        <h2>Repaso Java: fundamentos que sostienen el diseño</h2>
+        <h2>Repaso Java integrado en los ejercicios</h2>
         <p>
-          La sesión también repasó conceptos base de Java. No son teoría suelta:
-          hacen falta para leer los ejercicios de servlets, records y
-          polimorfismo sin perderse.
+          El repaso de Java de la sesión ayuda a leer el diseño anterior y el
+          ejemplo de polimorfismo. No conviene estudiarlo como una lista aislada,
+          sino conectado con el código que aparece en clase.
         </p>
         <table>
           <thead>
             <tr>
               <th>Concepto</th>
-              <th>Idea que debe quedar clara</th>
+              <th>Uso en la clase</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><code>main(String[] args)</code></td>
-              <td><code>args</code> recoge argumentos escritos al ejecutar un programa por consola.</td>
+              <td>Permite ejecutar ejemplos de consola como <code>MainPolimorfismo</code>.</td>
             </tr>
             <tr>
               <td><code>java.lang</code></td>
-              <td>Paquete básico de Java; se importa de forma implícita.</td>
+              <td>Aporta clases básicas como <code>String</code>, <code>Integer</code> o <code>Exception</code> sin importarlas manualmente.</td>
             </tr>
             <tr>
               <td>Constructor</td>
-              <td>Se llama igual que la clase y no devuelve tipo, ni siquiera <code>void</code>.</td>
-            </tr>
-            <tr>
-              <td>Primitivos</td>
-              <td><code>int</code>, <code>float</code>, <code>boolean</code> y <code>char</code> no son clases.</td>
-            </tr>
-            <tr>
-              <td><code>char</code> y <code>String</code></td>
-              <td><code>'a'</code> usa comillas simples; <code>"a"</code> usa comillas dobles.</td>
+              <td>Inicializa objetos; se llama igual que la clase y no devuelve <code>void</code>.</td>
             </tr>
             <tr>
               <td><code>this</code></td>
-              <td>Dentro del constructor apunta al nuevo objeto que se está creando.</td>
+              <td>Señala el objeto actual; en el constructor ayuda a guardar valores en sus atributos.</td>
+            </tr>
+            <tr>
+              <td><code>char</code> y <code>String</code></td>
+              <td><code>'W'</code> es un carácter; <code>"W"</code> es texto.</td>
             </tr>
           </tbody>
         </table>
       </section>
-      <section class="level2" id="polimorfismo-dia-31">
-        <h2>Ejercicio 2: herencia, sobrescritura y polimorfismo</h2>
+
+      <section class="level2" id="dni-nie-dia-31">
+        <h2>Dni/Nie: cuando heredar no basta</h2>
         <p>
-          El segundo ejercicio del día usa una idea ya conocida, el DNI, para
-          introducir una idea nueva. La herencia permite que <code>Nie</code>
-          reciba atributos y métodos de <code>Dni</code> mediante <code>extends</code>;
-          el polimorfismo aparece cuando <code>Nie</code> da una forma propia al
-          método heredado <code>calcularLetra()</code>.
+          El ejemplo de profesor aterriza la diferencia entre herencia y
+          polimorfismo sin separarla del código. <code>Nie</code> hereda de
+          <code>Dni</code>, así que recibe <code>numero</code>, <code>letra</code> y el método
+          <code>calcularLetra()</code>. Pero el NIE necesita un comportamiento propio:
+          por eso la clase hija sobrescribe el método con <code>@Override</code>.
         </p>
         <p>
-          La diferencia práctica es importante: heredar es recibir estructura;
-          sobrescribir es cambiar comportamiento. Por eso <code>Nie</code> conserva
-          <code>numero</code> y <code>letra</code>, añade <code>prefijo</code> y redefine
-          el cálculo con <code>@Override</code>.
+          La frase corta para recordarlo es esta: herencia es reutilizar
+          estructura; polimorfismo es permitir que una operación tenga una forma
+          distinta según el objeto real que la ejecuta.
         </p>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">public class Dni {
@@ -20941,13 +20988,11 @@ CorregirTestServlet --- TestService</code></pre>
     }
 
     /**
-     * Calcula la letra de un DNI usando el resto del número.
+     * Calcula la letra usando el algoritmo básico del DNI.
      */
     public char calcularLetra() {
-        char letraDevuelta = ' ';
         int resto = this.numero % Dni.SECUENCIA_LETRAS_DNI.length();
-        letraDevuelta = Dni.SECUENCIA_LETRAS_DNI.charAt(resto);
-        return letraDevuelta;
+        return Dni.SECUENCIA_LETRAS_DNI.charAt(resto);
     }
 }</code></pre>
         </div>
@@ -20957,7 +21002,7 @@ CorregirTestServlet --- TestService</code></pre>
     char prefijo;
 
     /**
-     * Sobrescribe el cálculo heredado de Dni para especializar el NIE.
+     * Especializa el cálculo heredado para demostrar sobrescritura.
      */
     @Override
     public char calcularLetra() {
@@ -20967,84 +21012,744 @@ CorregirTestServlet --- TestService</code></pre>
 }</code></pre>
         </div>
         <p>
-          <code>@Override</code> le dice al compilador que este método pretende
-          sustituir al del padre. Si el nombre o los parámetros no coinciden,
-          Java avisará. Cuando se llame a <code>calcularLetra()</code>, Java buscará
-          primero la versión más concreta: si el objeto es <code>Nie</code>, ejecuta
-          la de <code>Nie</code>; si esa versión no existe, sube a <code>Dni</code>.
+          <code>@Override</code> no es decoración. Ayuda al compilador a comprobar
+          que realmente se está sustituyendo un método del padre. Cuando el
+          programa llama a <code>nie.calcularLetra()</code>, Java busca primero en la
+          clase más concreta, <code>Nie</code>. Si el método no estuviera allí, subiría
+          a <code>Dni</code> y usaría la versión heredada.
         </p>
         <p>
-          El ejemplo de <code>Nie</code> devuelve siempre <code>'W'</code>. Eso no debe
-          estudiarse como algoritmo real de NIE, sino como demostración de
-          sobrescritura y resolución dinámica.
+          En el ejemplo de clase, <code>Nie.calcularLetra()</code> devuelve siempre
+          <code>'W'</code>. Debe leerse como una demostración de sobrescritura, no como
+          el algoritmo definitivo del NIE.
+        </p>
+        <p>
+          En una versión real, el prefijo del NIE se transforma antes de reutilizar
+          la fórmula del DNI: <code>X</code> equivale a <code>0</code>,
+          <code>Y</code> a <code>1</code> y <code>Z</code> a <code>2</code>. Después se calcula
+          el resto entre <code>23</code> y se toma la letra de la misma secuencia.
         </p>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
-          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">public class MainPolimorfismo {
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">@Override
+public char calcularLetra() {
+    int numeroConPrefijo = this.numero;
 
-    /**
-     * Crea un NIE y comprueba qué versión de calcularLetra se ejecuta.
-     */
-    public static void main(String[] args) {
-        Nie nie = new Nie();
-
-        nie.letra = 'G';
-        nie.numero = 987423;
-        nie.prefijo = 'Y';
-
-        char letraNie = nie.calcularLetra();
-        System.out.println("La letra del NIE es " + letraNie);
+    if (this.prefijo == 'Y') {
+        numeroConPrefijo = 10000000 + this.numero;
+    } else if (this.prefijo == 'Z') {
+        numeroConPrefijo = 20000000 + this.numero;
     }
+
+    int resto = numeroConPrefijo % Dni.SECUENCIA_LETRAS_DNI.length();
+    return Dni.SECUENCIA_LETRAS_DNI.charAt(resto);
 }</code></pre>
         </div>
-        <p>
-          La salida comprobada del ejercicio es:
-        </p>
         <div class="sourceCode code-panel language-text" data-language-label="SALIDA">
           <pre class="sourceCode text"><code class="sourceCode text" data-start-line="1">Estoy en calcularLetra de NIE
 La letra del NIE es W</code></pre>
         </div>
       </section>
+
       <section class="level2" id="ejercicio-practicar-dia-31">
         <h2>Ejercicio para practicar</h2>
         <p>
-          Haz dos prácticas cortas. Primero, redibuja OpositaTest separando
-          clases de datos, servlets, servicio y repositorio. Después, ejecuta el
-          ejemplo <code>MainPolimorfismo</code> y comenta temporalmente el método
-          <code>calcularLetra()</code> de <code>Nie</code> para observar qué versión se
-          ejecutaría si la clase hija no sobrescribiera el método.
+          Rehaz el análisis de OpositaTest en una hoja: escribe qué clases serían
+          modelo, qué clases serían servlets y qué clase contendría la lógica de
+          corrección. Después ejecuta el ejemplo <code>MainPolimorfismo</code> y
+          responde qué ocurriría si <code>Nie</code> no sobrescribiera
+          <code>calcularLetra()</code>.
         </p>
         <details>
-          <summary>Pistas y solución orientativa</summary>
-          <ul>
-            <li><strong>OpositaTest:</strong> <code>Pregunta</code>, <code>PreguntaVista</code>, <code>TestOposicion</code>, <code>ResultadoCorreccion</code>, <code>TestRepository</code>, <code>TestService</code> y tres servlets.</li>
-            <li><strong>HTTP:</strong> listado y obtención con <code>GET</code>; corrección con <code>POST</code>.</li>
-            <li><strong>Seguridad:</strong> la respuesta correcta se conserva en servidor y no viaja al JSON visible.</li>
-            <li><strong>Polimorfismo:</strong> con <code>@Override</code> en <code>Nie</code>, se ejecuta <code>calcularLetra()</code> de <code>Nie</code>; sin sobrescritura, se usaría el método heredado de <code>Dni</code>.</li>
-          </ul>
+          <summary>Solución correcta</summary>
+          <p>
+            La solución correcta separa el problema en modelo, entrada HTTP,
+            lógica y origen de datos. El modelo queda formado por
+            <code>Pregunta</code>, <code>PreguntaVista</code>, <code>TestOposicion</code> y
+            <code>ResultadoCorreccion</code>. <code>Pregunta</code> puede existir dentro del
+            servidor con el dato <code>indiceRespuestaCorrecta</code>, pero
+            <code>PreguntaVista</code> es la versión segura que se envía al navegador:
+            contiene enunciado y opciones, nunca la solución.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Pieza</th>
+                <th>Clase</th>
+                <th>Responsabilidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Modelo interno</td>
+                <td><code>Pregunta</code>, <code>TestOposicion</code></td>
+                <td>Guardar preguntas completas, incluyendo la respuesta correcta dentro del servidor.</td>
+              </tr>
+              <tr>
+                <td>Modelo visible</td>
+                <td><code>PreguntaVista</code></td>
+                <td>Enviar al navegador solo enunciado y opciones.</td>
+              </tr>
+              <tr>
+                <td>Resultado</td>
+                <td><code>ResultadoCorreccion</code></td>
+                <td>Devolver total, aciertos, errores y nota.</td>
+              </tr>
+              <tr>
+                <td>Datos</td>
+                <td><code>TestRepository</code></td>
+                <td>Entregar los tests guardados.</td>
+              </tr>
+              <tr>
+                <td>Lógica</td>
+                <td><code>TestService</code></td>
+                <td>Preparar preguntas visibles y corregir respuestas.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            La parte web se resuelve con tres servlets:
+            <code>ListadoTestsServlet</code> para listar tests,
+            <code>ObtenerTestServlet</code> para devolver preguntas visibles y
+            <code>CorregirTestServlet</code> para recibir respuestas del alumno.
+            Los dos primeros usan <code>GET</code>; el de corrección usa
+            <code>POST</code>.
+          </p>
+          <div class="sourceCode code-panel language-text" data-language-label="DISEÑO">
+            <pre class="sourceCode text"><code class="sourceCode text" data-start-line="1">GET  /tests            -&gt; ListadoTestsServlet  -&gt; TestService.obtenerTodosLosTests()
+GET  /tests/{id}       -&gt; ObtenerTestServlet  -&gt; TestService.obtenerPreguntasVisibles(id)
+POST /tests/corregir   -&gt; CorregirTestServlet -&gt; TestService.corregirTest(id, respuestas)</code></pre>
+          </div>
+          <p>
+            La regla de seguridad es obligatoria: el JSON que llega al navegador
+            no debe incluir <code>indiceRespuestaCorrecta</code>. La corrección se
+            hace después en el servidor, comparando las respuestas del alumno con
+            las respuestas reales que nunca han salido de Java.
+          </p>
+          <p>
+            En la parte de polimorfismo, si <code>Nie</code> no sobrescribe
+            <code>calcularLetra()</code> con <code>@Override</code>, Java ejecuta la versión
+            heredada de <code>Dni</code>. Si <code>Nie</code> sí define su propia versión,
+            Java usa primero el método de la clase más concreta.
+          </p>
         </details>
       </section>
+
       <section class="level2" id="errores-frecuentes-dia-31">
         <h2>Errores frecuentes</h2>
         <ul>
-          <li>Confundir refactorizar con volver a hacer toda la aplicación desde cero.</li>
-          <li>Diseñar clases pensando en pantallas, no en responsabilidades.</li>
-          <li>Meter corrección, almacenamiento y respuesta HTTP dentro de un único servlet.</li>
-          <li>Usar <code>GET</code> para mandar todas las respuestas del alumno.</li>
-          <li>Serializar <code>Pregunta</code> completa y exponer <code>indiceRespuestaCorrecta</code>.</li>
-          <li>Creer que UML es decoración y no una herramienta para pensar antes de programar.</li>
+          <li>Confundir refactorizar con borrar lo anterior y empezar de cero.</li>
+          <li>Diseñar una clase por cada pantalla en vez de una clase por cada responsabilidad.</li>
+          <li>Enviar al cliente la respuesta correcta junto con la pregunta.</li>
+          <li>Usar <code>GET</code> para mandar las respuestas completas del alumno.</li>
+          <li>Meter la corrección del test dentro del servlet en lugar de delegarla en un servicio.</li>
+          <li>Tratar UML como un dibujo decorativo y no como un plano para programar.</li>
           <li>Olvidar que un constructor no lleva tipo de retorno.</li>
-          <li>Escribir <code>"a"</code> cuando se necesita un <code>char</code> como <code>'a'</code>.</li>
-          <li>Quitar <code>@Override</code> y no detectar que el método ya no coincide con el del padre.</li>
-          <li>Tomar el <code>return 'W'</code> del ejemplo como algoritmo real de NIE.</li>
+          <li>Confundir <code>'W'</code> con <code>"W"</code>.</li>
+          <li>Pensar que heredar y sobrescribir significan lo mismo.</li>
+          <li>Copiar el <code>return 'W'</code> como si fuera el cálculo real del NIE.</li>
         </ul>
       </section>
+
       <section class="level2" id="cierre-del-dia-31">
         <h2>Cierre del día</h2>
         <p>
-          El día une diseño y Java. OpositaTest enseña a separar una aplicación
-          por capas antes de programar; <code>Dni</code> y <code>Nie</code> enseñan que
-          una clase hija puede especializar un comportamiento heredado. La idea
-          común es la misma: cada pieza debe tener una responsabilidad clara.
+          El aprendizaje importante es doble. En arquitectura, la seguridad y la
+          mantenibilidad mejoran cuando se separan modelo, servlet, servicio y
+          repositorio. En Java, la herencia permite compartir estructura, pero el
+          polimorfismo permite especializar comportamiento cuando una clase hija
+          necesita su propia versión de un método.
+        </p>
+      </section>
+    </section>
+    <!--
+DIARIO_CURSOWEBM: revision editorial 2026-06-24 - LetraDni, polimorfismo y validacion HTTP
+-->
+    <section class="level1" id="dia-32---polimorfismo-aplicado-al-servlet-letradni">
+      <h1 data-day-date="24/06/2026">Día 32 - LetraDni, NIE, polimorfismo e instanceof</h1>
+      <p>
+        La sesión del 24 de junio se organiza en ejercicios separados. Primero se
+        completa el Servlet <code>LetraDni</code> para que calcule DNI o NIE según
+        la URL. Después se repasa el polimorfismo con <code>Dni</code> y
+        <code>Nie</code> en consola. Al final se trabaja otro ejemplo independiente
+        con <code>Persona</code>, <code>Alumno</code>, <code>equals()</code>,
+        <code>toString()</code>, <code>List</code>, <code>instanceof</code> y casting.
+      </p>
+
+      <section class="level2 quick-summary" id="resumen-rapido-dia-32">
+        <h2>Resumen rápido</h2>
+        <ul>
+          <li><strong>Qué se vio:</strong> <code>LetraDni</code> con DNI/NIE, <code>@Override</code>, <code>equals()</code>, <code>toString()</code>, casting, <code>instanceof</code> y listas.</li>
+          <li><strong>Concepto que importa:</strong> una variable padre puede contener un hijo, pero no ve sus atributos propios sin casting.</li>
+          <li><strong>Error a evitar:</strong> usar <code>==</code> para comparar objetos o castear a <code>Alumno</code> sin comprobar antes.</li>
+          <li><strong>Práctica:</strong> resolver la URL del Servlet, comparar personas por contenido y contar alumnos dentro de una <code>List&lt;Persona&gt;</code>.</li>
+          <li><strong>Debe quedar claro:</strong> <code>equals()</code> y <code>toString()</code> vienen de <code>Object</code> y se pueden sobrescribir.</li>
+        </ul>
+      </section>
+
+      <section class="level2 study-levels" id="niveles-de-estudio-dia-32">
+        <h2>Niveles de estudio</h2>
+        <div class="study-level-grid">
+          <article class="study-level-item">
+            <strong>Esencial</strong>
+            <p>Completar <code>LetraDni</code>: leer parámetros, crear <code>Dni</code> o <code>Nie</code> y devolver <code>400</code> si la URL está mal.</p>
+          </article>
+          <article class="study-level-item">
+            <strong>Práctica</strong>
+            <p>Comprobar <code>@Override</code>, <code>toString()</code> y la llamada <code>dni.calcularLetra()</code> cuando el objeto real es <code>Nie</code>.</p>
+          </article>
+          <article class="study-level-item">
+            <strong>Ampliación</strong>
+            <p>Aplicar <code>equals()</code>, <code>toString()</code>, <code>instanceof</code> y casting seguro en <code>Persona</code>/<code>Alumno</code>.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="level2" id="trazabilidad-dia-32">
+        <h2>Material usado</h2>
+        <p>
+          La práctica se apoya en
+          <code>profe/f11webjava/appwebprofe/src/main/java/appwebprofe/servlet/LetraDni.java</code>,
+          <code>Dni.java</code>, <code>Nie.java</code> y <code>MainPolimorfismo.java</code>.
+          La misma sesión continúa después con
+          <code>profe/f11webjava/basicosprofe/src/basicosprofe/Persona.java</code>,
+          <code>Alumno.java</code> y <code>MainAlumnoPersona.java</code> para practicar
+          <code>instanceof</code>, casting y listas de objetos padre.
+          La carpeta de profesor se ha consultado como referencia y no se ha
+          modificado.
+        </p>
+      </section>
+
+      <section class="level2" id="enunciado-letradni-dia-32">
+        <h2>Ejercicio 1: LetraDni calcula DNI y NIE</h2>
+        <p>
+          El ejercicio consiste en modificar el Servlet para que
+          <code>LetraDni</code> calcule también la letra de un NIE. Además del
+          <code>numero</code>, la petición puede traer <code>tipoDocumento</code>
+          con valor <code>DNI</code> o <code>NIE</code>, y <code>prefijo</code> con
+          <code>X</code>, <code>Y</code> o <code>Z</code>.
+        </p>
+        <div class="sourceCode code-panel language-text" data-language-label="URL">
+          <pre class="sourceCode text"><code class="sourceCode text" data-start-line="1">http://localhost:8080/appwebprofe/LetraDni?numero=164165&amp;tipoDocumento=DNI
+http://localhost:8080/appwebprofe/LetraDni?numero=164165&amp;tipoDocumento=NIE&amp;prefijo=Y</code></pre>
+        </div>
+        <p>
+          Si el documento es un DNI, se sigue usando la clase <code>Dni</code>. Si
+          es un NIE, se usa la clase <code>Nie</code> y su propia versión de
+          <code>calcularLetra()</code>.
+        </p>
+      </section>
+
+      <section class="level2" id="flujo-letradni-dia-32">
+        <h2>Flujo que debe seguir el Servlet</h2>
+        <p>
+          La petición entra por <code>doGet()</code>. El Servlet no debería mezclar
+          toda la lógica dentro de ese método: primero lee parámetros, después
+          valida y construye el objeto, y finalmente calcula la letra y responde.
+          Si algo falla, devuelve una petición incorrecta.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Paso</th>
+              <th>Código clave</th>
+              <th>Qué significa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Leer texto HTTP</td>
+              <td><code>request.getParameter("numero")</code></td>
+              <td>Todo llega como <code>String</code> o como <code>null</code>.</td>
+            </tr>
+            <tr>
+              <td>Convertir número</td>
+              <td><code>Integer.parseInt(numeroDocumento)</code></td>
+              <td>Permite operar matemáticamente con el número.</td>
+            </tr>
+            <tr>
+              <td>Convertir prefijo</td>
+              <td><code>prefijoDocumento.charAt(0)</code></td>
+              <td>Extrae el primer carácter para guardarlo como <code>char</code>.</td>
+            </tr>
+            <tr>
+              <td>Elegir clase</td>
+              <td><code>Dni dni = validar(...)</code></td>
+              <td>Puede devolver un <code>Dni</code> o un <code>Nie</code>.</td>
+            </tr>
+            <tr>
+              <td>Responder error</td>
+              <td><code>response.setStatus(400)</code></td>
+              <td>La petición estaba mal formada o incompleta.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="level2" id="validar-documento-dia-32">
+        <h2>Validar y construir el documento</h2>
+        <p>
+          El método <code>validar()</code> concentra una decisión importante:
+          según el valor de <code>tipoDocumento</code>, devuelve un objeto distinto.
+          La variable de salida es de tipo <code>Dni</code>, pero eso no impide que
+          dentro viaje un objeto <code>Nie</code>.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">private Dni validar(String tipoDocumento,
+        String numeroDocumento,
+        String prefijoDocumento) throws Exception {
+
+    Dni dniDev = switch (tipoDocumento) {
+        case "DNI" -&gt; {
+            int numero = Integer.parseInt(numeroDocumento);
+            yield new Dni(numero);
+        }
+        case "NIE" -&gt; {
+            int numero = Integer.parseInt(numeroDocumento);
+            Nie nie = new Nie();
+            nie.numero = numero;
+            nie.prefijo = prefijoDocumento.charAt(0);
+            yield nie;
+        }
+        default -&gt; throw new Exception("Error en los parámetros");
+    };
+
+    return dniDev;
+}</code></pre>
+        </div>
+        <p>
+          El <code>switch</code> con flechas y <code>yield</code> es una forma moderna
+          de devolver un valor desde cada caso. Para estudiarlo sin perderse,
+          basta con leerlo así: si llega <code>DNI</code>, crea <code>Dni</code>; si
+          llega <code>NIE</code>, crea <code>Nie</code>; si llega otra cosa, lanza
+          una excepción.
+        </p>
+      </section>
+
+      <section class="level2" id="polimorfismo-servlet-dia-32">
+        <h2>Dónde aparece el polimorfismo</h2>
+        <p>
+          El punto importante ocurre después de validar. El Servlet recibe un
+          <code>Dni</code>, pero no necesita preguntar otra vez si por dentro es
+          DNI o NIE para calcular la letra. Llama a <code>calcularLetra()</code> y
+          Java ejecuta la versión adecuada según el objeto real.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">Dni dni = validar(
+        request.getParameter("tipoDocumento"),
+        request.getParameter("numero"),
+        request.getParameter("prefijo"));
+
+char letra = dni.calcularLetra();
+dni.letra = letra;
+
+String mensaje = dni.toString();
+response.getWriter().write("Su Documento con letra " + mensaje);</code></pre>
+        </div>
+        <p>
+          Esto es polimorfismo dinámico en una práctica real: la llamada es la
+          misma, <code>dni.calcularLetra()</code>, pero el comportamiento cambia si
+          el objeto construido fue <code>Dni</code> o <code>Nie</code>.
+        </p>
+      </section>
+
+      <section class="level2" id="nie-calculo-real-dia-32">
+        <h2>El cálculo del NIE</h2>
+        <p>
+          El NIE hereda de <code>Dni</code>, pero necesita completar el número antes
+          de aplicar la misma secuencia de letras. El prefijo <code>X</code> se
+          calcula como un DNI normal; <code>Y</code> añade un <code>1</code> delante
+          del número; <code>Z</code> añade un <code>2</code>.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">@Override
+public char calcularLetra() {
+    char letraDevuelta = ' ';
+    int resto = 0;
+    String nuevoNumero = null;
+
+    if (this.prefijo == 'Y') {
+        nuevoNumero = "1" + this.numero;
+    } else if (this.prefijo == 'Z') {
+        nuevoNumero = "2" + this.numero;
+    }
+
+    if (this.prefijo == 'X') {
+        resto = this.numero % Dni.SECUENCIA_LETRAS_DNI.length();
+        letraDevuelta = Dni.SECUENCIA_LETRAS_DNI.charAt(resto);
+    } else {
+        int nuevoNumeroNie = Integer.parseInt(nuevoNumero);
+        resto = nuevoNumeroNie % Dni.SECUENCIA_LETRAS_DNI.length();
+        letraDevuelta = Dni.SECUENCIA_LETRAS_DNI.charAt(resto);
+    }
+
+    return letraDevuelta;
+}</code></pre>
+        </div>
+        <p>
+          La anotación <code>@Override</code> avisa al compilador de que
+          <code>Nie</code> está sustituyendo el método heredado. Si esa versión no
+          existiera, Java subiría a <code>Dni</code> y usaría el cálculo del padre.
+        </p>
+      </section>
+
+      <section class="level2" id="errores-http-dia-32">
+        <h2>Errores que debe controlar</h2>
+        <p>
+          Al venir de una URL, los datos no son fiables. Puede faltar
+          <code>numero</code>, puede venir un texto donde se esperaba un entero, o
+          puede llegar un <code>tipoDocumento</code> que no sea <code>DNI</code> ni
+          <code>NIE</code>. El Servlet debe capturar esos casos y responder con un
+          error del cliente, no con un fallo interno sin explicar.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">try {
+    Dni dni = validar(
+            request.getParameter("tipoDocumento"),
+            request.getParameter("numero"),
+            request.getParameter("prefijo"));
+
+    char letra = dni.calcularLetra();
+    dni.letra = letra;
+    response.getWriter().write("Su Documento con letra " + dni.toString());
+} catch (Exception e) {
+    e.printStackTrace();
+    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+    response.getWriter().write("Petición incorrecta " + e.getMessage());
+}</code></pre>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Error frecuente</th>
+              <th>Por qué falla</th>
+              <th>Cómo pensarlo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Usar <code>==</code> con textos</td>
+              <td>Compara referencias, no el contenido del <code>String</code>.</td>
+              <td>Usa <code>"DNI".equals(tipoDocumento)</code> si escribes un <code>if</code>.</td>
+            </tr>
+            <tr>
+              <td>Asignar <code>String</code> a <code>char</code></td>
+              <td><code>getParameter("prefijo")</code> devuelve texto.</td>
+              <td>Usa <code>charAt(0)</code> después de comprobar que existe.</td>
+            </tr>
+            <tr>
+              <td>No contemplar <code>null</code></td>
+              <td>Un parámetro puede no venir en la URL.</td>
+              <td>El <code>try/catch</code> convierte el fallo en <code>400 Bad Request</code>.</td>
+            </tr>
+            <tr>
+              <td>Acceder a <code>prefijo</code> o <code>nota</code> desde una variable padre</td>
+              <td>Ese atributo solo existe en la clase hija.</td>
+              <td>Comprueba con <code>instanceof</code> y después castea al tipo hijo.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="level2" id="ejercicio-practicar-dia-32">
+        <h2>Solución del ejercicio 1</h2>
+        <p>
+          El Servlet debe aceptar estas dos llamadas. La solución completa queda
+          plegada para poder intentar el ejercicio antes de verla.
+        </p>
+        <div class="sourceCode code-panel language-text" data-language-label="URL">
+          <pre class="sourceCode text"><code class="sourceCode text" data-start-line="1">/LetraDni?numero=164165&amp;tipoDocumento=DNI
+/LetraDni?numero=164165&amp;tipoDocumento=NIE&amp;prefijo=Y</code></pre>
+        </div>
+        <details>
+          <summary>Solución correcta</summary>
+          <p>
+            La solución completa separa la validación de la respuesta HTTP. El
+            método <code>validar()</code> construye un <code>Dni</code> o un
+            <code>Nie</code>; <code>doGet()</code> llama a <code>calcularLetra()</code>
+            y convierte los fallos de parámetros en <code>400 Bad Request</code>.
+          </p>
+          <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">private Dni validar(String tipoDocumento,
+        String numeroDocumento,
+        String prefijoDocumento) throws Exception {
+
+    Dni dniDev = switch (tipoDocumento) {
+        case "DNI" -&gt; {
+            int numero = Integer.parseInt(numeroDocumento);
+            yield new Dni(numero);
+        }
+        case "NIE" -&gt; {
+            int numero = Integer.parseInt(numeroDocumento);
+            Nie nie = new Nie();
+            nie.numero = numero;
+            nie.prefijo = prefijoDocumento.charAt(0);
+            yield nie;
+        }
+        default -&gt; throw new Exception("Error en los parámetros");
+    };
+
+    return dniDev;
+}</code></pre>
+          </div>
+          <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    try {
+        Dni dni = validar(
+                request.getParameter("tipoDocumento"),
+                request.getParameter("numero"),
+                request.getParameter("prefijo"));
+
+        char letra = dni.calcularLetra();
+        dni.letra = letra;
+
+        response.getWriter().write("Su Documento con letra " + dni.toString());
+    } catch (Exception e) {
+        e.printStackTrace();
+        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        response.getWriter().write("Petición incorrecta " + e.getMessage());
+    }
+}</code></pre>
+          </div>
+          <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">@Override
+public char calcularLetra() {
+    char letraDevuelta = ' ';
+    int resto = 0;
+    String nuevoNumero = null;
+
+    if (this.prefijo == 'Y') {
+        nuevoNumero = "1" + this.numero;
+    } else if (this.prefijo == 'Z') {
+        nuevoNumero = "2" + this.numero;
+    }
+
+    if (this.prefijo == 'X') {
+        resto = this.numero % Dni.SECUENCIA_LETRAS_DNI.length();
+        letraDevuelta = Dni.SECUENCIA_LETRAS_DNI.charAt(resto);
+    } else {
+        int nuevoNumeroNie = Integer.parseInt(nuevoNumero);
+        resto = nuevoNumeroNie % Dni.SECUENCIA_LETRAS_DNI.length();
+        letraDevuelta = Dni.SECUENCIA_LETRAS_DNI.charAt(resto);
+    }
+
+    return letraDevuelta;
+}</code></pre>
+          </div>
+          <p>
+            Con esta solución, <code>tipoDocumento=DNI</code> crea un
+            <code>Dni</code> y ejecuta el cálculo del padre. Con
+            <code>tipoDocumento=NIE</code> crea un <code>Nie</code>, guarda el
+            <code>prefijo</code> como <code>char</code> y ejecuta el método
+            sobrescrito. Si la URL viene mal formada, el <code>catch</code>
+            responde con <code>SC_BAD_REQUEST</code>.
+          </p>
+        </details>
+      </section>
+
+      <section class="level2" id="main-polimorfismo-dia-32">
+        <h2>Ejercicio 2: comprobar el polimorfismo en consola</h2>
+        <p>
+          Después del Servlet, la misma idea se comprueba sin HTTP en
+          <code>MainPolimorfismo</code>. Aquí no hay parámetros de URL ni estado
+          <code>400</code>: solo interesa ver qué ocurre cuando una variable de
+          tipo padre contiene un objeto de la clase hija.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">Dni dni = new Dni(53130, 'L');
+Dni nie = new Nie();
+
+nie.letra = 'G';
+nie.numero = 987423;
+
+char letraNie = nie.calcularLetra();
+System.out.println("La letra del NIE es " + letraNie);
+
+char letraDni = dni.calcularLetra();
+System.out.println("La letra del DNI es " + letraDni);</code></pre>
+        </div>
+        <p>
+          La variable <code>nie</code> está declarada como <code>Dni</code>, pero el
+          objeto real es un <code>Nie</code>. Por eso, al llamar a
+          <code>calcularLetra()</code>, Java ejecuta la versión sobrescrita en
+          <code>Nie</code>. En cambio, si se quisiera escribir el
+          <code>prefijo</code>, haría falta convertir la variable al tipo hijo.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">((Nie) nie).prefijo = 'Y';
+
+Nie nie2 = (Nie) nie;
+nie2.prefijo = 'Y';</code></pre>
+        </div>
+        <p>
+          También aparece <code>toString()</code>. Todas las clases heredan de
+          <code>Object</code>, y <code>Object</code> ya trae un método
+          <code>toString()</code>. Sobrescribirlo permite que <code>Dni</code> y
+          <code>Nie</code> impriman sus datos de forma legible en lugar de una
+          representación genérica.
+        </p>
+      </section>
+
+      <section class="level2" id="persona-alumno-casting-dia-32">
+        <h2>Ejercicio 3: Persona, Alumno, equals y List&lt;Persona&gt;</h2>
+        <p>
+          El último bloque ya no pertenece al Servlet. Es un ejercicio de Java
+          básico para practicar herencia, métodos heredados de <code>Object</code>,
+          comparación de objetos, <code>instanceof</code>, casting seguro, listas y
+          bucle <code>for-each</code>. <code>Alumno</code> hereda de
+          <code>Persona</code>: por eso una lista de personas puede contener
+          personas normales y alumnos.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.Objects;
+
+public class Persona {
+    String nombre;
+    int edad;
+    char sexo;
+}</code></pre>
+        </div>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">public class Alumno extends Persona {
+    int nota;
+}</code></pre>
+        </div>
+        <p>
+          Como toda clase Java hereda de <code>Object</code>, <code>Persona</code>
+          puede sobrescribir <code>toString()</code> para mostrarse de forma legible
+          y <code>equals()</code> para comparar contenido. <code>==</code> pregunta
+          si dos variables apuntan al mismo objeto; <code>equals()</code> puede
+          programarse para comparar sus datos. Como <code>equals()</code> recibe un
+          <code>Object</code>, primero comprueba el tipo real y después convierte a
+          <code>Persona</code>.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">@Override
+public String toString() {
+    return "Persona [nombre=" + this.nombre
+            + ", edad=" + this.edad
+            + ", sexo=" + this.sexo + "]";
+}</code></pre>
+        </div>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">@Override
+public boolean equals(Object obj) {
+    if (this == obj)
+        return true;
+    if (obj == null)
+        return false;
+    if (getClass() != obj.getClass())
+        return false;
+
+    Persona other = (Persona) obj;
+    return edad == other.edad
+            &amp;&amp; Objects.equals(nombre, other.nombre)
+            &amp;&amp; sexo == other.sexo;
+}</code></pre>
+        </div>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">@Override
+public String toString() {
+    return "Alumno [nota=" + this.nota
+            + ", nombre=" + this.nombre
+            + ", edad=" + this.edad
+            + ", sexo=" + this.sexo + "]";
+}</code></pre>
+        </div>
+        <p>
+          La regla importante es distinta a la del método sobrescrito. Si una
+          variable se declara como <code>Persona</code>, Java permite usar
+          <code>nombre</code>, <code>edad</code> y <code>sexo</code>, pero no
+          <code>nota</code>, porque <code>nota</code> solo existe en
+          <code>Alumno</code>. Para acceder a ese dato, primero se comprueba el tipo
+          real con <code>instanceof</code> y después se hace el casting.
+        </p>
+        <details>
+          <summary>Solución correcta</summary>
+          <p>
+            La solución crea dos personas con los mismos datos para comprobar
+            <code>equals()</code>, y después crea un <code>Alumno</code> guardado en
+            una variable de tipo <code>Persona</code>. Antes de asignar la nota se
+            comprueba que realmente sea alumno.
+          </p>
+          <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.List;
+
+Persona persona1 = new Persona();
+persona1.nombre = "Freddy";
+persona1.edad = 30;
+persona1.sexo = 'M';
+
+Persona persona3 = new Persona();
+persona3.nombre = "Freddy";
+persona3.edad = 30;
+persona3.sexo = 'M';
+
+if (persona1.equals(persona3)) {
+    System.out.println("Persona 1 es IGUAL a Persona 3");
+} else {
+    System.out.println("Persona 1 es DISTINTA a Persona 3");
+}
+
+Persona persona2 = new Alumno();
+persona2.nombre = "Bonnie";
+persona2.edad = 25;
+persona2.sexo = 'M';
+
+if (persona2 instanceof Alumno) {
+    Alumno alumno = (Alumno) persona2;
+    alumno.nota = 10;
+}</code></pre>
+          </div>
+          <p>
+            Después se guarda todo en una <code>List&lt;Persona&gt;</code>. El método
+            <code>cuentaAlumnos()</code> recorre la lista y cuenta solo los objetos
+            cuyo tipo real es <code>Alumno</code>. Al imprimir los objetos, Java
+            llama automáticamente a <code>toString()</code>.
+          </p>
+          <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">List&lt;Persona&gt; listaPersonas = List.of(persona1, persona2);
+int numAlumnos = cuentaAlumnos(listaPersonas);
+
+System.out.println("String persona 1 = " + persona1.toString());
+System.out.println("String persona 2 = " + persona2.toString());
+System.out.println("String persona 2 2 = " + persona2);
+
+private static int cuentaAlumnos(List&lt;Persona&gt; listaPersonas) {
+    int numAlumnos = 0;
+
+    for (Persona persona : listaPersonas) {
+        if (persona instanceof Alumno) {
+            numAlumnos++;
+        }
+    }
+
+    return numAlumnos;
+}</code></pre>
+          </div>
+          <p>
+            Si se hiciera un casting a <code>Alumno</code> sobre una
+            <code>Persona</code> que no fue creada como alumno, el programa podría
+            terminar con <code>ClassCastException</code>. Por eso
+            <code>instanceof</code> debe ir antes del casting.
+          </p>
+          <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">// Esto no es seguro si persona1 no fue creada como Alumno.
+// Puede terminar en ClassCastException.
+Alumno alumno = (Alumno) persona1;</code></pre>
+          </div>
+        </details>
+      </section>
+
+      <section class="level2" id="cierre-del-dia-32">
+        <h2>Cierre del día</h2>
+        <p>
+          El avance del día no es un único ejercicio mezclado, sino una cadena de
+          prácticas. Primero se resuelve el Servlet <code>LetraDni</code> con DNI y
+          NIE. Después se comprueba el polimorfismo en consola. Por último,
+          <code>Persona</code> y <code>Alumno</code> sirven para entender
+          <code>equals()</code>, <code>toString()</code>, <code>instanceof</code>,
+          casting y listas de objetos padre.
         </p>
       </section>
     </section>
@@ -21383,6 +22088,29 @@ DIARIO_CURSOWEBM: controladores de laboratorios interactivos
           document
             .querySelectorAll("code.sourceCode")
             .forEach(highlightCodeElement);
+        };
+
+        /**
+         * Asegura que todos los paneles de codigo muestren la pastilla de lenguaje.
+         *
+         * Algunos bloques antiguos traen el badge escrito en el HTML y otros solo
+         * declaran data-language-label. Esta normalizacion evita editar cada bloque
+         * manualmente y mantiene una salida visual consistente.
+         */
+        const ensureCodeLanguageBadges = () => {
+          document
+            .querySelectorAll("div.sourceCode.code-panel[data-language-label]")
+            .forEach((panel) => {
+              if (panel.querySelector(":scope > .code-language-badge")) {
+                return;
+              }
+
+              const badge = document.createElement("div");
+              badge.className = "code-language-badge";
+              badge.setAttribute("aria-hidden", "true");
+              badge.textContent = panel.dataset.languageLabel;
+              panel.insertBefore(badge, panel.firstElementChild);
+            });
         };
 
         /**
@@ -21932,6 +22660,7 @@ DIARIO_CURSOWEBM: controladores de laboratorios interactivos
           setupVisualImageViewer();
           setupInlinePdfViewers();
           highlightPlainCodeBlocks();
+          ensureCodeLanguageBadges();
           enableExpandableCodePanels();
           document.querySelectorAll("[data-code-toggle]").forEach((button) => {
             const lab = button.closest(".interactive-lab");
