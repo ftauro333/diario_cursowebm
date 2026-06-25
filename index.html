@@ -4352,6 +4352,251 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         color: #56657a;
       }
 
+      /*
+       * DIARIO_CURSOWEBM: segunda pasada editorial premium 2026.
+       * Refina ritmo, foco lector y superficies sin crear componentes nuevos.
+       */
+      a {
+        text-decoration-color: rgba(37, 87, 214, 0.34);
+        text-decoration-thickness: 0.08em;
+        text-underline-offset: 0.18em;
+      }
+
+      a:hover {
+        text-decoration-color: currentColor;
+      }
+
+      section.level1 {
+        scroll-margin-top: 36px;
+      }
+
+      section.level2 {
+        scroll-margin-top: 84px;
+      }
+
+      section.level2 > p,
+      section.level2 > ul,
+      section.level2 > ol {
+        max-width: 940px;
+      }
+
+      section.level2 > p:first-of-type {
+        color: var(--ink-2);
+      }
+
+      section.level1[id^="dia-"] > h1 {
+        border: 1px solid rgba(255, 255, 255, 0.16);
+      }
+
+      section.level1[id^="dia-"] > h1 + p {
+        border-left: 4px solid rgba(8, 124, 122, 0.35);
+        padding-left: 16px;
+      }
+
+      .quick-summary {
+        border-left: 5px solid var(--green);
+      }
+
+      .study-levels {
+        border-left: 5px solid var(--blue);
+      }
+
+      .quick-summary li,
+      .study-level-item p {
+        line-height: 1.54;
+      }
+
+      .study-level-item {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 254, 0.96));
+      }
+
+      table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+
+      td,
+      th {
+        border-color: rgba(216, 225, 238, 0.92);
+      }
+
+      tbody td:first-child {
+        color: var(--ink);
+        font-weight: 720;
+      }
+
+      div.sourceCode.code-panel {
+        border-radius: 10px;
+      }
+
+      div.sourceCode.code-panel::before {
+        filter: saturate(1.12);
+      }
+
+      div.sourceCode.code-panel pre {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(244, 247, 252, 0.96));
+      }
+
+      pre > code.sourceCode {
+        font-size: 0.92rem;
+      }
+
+      .code-language-badge {
+        letter-spacing: 0.045em;
+        text-transform: uppercase;
+      }
+
+      section.level2 > details {
+        transition:
+          border-color 160ms ease,
+          box-shadow 160ms ease,
+          transform 160ms ease;
+      }
+
+      section.level2 > details:hover {
+        border-color: rgba(37, 87, 214, 0.36);
+        box-shadow: 0 18px 42px rgba(15, 23, 42, 0.1);
+      }
+
+      section.level2 > details > summary {
+        cursor: pointer;
+      }
+
+      section.level2 > details > summary::marker {
+        color: var(--blue);
+      }
+
+      blockquote p:last-child {
+        margin-bottom: 0;
+      }
+
+      /*
+       * DIARIO_CURSOWEBM: chips inline con naranja editorial sobrio.
+       * Solo afecta al codigo incrustado en texto, no a los bloques de codigo.
+       */
+      :not(pre) > code {
+        background: #fff0e4;
+        border-color: #efc39f;
+        box-shadow: inset 0 -1px 0 rgba(194, 94, 28, 0.08);
+        color: #7a3d13;
+      }
+
+      /*
+       * DIARIO_CURSOWEBM: apoyo cognitivo para repaso con baja carga mental.
+       * Usa fragmentacion, recuerdo activo y puntos de parada sin añadir teoria.
+       */
+      .neuro-study-guide {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.96));
+        border: 1px solid var(--line);
+        border-left: 5px solid var(--teal);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-soft);
+        margin-top: 18px;
+        padding: 16px;
+      }
+
+      .neuro-study-guide h2::after {
+        display: none;
+      }
+
+      .neuro-study-guide > p {
+        max-width: 900px;
+      }
+
+      .neuro-study-grid {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        margin: 14px 0;
+      }
+
+      .neuro-study-step {
+        background: #ffffff;
+        border: 1px solid rgba(201, 220, 243, 0.9);
+        border-radius: 9px;
+        border-top: 4px solid var(--teal);
+        min-height: 132px;
+        padding: 12px;
+      }
+
+      .neuro-study-step strong {
+        color: var(--ink);
+        display: block;
+        font-size: 0.94rem;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+
+      .neuro-study-step p,
+      .neuro-study-note {
+        color: var(--ink-2);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .neuro-study-note {
+        background: #f3fbfa;
+        border: 1px solid rgba(8, 124, 122, 0.18);
+        border-left: 4px solid var(--teal);
+        border-radius: 8px;
+        font-weight: 680;
+        padding: 10px 12px;
+      }
+
+      .quick-summary ul {
+        counter-reset: quickSummaryStep;
+        display: grid;
+        gap: 7px;
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .quick-summary li {
+        background: rgba(255, 255, 255, 0.74);
+        border: 1px solid rgba(216, 225, 238, 0.86);
+        border-radius: 8px;
+        counter-increment: quickSummaryStep;
+        margin-top: 0;
+        padding: 8px 10px 8px 40px;
+        position: relative;
+      }
+
+      .quick-summary li + li {
+        margin-top: 0;
+      }
+
+      .quick-summary li::before {
+        background: var(--green);
+        border-radius: 999px;
+        color: #ffffff;
+        content: counter(quickSummaryStep);
+        display: inline-grid;
+        font-size: 0.72rem;
+        font-weight: 900;
+        height: 22px;
+        left: 10px;
+        place-items: center;
+        position: absolute;
+        top: 9px;
+        width: 22px;
+      }
+
+      section.level1:target,
+      section.level2:target {
+        outline: 3px solid rgba(8, 124, 122, 0.18);
+        outline-offset: 8px;
+      }
+
+      @media (min-width: 1120px) {
+        body > :not(.cover):not(#TOC) {
+          padding-left: 44px;
+          padding-right: 44px;
+        }
+      }
+
       @media (max-width: 760px) {
         body > :not(.cover):not(#TOC) {
           padding-left: 18px;
@@ -4361,6 +4606,12 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         .cover {
           min-height: 82vh;
           padding-top: 62px;
+        }
+
+        .cover h1 {
+          font-size: clamp(2.45rem, 11.5vw, 4.2rem);
+          line-height: 0.94;
+          max-width: 100%;
         }
 
         .cover::before {
@@ -4374,6 +4625,282 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         section.level1[id^="dia-"] > h1[data-day-date]::after {
           margin-top: 12px;
           position: static;
+        }
+
+      .quick-summary li {
+        padding-left: 36px;
+      }
+      }
+
+      /*
+       * DIARIO_CURSOWEBM: tercera pasada editorial 2026.
+       * Mejora foco, ritmo de lectura y estudio con baja carga cognitiva.
+       */
+      :root {
+        --reading-width: 920px;
+        --focus-ring: 0 0 0 4px rgba(8, 124, 122, 0.18);
+        --panel-premium: rgba(255, 255, 255, 0.84);
+        --panel-premium-border: rgba(185, 199, 218, 0.78);
+        --study-essential: #087c7a;
+        --study-practice: #2557d6;
+        --study-extension: #b97714;
+      }
+
+      p,
+      li {
+        overflow-wrap: anywhere;
+      }
+
+      section.level1[id^="dia-"] {
+        border-bottom: 1px solid rgba(185, 199, 218, 0.62);
+        padding-bottom: 34px;
+      }
+
+      section.level1[id^="dia-"] > p:first-of-type {
+        background: rgba(255, 255, 255, 0.58);
+        border: 1px solid rgba(216, 225, 238, 0.86);
+        border-left: 5px solid rgba(8, 124, 122, 0.5);
+        border-radius: 10px;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.045);
+        max-width: var(--reading-width);
+        padding: 14px 16px;
+      }
+
+      section.level2 > p,
+      section.level2 > ul,
+      section.level2 > ol,
+      section.level2 > details > p {
+        max-width: var(--reading-width);
+      }
+
+      section.level2 > p,
+      section.level2 li {
+        line-height: 1.66;
+      }
+
+      section.level2 > ol,
+      section.level2 > ul {
+        padding-left: 1.25rem;
+      }
+
+      h2 {
+        letter-spacing: 0;
+      }
+
+      h2 + p {
+        margin-top: 0.78rem;
+      }
+
+      a:focus-visible,
+      summary:focus-visible,
+      button:focus-visible,
+      [tabindex]:focus-visible {
+        border-radius: 8px;
+        box-shadow: var(--focus-ring);
+        outline: 2px solid var(--teal);
+        outline-offset: 3px;
+      }
+
+      .quick-summary,
+      .study-levels,
+      .neuro-study-guide {
+        backdrop-filter: saturate(1.08) blur(10px);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 251, 255, 0.9));
+        border-color: var(--panel-premium-border);
+      }
+
+      .quick-summary li {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 250, 254, 0.86));
+        box-shadow: 0 5px 14px rgba(15, 23, 42, 0.035);
+      }
+
+      .quick-summary li strong {
+        color: var(--ink);
+      }
+
+      .study-level-grid {
+        align-items: stretch;
+      }
+
+      .study-level-item {
+        border-top: 4px solid var(--study-essential);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .study-level-item:nth-child(2) {
+        border-top-color: var(--study-practice);
+      }
+
+      .study-level-item:nth-child(3) {
+        border-top-color: var(--study-extension);
+      }
+
+      .study-level-item h3 {
+        font-size: 0.88rem;
+        letter-spacing: 0.055em;
+        margin: 0 0 4px;
+        text-transform: uppercase;
+      }
+
+      .study-level-item p {
+        margin-bottom: 0;
+      }
+
+      .neuro-study-guide {
+        position: relative;
+      }
+
+      .neuro-study-guide::before {
+        background: linear-gradient(180deg, var(--teal), var(--blue), var(--gold));
+        border-radius: 999px;
+        content: "";
+        inset: 14px auto 14px 10px;
+        position: absolute;
+        width: 4px;
+      }
+
+      .neuro-study-guide > * {
+        position: relative;
+      }
+
+      .neuro-study-step {
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.045);
+      }
+
+      .neuro-study-step:nth-child(2) {
+        border-top-color: var(--blue);
+      }
+
+      .neuro-study-step:nth-child(3) {
+        border-top-color: var(--green);
+      }
+
+      .neuro-study-step:nth-child(4) {
+        border-top-color: var(--amber);
+      }
+
+      .neuro-study-step:nth-child(5) {
+        border-top-color: var(--rose);
+      }
+
+      .neuro-study-note {
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.56);
+      }
+
+      .micro-lesson.cognitive-row {
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .micro-lesson.cognitive-row > article.cognitive-card {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 251, 254, 0.92));
+        border: 1px solid rgba(201, 220, 243, 0.9);
+        border-radius: 9px;
+        border-top: 4px solid var(--teal);
+        box-shadow: 0 9px 22px rgba(15, 23, 42, 0.05);
+        min-height: 124px;
+        padding: 12px;
+      }
+
+      .micro-lesson.cognitive-row > article.cognitive-card:nth-child(2) {
+        border-top-color: var(--green);
+      }
+
+      .micro-lesson.cognitive-row > article.cognitive-card:nth-child(3) {
+        border-top-color: var(--blue);
+      }
+
+      .micro-lesson.cognitive-row > article.cognitive-card:nth-child(4) {
+        border-top-color: var(--amber);
+      }
+
+      .micro-lesson.cognitive-row > article.cognitive-card:nth-child(5) {
+        border-top-color: var(--rose);
+      }
+
+      .micro-lesson.cognitive-row > article.cognitive-card h3 {
+        color: var(--ink);
+        font-size: 0.78rem;
+        letter-spacing: 0.055em;
+        margin: 0 0 8px;
+        text-transform: uppercase;
+      }
+
+      .micro-lesson.cognitive-row > article.cognitive-card p {
+        color: var(--ink-2);
+        line-height: 1.52;
+        margin: 0;
+      }
+
+      .concept-visual {
+        background:
+          linear-gradient(135deg, rgba(8, 124, 122, 0.075), transparent 42%),
+          linear-gradient(315deg, rgba(197, 154, 61, 0.09), transparent 46%),
+          var(--panel-premium);
+      }
+
+      section.level2 > details > summary {
+        border-radius: 8px;
+        min-height: 38px;
+      }
+
+      section.level2 > details > summary:hover {
+        color: var(--blue);
+      }
+
+      div.sourceCode.code-panel[data-language-label="TREE"] pre {
+        line-height: 1.52;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.001ms !important;
+        }
+
+        #TOC li:hover,
+        .study-topic-card:hover,
+        section.level2 > details:hover {
+          transform: none;
+        }
+      }
+
+      @media (prefers-contrast: more) {
+        :root {
+          --line: #8fa0b6;
+          --muted: #334155;
+        }
+
+        .quick-summary,
+        .study-levels,
+        .neuro-study-guide,
+        .study-level-item,
+        .neuro-study-step,
+        .micro-lesson.cognitive-row > article.cognitive-card {
+          border-color: #7c8ea6;
+        }
+      }
+
+      @media (max-width: 760px) {
+        section.level1[id^="dia-"] > p:first-of-type {
+          padding: 12px 13px;
+        }
+
+        .neuro-study-guide {
+          padding-left: 18px;
+        }
+
+        .micro-lesson.cognitive-row > article.cognitive-card {
+          min-height: auto;
         }
       }
     </style>
@@ -4477,7 +5004,7 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.print.css
     </header>
     <section class="cover">
       <p class="cover-kicker">
-        Documento de estudio &middot; actualizado el 2026-06-24
+        Documento de estudio &middot; actualizado el 2026-06-25
       </p>
       <h1>DIARIO CURSOWEBM</h1>
       <p class="cover-subtitle">
@@ -4509,6 +5036,14 @@ DIARIO_CURSOWEBM: indice editorial generado
       <ul>
         <li>
           <a href="#portada" id="toc-portada"> Portada </a>
+        </li>
+        <li>
+          <a
+            href="#modo-repaso-tdah"
+            id="toc-modo-repaso-tdah"
+          >
+            Modo de repaso con baja carga cognitiva
+          </a>
         </li>
         <li>
           <a
@@ -4783,6 +5318,14 @@ DIARIO_CURSOWEBM: indice editorial generado
             Día 32 - LetraDni, NIE, polimorfismo e instanceof
           </a>
         </li>
+        <li>
+          <a
+            href="#dia-33---sesiones-login-e-imc-protegido"
+            id="toc-dia-33---sesiones-login-e-imc-protegido"
+          >
+            Día 33 - Sesiones, login e IMC protegido
+          </a>
+        </li>
       </ul>
     </nav>
     <section class="level1 front-section" id="portada">
@@ -4812,7 +5355,7 @@ DIARIO_CURSOWEBM: indice editorial generado
         </li>
         <li>
           <strong> Fecha de actualizacion: </strong>
-          2026-06-24.
+          2026-06-25.
         </li>
         <li>
           <strong> Version: </strong>
@@ -4855,6 +5398,46 @@ DIARIO_CURSOWEBM: indice editorial generado
           despues, debe a&ntilde;adirse antes del indice como informacion del
           programa proporcionada por el usuario, separada de la fuente tecnica
           del profesor.
+        </p>
+      </section>
+      <section class="level2 neuro-study-guide" id="modo-repaso-tdah">
+        <h2>Modo de repaso con baja carga cognitiva</h2>
+        <p>
+          Esta ruta no añade teoria nueva. Sirve para estudiar con menos ruido,
+          especialmente cuando cuesta sostener la atencion, hay TDAH o se pierde
+          el hilo al ver demasiadas secciones seguidas.
+        </p>
+        <div class="neuro-study-grid">
+          <article class="neuro-study-step">
+            <strong>1. Entrada de 30 segundos</strong>
+            <p>Lee solo <code>Resumen rápido</code> y <code>Niveles de estudio</code>. No abras soluciones todavía.</p>
+          </article>
+          <article class="neuro-study-step">
+            <strong>2. Una práctica pequeña</strong>
+            <p>Busca el primer bloque de código o ejercicio y ejecuta una sola acción comprobable.</p>
+          </article>
+          <article class="neuro-study-step">
+            <strong>3. Recuerdo activo</strong>
+            <p>Cierra la solución y responde en una frase: qué hace, por qué funciona y qué error evita.</p>
+          </article>
+          <article class="neuro-study-step">
+            <strong>4. Pausa corta</strong>
+            <p>Al terminar un día, para dos minutos. Si sigues, salta a otro día relacionado por concepto.</p>
+          </article>
+          <article class="neuro-study-step">
+            <strong>5. Repetición espaciada</strong>
+            <p>Repasa el mismo concepto al día siguiente, a los tres días y antes de usarlo en un ejercicio nuevo.</p>
+          </article>
+        </div>
+        <p class="neuro-study-note">
+          Regla de foco: si una sección se hace larga, vuelve al resumen, localiza
+          el error frecuente y practica solo el ejemplo mínimo.
+        </p>
+        <p class="neuro-study-note">
+          Rutina de 12 minutos: 2 minutos para leer el resumen, 6 minutos para
+          reproducir una práctica, 2 minutos para explicar el concepto sin mirar
+          y 2 minutos de pausa. Si no sale, no releas todo: vuelve al error
+          frecuente y repite solo el paso mínimo.
         </p>
       </section>
       <section class="level2" id="ruta-de-aprendizaje-por-temas">
@@ -4923,6 +5506,11 @@ DIARIO_CURSOWEBM: indice editorial generado
               <strong>Servlet, DNI/NIE, casting e instanceof</strong>
               <span>Dia 32: resolver primero <code>LetraDni</code> y después practicar herencia con <code>Persona</code>/<code>Alumno</code>.</span>
             </a>
+            <a class="study-topic-card" href="#dia-33---sesiones-login-e-imc-protegido">
+              <b>Sesiones web</b>
+              <strong>Login, HttpSession, redirect e IMC protegido</strong>
+              <span>Dia 33: entender que el login crea memoria de usuario y el Servlet de IMC solo comprueba si esa memoria existe.</span>
+            </a>
           </div>
         </div>
       </section>
@@ -4954,6 +5542,7 @@ DIARIO_CURSOWEBM: indice editorial generado
             <tr><td><code>List</code>, <code>Set</code>, <code>Map</code>, scopes y contexto</td><td><a href="#dia-30---colecciones-java-list-set-y-map">Día 30</a></td><td>Guardar IMC en <code>listaIMC</code> y recorrerla con <code>for-each</code>.</td></tr>
             <tr><td>Diseño Java Web, capas, UML y polimorfismo</td><td><a href="#dia-31---refactorizacion-arquitectura-multicapa-y-uml">Día 31</a></td><td>Separar OpositaTest en capas y comprobar <code>@Override</code> con <code>Dni</code>/<code>Nie</code>.</td></tr>
             <tr><td>Polimorfismo, casting e <code>instanceof</code></td><td><a href="#dia-32---polimorfismo-aplicado-al-servlet-letradni">Día 32</a></td><td>Resolver <code>LetraDni</code> con DNI/NIE y contar alumnos dentro de una <code>List&lt;Persona&gt;</code>.</td></tr>
+            <tr><td>Sesiones, login y rutas protegidas</td><td><a href="#dia-33---sesiones-login-e-imc-protegido">Día 33</a></td><td>Crear sesión al entrar, comprobarla antes de calcular IMC y responder <code>401</code> si no existe.</td></tr>
           </tbody>
         </table>
       </section>
@@ -21946,6 +22535,48 @@ nie2.prefijo = 'Y';</code></pre>
           después se comprueba el tipo real con <code>instanceof</code> antes de
           acceder a lo que solo existe en <code>Alumno</code>.
         </p>
+        <h3>Casting: ver al hijo dentro de una variable padre</h3>
+        <p>
+          El casting aparece cuando una variable está declarada con un tipo general,
+          pero el objeto real que guarda es de un tipo más concreto. Por ejemplo,
+          <code>Persona persona2 = new Alumno();</code> significa que la variable se
+          mira como <code>Persona</code>, aunque dentro haya un <code>Alumno</code>.
+          Java deja usar lo que existe en <code>Persona</code>, pero no deja acceder
+          directamente a <code>nota</code>, porque <code>nota</code> solo pertenece
+          a <code>Alumno</code>.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Idea</th>
+              <th>Lectura correcta</th>
+              <th>Riesgo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>Persona persona2 = new Alumno();</code></td>
+              <td>Un hijo puede guardarse en una variable padre.</td>
+              <td>La variable padre oculta lo específico del hijo.</td>
+            </tr>
+            <tr>
+              <td><code>persona2 instanceof Alumno</code></td>
+              <td>Pregunta si el objeto real sí es un alumno.</td>
+              <td>Sin esta comprobación, el casting va a ciegas.</td>
+            </tr>
+            <tr>
+              <td><code>Alumno alumno = (Alumno) persona2;</code></td>
+              <td>Convierte la variable padre para verla como hija.</td>
+              <td>Si el objeto no era alumno, aparece <code>ClassCastException</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          La regla práctica es: primero <code>instanceof</code>, después casting.
+          El casting no convierte mágicamente una persona normal en alumno; solo
+          permite recuperar el tipo hijo cuando el objeto real ya fue creado como
+          hijo.
+        </p>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.Objects;
 
@@ -22096,6 +22727,532 @@ Alumno alumno = (Alumno) persona1;</code></pre>
           <code>Persona</code> y <code>Alumno</code> sirven para entender
           <code>equals()</code>, <code>toString()</code>, <code>instanceof</code>,
           casting y listas de objetos padre.
+        </p>
+      </section>
+    </section>
+
+    <section class="level1" id="dia-33---sesiones-login-e-imc-protegido">
+      <h1 data-day-date="25/06/2026">Día 33 - Sesiones, login e IMC protegido</h1>
+      <p>
+        Hoy el proyecto IMC deja de ser una página pública que calcula sin más y
+        pasa a tener una entrada previa: el usuario debe iniciar sesión antes de
+        poder usar el cálculo. La dificultad no está en la fórmula del IMC, sino
+        en entender cómo una aplicación web recuerda que alguien ya ha entrado.
+      </p>
+
+      <section class="level2 quick-summary" id="resumen-rapido-dia-33">
+        <h2>Resumen rápido</h2>
+        <ul>
+          <li><strong>Qué se vio:</strong> formulario de login, <code>HttpSession</code>, redirección, Servlet protegido y respuesta <code>401</code>.</li>
+          <li><strong>Concepto que importa:</strong> HTTP no tiene memoria; la sesión sirve para reconocer al mismo navegador en peticiones distintas.</li>
+          <li><strong>Error a evitar:</strong> usar <code>getSession()</code> en una ruta protegida, porque puede crear sesión a quien no la tenía.</li>
+          <li><strong>Práctica:</strong> entrar por <code>login.html</code>, crear sesión, redirigir a <code>imc.html</code> y calcular con <code>fetch</code>.</li>
+          <li><strong>Debe quedar claro:</strong> el login crea la sesión; <code>CalculoIMC</code> solo la comprueba.</li>
+        </ul>
+      </section>
+
+      <section class="level2 study-levels" id="niveles-de-estudio-dia-33">
+        <h2>Niveles de estudio</h2>
+        <div class="study-level-grid">
+          <article class="study-level-item">
+            <h3>Esencial</h3>
+            <p>
+              <code>request.getSession()</code> crea o recupera una sesión cuando
+              el usuario entra correctamente.
+            </p>
+          </article>
+          <article class="study-level-item">
+            <h3>Práctica</h3>
+            <p>
+              <code>request.getSession(false)</code> comprueba si ya existe sesión
+              antes de permitir el cálculo del IMC.
+            </p>
+          </article>
+          <article class="study-level-item">
+            <h3>Ampliación</h3>
+            <p>
+              Guardar datos en sesión con <code>setAttribute</code>, leerlos con
+              <code>getAttribute</code> e invalidar la sesión al cerrar.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="level2" id="material-usado-dia-33">
+        <h2>Material usado</h2>
+        <p>
+          La práctica se apoya en
+          <code>profe/f11webjava/imcsessionprofe/src/main/java/servlets/Login.java</code>,
+          <code>CalculoIMC.java</code>, <code>ImcRespuestaNueva.java</code>,
+          <code>src/main/webapp/login.html</code>, <code>imc.html</code> y
+          <code>WEB-INF/web.xml</code>. La carpeta del profesor se ha consultado
+          como referencia y no se ha modificado.
+        </p>
+      </section>
+
+      <section class="level2" id="estructura-proyecto-dia-33">
+        <h2>Estructura del proyecto</h2>
+        <p>
+          Para no mezclar piezas, conviene mirar el proyecto como tres zonas:
+          código Java, documentos web visibles y configuración interna de la
+          aplicación. El cálculo y el login viven en los Servlets; las pantallas
+          viven en <code>webapp</code>; las librerías y la configuración protegida
+          viven dentro de <code>WEB-INF</code>.
+        </p>
+        <div class="sourceCode code-panel language-text" data-language-label="TREE">
+          <pre class="sourceCode text"><code class="sourceCode text" data-start-line="1">imcsesionweb/
+|-- .settings/                         configuración del IDE
+|-- bin/                               salida generada por el IDE
+|-- build/                             salida de compilación
+|-- src/main/
+|   |-- java/servlets/
+|   |   |-- CalculoIMC.java            Servlet protegido: calcula solo si hay sesión
+|   |   |-- ImcRespuestaNueva.java     record de datos para devolver JSON
+|   |   |-- Login.java                 Servlet de entrada: valida y crea sesión
+|   |   `-- Usuario.java               modelo simple de usuario
+|   `-- webapp/
+|       |-- css/
+|       |   |-- errorlogin.css         estilos de la pantalla de error
+|       |   `-- login.css              estilos del formulario de login
+|       |-- META-INF/
+|       |   `-- MANIFEST.MF            metadatos internos del paquete web
+|       |-- WEB-INF/
+|       |   |-- lib/
+|       |   |   `-- gson-2.14.0.jar     librería para convertir objetos a JSON
+|       |   `-- web.xml                configuración de bienvenida y sesión
+|       |-- error-login.html           pantalla si falla el acceso
+|       |-- estiloimc.css              estilos de la pantalla de IMC
+|       |-- imc.html                   pantalla del cálculo
+|       |-- imc.js                     JavaScript que llama a CalculoIMC con fetch
+|       `-- login.html                 formulario inicial de acceso
+`-- .project                           configuración del proyecto en Eclipse</code></pre>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Zona</th>
+              <th>Qué guarda</th>
+              <th>Regla para no liarse</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>src/main/java/servlets</code></td>
+              <td>Clases Java que responden a peticiones HTTP.</td>
+              <td>Si empieza por lógica de servidor, va aquí.</td>
+            </tr>
+            <tr>
+              <td><code>src/main/webapp</code></td>
+              <td>HTML, CSS y JavaScript que puede pedir el navegador.</td>
+              <td>Si es una pantalla visible, va aquí.</td>
+            </tr>
+            <tr>
+              <td><code>WEB-INF</code></td>
+              <td>Configuración y librerías internas de la aplicación.</td>
+              <td>El navegador no entra aquí directamente.</td>
+            </tr>
+            <tr>
+              <td><code>WEB-INF/lib</code></td>
+              <td>JARs externos, como <code>gson-2.14.0.jar</code>.</td>
+              <td>Si Java necesita una librería, se coloca en esta carpeta.</td>
+            </tr>
+            <tr>
+              <td><code>bin</code>, <code>build</code>, <code>.settings</code> y <code>.project</code></td>
+              <td>Archivos de IDE o compilación.</td>
+              <td>No son el lugar principal para estudiar la lógica del ejercicio.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="level2" id="idea-central-sesion-dia-33">
+        <h2>La idea central: dos peticiones, una memoria</h2>
+        <p>
+          El lío suele aparecer porque parece que todo ocurre en una sola acción:
+          escribes usuario, pulsas entrar y terminas calculando el IMC. En realidad,
+          el navegador y Tomcat hacen varias conversaciones separadas.
+        </p>
+        <ol>
+          <li>El navegador abre la aplicación y <code>web.xml</code> manda a <code>login.html</code> como página inicial.</li>
+          <li>El formulario de login envía <code>usuario</code> y <code>password</code> al Servlet <code>/login</code>.</li>
+          <li>El Servlet <code>Login</code> lee esos datos con <code>request.getParameter(...)</code>.</li>
+          <li>Si el usuario es válido, <code>Login</code> crea una sesión con <code>request.getSession()</code>.</li>
+          <li>Tomcat asocia esa sesión al navegador mediante una cookie de sesión.</li>
+          <li><code>response.sendRedirect("imc.html")</code> no pinta la página: ordena al navegador hacer otra petición.</li>
+          <li><code>imc.html</code> carga su JavaScript y, al enviar el formulario, llama al Servlet <code>CalculoIMC</code> con <code>fetch</code>.</li>
+          <li>El navegador acompaña esa petición con la cookie de sesión.</li>
+          <li><code>CalculoIMC</code> usa <code>request.getSession(false)</code> para comprobar si la sesión existe.</li>
+          <li>Si no hay sesión, responde <code>401 Unauthorized</code>; si la hay, calcula el IMC y devuelve JSON.</li>
+        </ol>
+        <p>
+          Frase para memorizar: <strong>login crea la sesión; el cálculo la
+          comprueba</strong>.
+        </p>
+      </section>
+
+      <section class="level2" id="webxml-login-dia-33">
+        <h2>Entrada de la aplicación: <code>web.xml</code> y <code>login.html</code></h2>
+        <p>
+          La aplicación no empieza directamente en el cálculo. Primero enseña el
+          formulario de acceso. Esa decisión queda en el archivo de configuración:
+          la página de bienvenida es <code>login.html</code>.
+        </p>
+        <div class="sourceCode code-panel language-xml" data-language-label="XML">
+          <pre class="sourceCode xml"><code class="sourceCode xml" data-start-line="1">&lt;welcome-file-list&gt;
+    &lt;welcome-file&gt;login.html&lt;/welcome-file&gt;
+&lt;/welcome-file-list&gt;</code></pre>
+        </div>
+        <p>
+          El formulario no llama a JavaScript. Envía una petición HTTP normal al
+          Servlet <code>login</code> usando <code>POST</code>, porque está enviando
+          credenciales al servidor.
+        </p>
+        <div class="sourceCode code-panel language-html" data-language-label="HTML">
+          <pre class="sourceCode html"><code class="sourceCode html" data-start-line="1">&lt;form action="login" method="post"&gt;
+    &lt;input type="text" name="usuario" required&gt;
+    &lt;input type="password" name="password" required&gt;
+    &lt;button type="submit"&gt;Entrar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="level2" id="login-crea-sesion-dia-33">
+        <h2>Servlet <code>Login</code>: validar y crear sesión</h2>
+        <p>
+          El Servlet <code>Login</code> es la puerta de entrada. Su trabajo mínimo
+          no es calcular nada: lee usuario y contraseña, decide si son válidos y,
+          si lo son, crea la sesión.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">String usuario = request.getParameter("usuario");
+String password = request.getParameter("password");
+
+if (existeUsuario(usuario, password)) {
+    HttpSession sesion = request.getSession();
+    response.sendRedirect("imc.html");
+} else {
+    response.sendRedirect("error-login.html");
+}</code></pre>
+        </div>
+        <p>
+          La línea importante es <code>request.getSession()</code>. Si el navegador
+          todavía no tenía sesión, Tomcat crea una nueva. A partir de ahí, el
+          navegador queda identificado mientras la sesión siga viva.
+        </p>
+      </section>
+
+      <section class="level2" id="redirect-dia-33">
+        <h2>Redirección: no mueve variables, abre otra petición</h2>
+        <p>
+          <code>response.sendRedirect("imc.html")</code> no pasa el objeto
+          <code>sesion</code> como si fuera una variable de Java. Lo que hace es
+          responder al navegador con una orden: "ve ahora a esta otra página".
+          Por eso se produce una segunda petición HTTP.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Acción</th>
+              <th>Qué ocurre realmente</th>
+              <th>Qué no debes imaginar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>request.getSession()</code></td>
+              <td>Tomcat crea o recupera memoria de sesión para ese navegador.</td>
+              <td>No calcula el IMC.</td>
+            </tr>
+            <tr>
+              <td><code>sendRedirect("imc.html")</code></td>
+              <td>El navegador hace una nueva petición a <code>imc.html</code>.</td>
+              <td>No transporta variables Java dentro del HTML.</td>
+            </tr>
+            <tr>
+              <td><code>fetch("CalculoIMC?...")</code></td>
+              <td>La página pide datos al Servlet de cálculo.</td>
+              <td>No vuelve a ejecutar el login.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="level2" id="calculo-imc-protegido-dia-33">
+        <h2><code>CalculoIMC</code>: comprobar sesión antes de calcular</h2>
+        <p>
+          El Servlet de IMC debe empezar preguntando si la petición trae una
+          sesión válida. Aquí se usa <code>getSession(false)</code> porque no se
+          quiere crear una sesión nueva: solo se quiere comprobar si ya existe.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">HttpSession sesionActual = request.getSession(false);
+
+if (sesionActual == null) {
+    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+    response.getWriter().write("Sin sesión. No autorizado (401)");
+    return;
+}</code></pre>
+        </div>
+        <p>
+          Si hay sesión, entonces sí tiene sentido leer <code>peso</code> y
+          <code>altura</code>, convertirlos con <code>Float.parseFloat(...)</code>,
+          calcular el IMC y devolver el resultado como JSON.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">String peso = request.getParameter("peso");
+String altura = request.getParameter("altura");
+
+float pesof = Float.parseFloat(peso);
+float alturaf = Float.parseFloat(altura);
+
+float imcNumerico = pesof / (alturaf * alturaf);
+ImcRespuestaNueva respuesta = new ImcRespuestaNueva(
+        pesof,
+        alturaf,
+        imcNominal,
+        imcNumerico);
+
+response.setContentType("application/json");
+response.getWriter().write(new Gson().toJson(respuesta));</code></pre>
+        </div>
+      </section>
+
+      <section class="level2" id="getsession-comparacion-dia-33">
+        <h2><code>getSession()</code> frente a <code>getSession(false)</code></h2>
+        <p>
+          Esta es la comparación que conviene tener clara antes de seguir. La
+          diferencia no es de sintaxis: cambia la seguridad de la aplicación.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Método</th>
+              <th>Qué hace si no hay sesión</th>
+              <th>Dónde encaja</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>request.getSession()</code></td>
+              <td>Crea una sesión nueva.</td>
+              <td>En <code>Login</code>, después de validar usuario y contraseña.</td>
+            </tr>
+            <tr>
+              <td><code>request.getSession(false)</code></td>
+              <td>Devuelve <code>null</code>; no crea nada.</td>
+              <td>En <code>CalculoIMC</code>, para proteger la ruta.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Regla práctica: <strong>crear sesión solo al entrar; comprobar sesión
+          en todo lo que esté protegido</strong>.
+        </p>
+      </section>
+
+      <section class="level2" id="imc-js-fetch-dia-33">
+        <h2>La página <code>imc.html</code> no calcula sola</h2>
+        <p>
+          La página del IMC recoge los datos del formulario y llama al Servlet
+          mediante <code>fetch</code>. Si el servidor responde bien, se lee JSON.
+          Si responde con error, se muestra el texto del fallo.
+        </p>
+        <div class="sourceCode code-panel language-javascript" data-language-label="JS">
+          <pre class="sourceCode javascript"><code class="sourceCode javascript" data-start-line="1">const url = `CalculoIMC?peso=${peso}&amp;altura=${altura}`;
+
+fetch(url)
+    .then(response =&gt; {
+        if (!response.ok) {
+            return response.text().then(text =&gt; {
+                throw new Error(text);
+            });
+        }
+
+        return response.json();
+    });</code></pre>
+        </div>
+        <p>
+          Esto une dos ideas ya vistas: <code>fetch</code> pide datos al servidor
+          y el Servlet responde con un estado HTTP. Un <code>401</code> no significa
+          que el cálculo esté roto: significa que el servidor no reconoce una
+          sesión válida para esa petición.
+        </p>
+      </section>
+
+      <section class="level2" id="mapa-mental-dia-33">
+        <h2>Mapa mental para no perderse</h2>
+        <div class="concept-visual" aria-label="Ruta de estudio de sesión, login e IMC protegido">
+          <div class="concept-steps">
+            <span>login.html</span>
+            <span>POST /login</span>
+            <span><code>getSession()</code></span>
+            <span>redirect</span>
+            <span>imc.html</span>
+            <span><code>fetch</code></span>
+            <span><code>getSession(false)</code></span>
+            <span>JSON o 401</span>
+          </div>
+          <p class="concept-callout">
+            El cálculo del IMC solo ocurre al final, cuando la sesión ya existe.
+          </p>
+        </div>
+        <div class="micro-lesson cognitive-row">
+          <article class="cognitive-card">
+            <h3>Idea clave</h3>
+            <p>Login e IMC son peticiones distintas, no una única ejecución continua.</p>
+          </article>
+          <article class="cognitive-card">
+            <h3>Regla práctica</h3>
+            <p>El login crea la sesión; los Servlets protegidos la comprueban.</p>
+          </article>
+          <article class="cognitive-card">
+            <h3>Código que lo demuestra</h3>
+            <p><code>getSession()</code> crea; <code>getSession(false)</code> solo mira.</p>
+          </article>
+          <article class="cognitive-card">
+            <h3>Cuidado</h3>
+            <p>Si proteges con <code>getSession()</code>, puedes dejar entrar por accidente.</p>
+          </article>
+          <article class="cognitive-card">
+            <h3>Comprueba</h3>
+            <p>Abre el cálculo sin login: debe responder <code>401</code>.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="level2" id="request-session-context-dia-33">
+        <h2>Request, session y context en una frase</h2>
+        <p>
+          Este día se entiende mejor si se compara con lo anterior. Los tres
+          ámbitos guardan datos, pero no viven lo mismo.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Ámbito</th>
+              <th>Duración</th>
+              <th>Ejemplo útil</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>request</code></td>
+              <td>Solo una petición.</td>
+              <td><code>peso</code> y <code>altura</code> que llegan a <code>CalculoIMC</code>.</td>
+            </tr>
+            <tr>
+              <td><code>session</code></td>
+              <td>Varias peticiones del mismo navegador.</td>
+              <td>Usuario que ya inició sesión.</td>
+            </tr>
+            <tr>
+              <td><code>context</code></td>
+              <td>Toda la aplicación mientras Tomcat esté arrancado.</td>
+              <td>Contadores globales o listas compartidas por todos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="level2" id="ejercicio-practicar-dia-33">
+        <h2>Ejercicio para practicar</h2>
+        <p>
+          Reproduce el flujo completo sin mezclar piezas. Primero prueba el acceso
+          sin sesión y después entra correctamente.
+        </p>
+        <ol>
+          <li>Abre directamente la ruta de cálculo con parámetros de peso y altura.</li>
+          <li>Comprueba que el servidor responde <code>401</code> si no hay sesión.</li>
+          <li>Entra por <code>login.html</code> y envía usuario y contraseña.</li>
+          <li>Comprueba que <code>Login</code> crea sesión y redirige a <code>imc.html</code>.</li>
+          <li>Calcula el IMC desde la página y confirma que ahora devuelve JSON.</li>
+        </ol>
+        <details>
+          <summary>Solución correcta</summary>
+          <p>
+            La solución correcta no consiste en meter todo en el mismo Servlet.
+            El login y el cálculo tienen responsabilidades distintas.
+          </p>
+          <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">// Login: solo después de validar credenciales.
+if (existeUsuario(usuario, password)) {
+    HttpSession sesion = request.getSession();
+    sesion.setAttribute("usuario", usuario); // opcional, pero útil.
+    response.sendRedirect("imc.html");
+    return;
+}
+
+response.sendRedirect("error-login.html");</code></pre>
+          </div>
+          <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">// CalculoIMC: comprobar antes de leer peso y altura.
+HttpSession sesionActual = request.getSession(false);
+
+if (sesionActual == null) {
+    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+    response.getWriter().write("Sin sesión. No autorizado (401)");
+    return;
+}
+
+// A partir de aquí ya se puede leer, parsear, calcular y devolver JSON.</code></pre>
+          </div>
+          <p>
+            <code>setAttribute("usuario", usuario)</code> es una mejora opcional:
+            permite recordar qué usuario entró. Lo obligatorio para proteger el
+            IMC es que <code>CalculoIMC</code> use <code>getSession(false)</code>
+            y corte la petición si devuelve <code>null</code>.
+          </p>
+        </details>
+      </section>
+
+      <section class="level2" id="errores-frecuentes-dia-33">
+        <h2>Errores frecuentes</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Error</th>
+              <th>Por qué confunde</th>
+              <th>Cómo corregirlo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Creer que HTTP recuerda al usuario</td>
+              <td>Cada petición nace separada de la anterior.</td>
+              <td>Usa sesión para mantener identidad entre peticiones.</td>
+            </tr>
+            <tr>
+              <td>Proteger con <code>getSession()</code></td>
+              <td>Ese método crea sesión si no existe.</td>
+              <td>En rutas protegidas usa <code>getSession(false)</code>.</td>
+            </tr>
+            <tr>
+              <td>Pensar que <code>redirect</code> pasa variables Java</td>
+              <td>La redirección hace que el navegador pida otra URL.</td>
+              <td>Guarda lo que deba sobrevivir en sesión, no en variables locales.</td>
+            </tr>
+            <tr>
+              <td>Confundir <code>401</code> con fallo interno</td>
+              <td>El servidor funciona, pero rechaza la petición sin sesión.</td>
+              <td>Reserva <code>500</code> para fallos del servidor; aquí corresponde <code>401</code>.</td>
+            </tr>
+            <tr>
+              <td>Mezclar login, cálculo y JSON</td>
+              <td>Son responsabilidades distintas.</td>
+              <td><code>Login</code> valida y crea sesión; <code>CalculoIMC</code> calcula y devuelve JSON.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="level2" id="cierre-del-dia-33">
+        <h2>Cierre del día</h2>
+        <p>
+          El salto importante es mental: una aplicación web no recuerda por sí
+          sola. El login crea una sesión para que Tomcat pueda reconocer al
+          navegador en peticiones posteriores. A partir de ahí, el cálculo del
+          IMC se protege preguntando si esa sesión existe antes de leer datos,
+          parsear números y devolver JSON.
         </p>
       </section>
     </section>
