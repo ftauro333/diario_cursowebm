@@ -4844,6 +4844,82 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
           var(--panel-premium);
       }
 
+      /*
+       * DIARIO_CURSOWEBM: recordatorios del profesor.
+       * Bloques compactos para fijar vocabulario sin convertir el diario en manual.
+       */
+      .teacher-reminder {
+        background:
+          linear-gradient(135deg, rgba(255, 250, 239, 0.96), rgba(255, 255, 255, 0.96) 62%),
+          var(--panel-premium);
+        border: 1px solid rgba(197, 154, 61, 0.42);
+        border-left: 5px solid var(--gold);
+        border-radius: 14px;
+        box-shadow: 0 18px 42px rgba(15, 23, 42, 0.075);
+        margin: 18px 0 24px;
+        padding: 16px 17px 17px;
+      }
+
+      .teacher-reminder > h2,
+      .teacher-reminder > h3 {
+        align-items: center;
+        color: var(--ink);
+        display: flex;
+        font-size: 0.92rem;
+        gap: 9px;
+        letter-spacing: 0.045em;
+        margin: 0 0 13px;
+        text-transform: uppercase;
+      }
+
+      .teacher-reminder > h2::before,
+      .teacher-reminder > h3::before {
+        background: linear-gradient(135deg, var(--teal), var(--gold));
+        border-radius: 999px;
+        content: "";
+        height: 9px;
+        width: 9px;
+      }
+
+      .teacher-reminder-grid {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+      }
+
+      .teacher-reminder-item {
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        border-radius: 10px;
+        padding: 11px 12px;
+      }
+
+      .teacher-reminder-term {
+        color: var(--teal);
+        display: block;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.045em;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+      }
+
+      .teacher-reminder-text {
+        color: var(--ink-2);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .teacher-reminder-note {
+        border-top: 1px solid rgba(197, 154, 61, 0.25);
+        color: var(--muted);
+        font-size: 0.93rem;
+        line-height: 1.5;
+        margin: 12px 0 0;
+        padding-top: 10px;
+      }
+
       section.level2 > details > summary {
         border-radius: 8px;
         min-height: 38px;
@@ -4885,7 +4961,9 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         .neuro-study-guide,
         .study-level-item,
         .neuro-study-step,
-        .micro-lesson.cognitive-row > article.cognitive-card {
+        .micro-lesson.cognitive-row > article.cognitive-card,
+        .teacher-reminder,
+        .teacher-reminder-item {
           border-color: #7c8ea6;
         }
       }
@@ -18950,7 +19028,7 @@ java HolaJava</code></pre>
           </div>
         </dl>
       </section>
-      <section class="level2" id="resumen-profesor-basicosprofe-dia-25">
+      <section class="level2 teacher-reminder" id="resumen-profesor-basicosprofe-dia-25">
         <h2>Resumen del profesor: conceptos base de Java</h2>
         <p>
           Fuente incorporada:
@@ -19783,6 +19861,27 @@ public class ImcConExcepcion {
           reciben parametros distintos. Esa sobrecarga permite crear objetos con
           menos datos al principio o con todos los datos ya preparados.
         </p>
+        <aside class="teacher-reminder" aria-label="Recordatorio del profesor: constructor this super y Object">
+          <h3>Recordatorio del profesor</h3>
+          <div class="teacher-reminder-grid">
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Constructor</strong>
+              <p class="teacher-reminder-text">Función especial con el mismo nombre que la clase. Sirve para crear objetos o instancias.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term"><code>this</code></strong>
+              <p class="teacher-reminder-text">En el constructor es el objeto nuevo; fuera del constructor es el objeto que llama al método.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term"><code>super()</code></strong>
+              <p class="teacher-reminder-text">Dentro del constructor llama al constructor de la clase padre.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term"><code>Object</code></strong>
+              <p class="teacher-reminder-text">Es la clase padre común de los objetos Java; de ahí vienen métodos como <code>toString()</code> y <code>equals()</code>.</p>
+            </div>
+          </div>
+        </aside>
       </section>
 
       <section class="level2" id="poo-herencia-basica-dia-26">
@@ -19940,6 +20039,20 @@ public class Dni extends Documento {
           dominar Javadoc, pero sí reconocer por qué algunos comentarios delante
           de métodos públicos tienen una forma tan concreta.
         </p>
+        <aside class="teacher-reminder" aria-label="Recordatorio del profesor: JAR y Maven">
+          <h3>Recordatorio del profesor</h3>
+          <div class="teacher-reminder-grid">
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">JAR</strong>
+              <p class="teacher-reminder-text">Archivo comprimido que agrupa ficheros <code>.class</code>. Funciona como un paquete Java reutilizable.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Maven</strong>
+              <p class="teacher-reminder-text">Puede significar repositorio de librerías, formato de proyecto y cliente que comunica el entorno con ese repositorio.</p>
+            </div>
+          </div>
+          <p class="teacher-reminder-note">Idea de repaso: el <code>.jar</code> empaqueta código compilado; Maven ayuda a localizar y gestionar esas librerías.</p>
+        </aside>
         <dl class="micro-lesson cognitive-row">
           <div class="signal-idea">
             <dt>Idea clave</dt>
@@ -20283,6 +20396,27 @@ try {
           problemas de credenciales o permisos, y <code>404</code> cuando la URL
           no apunta a ningún recurso disponible.
         </p>
+        <aside class="teacher-reminder" aria-label="Recordatorio del profesor: parametros URL y codigos HTTP">
+          <h3>Recordatorio del profesor</h3>
+          <div class="teacher-reminder-grid">
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Parámetros URL</strong>
+              <p class="teacher-reminder-text">Son variables que van después de <code>?</code>. Si hay varias, se unen con <code>&amp;</code> y siguen el formato <code>clave=valor</code>.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term"><code>2xx</code></strong>
+              <p class="teacher-reminder-text">La comunicación ha ido bien: <code>200 OK</code>, <code>201 Created</code> o <code>204 No Content</code>.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term"><code>4xx</code></strong>
+              <p class="teacher-reminder-text">Error en la petición del cliente: <code>400</code>, <code>401</code>, <code>403</code> o <code>404</code>.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term"><code>5xx</code></strong>
+              <p class="teacher-reminder-text">Error en el servidor. En ejercicios previsibles conviene capturarlo y responder con un <code>400</code> claro.</p>
+            </div>
+          </div>
+        </aside>
       </section>
 
       <section class="level2" id="no-hace-falta-memorizar-status-dia-27">
@@ -20618,6 +20752,23 @@ response.getWriter().append(gson.toJson(respuesta));</code></pre>
           ampliación útil, pero para este día lo obligatorio es dominar primero
           <code>toJson(...)</code>.
         </p>
+        <aside class="teacher-reminder" aria-label="Recordatorio del profesor: serializar JSON y Gson">
+          <h3>Recordatorio del profesor</h3>
+          <div class="teacher-reminder-grid">
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Serializar</strong>
+              <p class="teacher-reminder-text">Convertir una variable u objeto a texto para poder transmitirlo o almacenarlo.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">JSON</strong>
+              <p class="teacher-reminder-text">Formato textual para estructurar información. Hoy es estándar para intercambiar datos entre cliente y servidor.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Gson</strong>
+              <p class="teacher-reminder-text">Librería de Google para serializar y deserializar entre Java y JSON de forma sencilla.</p>
+            </div>
+          </div>
+        </aside>
       </section>
 
       <section class="level2" id="no-hace-falta-memorizar-mime-dia-28">
@@ -21240,6 +21391,19 @@ for (ImcRespuestaNueva imc : listaIMC) {
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">response.sendRedirect("error-imc.jsp");
 return;</code></pre>
         </div>
+        <aside class="teacher-reminder" aria-label="Recordatorio del profesor: redireccion HTTP">
+          <h3>Recordatorio del profesor</h3>
+          <div class="teacher-reminder-grid">
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Redirección</strong>
+              <p class="teacher-reminder-text">El servidor envía un código de familia <code>300</code> acompañado de una URL. El navegador recibe esa respuesta y hace una petición nueva.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Uso práctico</strong>
+              <p class="teacher-reminder-text">Sirve para páginas de error, cambios de dominio o finales de procesos donde no conviene repetir la acción al recargar.</p>
+            </div>
+          </div>
+        </aside>
       </section>
       <section class="level2" id="http-stateless-scopes-dia-30">
         <h2>HTTP no tiene memoria: request, session y context</h2>
@@ -21375,6 +21539,23 @@ ArrayList&lt;ImcRespuestaNueva&gt; lista =
 lista.add(imcRespuestaNueva);
 context.setAttribute("listaIMC", lista);</code></pre>
         </div>
+        <aside class="teacher-reminder" aria-label="Recordatorio del profesor: Object y casting">
+          <h3>Recordatorio del profesor</h3>
+          <div class="teacher-reminder-grid">
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term"><code>Object</code></strong>
+              <p class="teacher-reminder-text">Tipo genérico común. El contexto puede guardar valores distintos porque los recibe como <code>Object</code>.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Casting</strong>
+              <p class="teacher-reminder-text">Conversión de tipos para operar con el dato real: <code>TipoDestino variable = (TipoDestino) objetoFuente;</code>.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Regla segura</strong>
+              <p class="teacher-reminder-text">Si no tienes certeza del tipo real, comprueba antes con <code>instanceof</code>.</p>
+            </div>
+          </div>
+        </aside>
       </section>
       <section class="level2" id="ejercicio-practicar-dia-30">
         <h2>Ejercicio para practicar</h2>
@@ -22269,6 +22450,23 @@ response.getWriter().write("Su Documento con letra " + mensaje);</code></pre>
           misma, <code>dni.calcularLetra()</code>, pero el comportamiento cambia si
           el objeto construido fue <code>Dni</code> o <code>Nie</code>.
         </p>
+        <aside class="teacher-reminder" aria-label="Recordatorio del profesor: herencia y polimorfismo">
+          <h3>Recordatorio del profesor</h3>
+          <div class="teacher-reminder-grid">
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Herencia</strong>
+              <p class="teacher-reminder-text">Una clase hija hereda atributos y métodos de su clase padre.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Polimorfismo</strong>
+              <p class="teacher-reminder-text">Si se invoca un método heredado, Java decide qué versión ejecutar según el objeto real.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Ejemplo del día</strong>
+              <p class="teacher-reminder-text"><code>Dni</code> y <code>Nie</code> comparten llamada a <code>calcularLetra()</code>, pero <code>Nie</code> puede sobrescribirla con <code>@Override</code>.</p>
+            </div>
+          </div>
+        </aside>
       </section>
 
       <section class="level2" id="nie-calculo-real-dia-32">
@@ -22577,6 +22775,23 @@ nie2.prefijo = 'Y';</code></pre>
           permite recuperar el tipo hijo cuando el objeto real ya fue creado como
           hijo.
         </p>
+        <aside class="teacher-reminder" aria-label="Recordatorio del profesor: casting de Persona a Alumno">
+          <h3>Recordatorio del profesor</h3>
+          <div class="teacher-reminder-grid">
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Casting</strong>
+              <p class="teacher-reminder-text">Cambiar la lectura de un objeto de un tipo a otro para poder operar con él.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Sintaxis</strong>
+              <p class="teacher-reminder-text"><code>Alumno alumno = (Alumno) persona;</code> sigue el patrón <code>TipoDestino variable = (TipoDestino) objetoFuente;</code>.</p>
+            </div>
+            <div class="teacher-reminder-item">
+              <strong class="teacher-reminder-term">Cuidado</strong>
+              <p class="teacher-reminder-text">El casting no crea un alumno nuevo. Solo funciona si el objeto real ya era un <code>Alumno</code>.</p>
+            </div>
+          </div>
+        </aside>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">import java.util.Objects;
 
@@ -22743,11 +22958,11 @@ Alumno alumno = (Alumno) persona1;</code></pre>
       <section class="level2 quick-summary" id="resumen-rapido-dia-33">
         <h2>Resumen rápido</h2>
         <ul>
-          <li><strong>Qué se vio:</strong> formulario de login, <code>HttpSession</code>, redirección, Servlet protegido y respuesta <code>401</code>.</li>
-          <li><strong>Concepto que importa:</strong> HTTP no tiene memoria; la sesión sirve para reconocer al mismo navegador en peticiones distintas.</li>
-          <li><strong>Error a evitar:</strong> usar <code>getSession()</code> en una ruta protegida, porque puede crear sesión a quien no la tenía.</li>
-          <li><strong>Práctica:</strong> entrar por <code>login.html</code>, crear sesión, redirigir a <code>imc.html</code> y calcular con <code>fetch</code>.</li>
-          <li><strong>Debe quedar claro:</strong> el login crea la sesión; <code>CalculoIMC</code> solo la comprueba.</li>
+          <li><strong>Qué se vio:</strong> login, <code>HttpSession</code>, Servlet protegido, usuarios en contexto y respuesta <code>401</code>.</li>
+          <li><strong>Concepto que importa:</strong> <code>session</code> recuerda a un navegador; <code>context</code> guarda datos compartidos por toda la app.</li>
+          <li><strong>Error a evitar:</strong> confundir crear sesión con validar usuario, o usar <code>getSession()</code> en una ruta protegida.</li>
+          <li><strong>Práctica:</strong> cargar usuarios al arrancar, validar login contra esa lista, crear sesión y calcular IMC solo si existe.</li>
+          <li><strong>Debe quedar claro:</strong> <code>request</code> dura una petición, <code>session</code> un usuario y <code>context</code> toda la aplicación.</li>
         </ul>
       </section>
 
@@ -22757,22 +22972,22 @@ Alumno alumno = (Alumno) persona1;</code></pre>
           <article class="study-level-item">
             <h3>Esencial</h3>
             <p>
-              <code>request.getSession()</code> crea o recupera una sesión cuando
-              el usuario entra correctamente.
+              Diferenciar <code>request</code>, <code>session</code> y
+              <code>context</code> antes de leer el código.
             </p>
           </article>
           <article class="study-level-item">
             <h3>Práctica</h3>
             <p>
-              <code>request.getSession(false)</code> comprueba si ya existe sesión
-              antes de permitir el cálculo del IMC.
+              <code>EscuchaContexto</code> carga usuarios; <code>Login</code>
+              valida; <code>CalculoIMC</code> comprueba la sesión.
             </p>
           </article>
           <article class="study-level-item">
             <h3>Ampliación</h3>
             <p>
-              Guardar datos en sesión con <code>setAttribute</code>, leerlos con
-              <code>getAttribute</code> e invalidar la sesión al cerrar.
+              Entender por qué <code>contains</code> funciona con un
+              <code>record</code> y por qué hace falta casting al leer del contexto.
             </p>
           </article>
         </div>
@@ -22783,7 +22998,10 @@ Alumno alumno = (Alumno) persona1;</code></pre>
         <p>
           La práctica se apoya en
           <code>profe/f11webjava/imcsessionprofe/src/main/java/servlets/Login.java</code>,
-          <code>CalculoIMC.java</code>, <code>ImcRespuestaNueva.java</code>,
+          <code>CalculoIMC.java</code>,
+          <code>src/main/java/contexto/EscuchaContexto.java</code>,
+          <code>src/main/java/modelo/Usuario.java</code>,
+          <code>src/main/java/modelo/ImcRespuestaNueva.java</code>,
           <code>src/main/webapp/login.html</code>, <code>imc.html</code> y
           <code>WEB-INF/web.xml</code>. La carpeta del profesor se ha consultado
           como referencia y no se ha modificado.
@@ -22805,11 +23023,14 @@ Alumno alumno = (Alumno) persona1;</code></pre>
 |-- bin/                               salida generada por el IDE
 |-- build/                             salida de compilación
 |-- src/main/
+|   |-- java/contexto/
+|   |   `-- EscuchaContexto.java       listener: carga usuarios al arrancar
+|   |-- java/modelo/
+|   |   |-- ImcRespuestaNueva.java     record de datos para devolver JSON
+|   |   `-- Usuario.java               record de usuario y contraseña
 |   |-- java/servlets/
 |   |   |-- CalculoIMC.java            Servlet protegido: calcula solo si hay sesión
-|   |   |-- ImcRespuestaNueva.java     record de datos para devolver JSON
 |   |   |-- Login.java                 Servlet de entrada: valida y crea sesión
-|   |   `-- Usuario.java               modelo simple de usuario
 |   `-- webapp/
 |       |-- css/
 |       |   |-- errorlogin.css         estilos de la pantalla de error
@@ -23154,6 +23375,244 @@ fetch(url)
         </table>
       </section>
 
+      <section class="level2" id="usuarios-en-contexto-dia-33">
+        <h2>Último tramo: usuarios en el contexto de aplicación</h2>
+        <p>
+          La segunda parte del día mejora el login. Al principio se podía pensar
+          en validar usuario y contraseña directamente dentro del Servlet, pero
+          eso mezcla responsabilidades. La práctica nueva coloca los usuarios en
+          el <code>ServletContext</code>, que es una memoria común para toda la
+          aplicación.
+        </p>
+        <div class="micro-lesson cognitive-row">
+          <article class="cognitive-card">
+            <h3>Idea clave</h3>
+            <p><code>context</code> no pertenece a un usuario: pertenece a la aplicación completa.</p>
+          </article>
+          <article class="cognitive-card">
+            <h3>Regla práctica</h3>
+            <p>Los datos compartidos se preparan al arrancar, no en cada petición.</p>
+          </article>
+          <article class="cognitive-card">
+            <h3>Código que lo demuestra</h3>
+            <p><code>setAttribute</code> guarda la lista y <code>getAttribute</code> la recupera.</p>
+          </article>
+          <article class="cognitive-card">
+            <h3>Cuidado</h3>
+            <p>Al leer del contexto vuelve un <code>Object</code>; por eso aparece el casting.</p>
+          </article>
+          <article class="cognitive-card">
+            <h3>Comprueba</h3>
+            <p>El login debe aceptar solo usuarios que estén dentro de <code>listaUsuarios</code>.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="level2" id="record-usuario-dia-33">
+        <h2><code>Usuario</code> como modelo de datos</h2>
+        <p>
+          El usuario deja de ser solo dos textos sueltos. Se crea un modelo pequeño
+          con <code>record</code>. Esto encaja con lo visto en JSON: cuando un dato
+          empieza a tener estructura propia, conviene darle una clase o un record.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">package modelo;
+
+public record Usuario(String usuario, String password) {
+
+}</code></pre>
+        </div>
+        <p>
+          La ventaja didáctica del <code>record</code> es doble. Primero, evita
+          escribir a mano constructor, getters y métodos básicos. Segundo, Java
+          genera una comparación por contenido: dos <code>Usuario</code> con el
+          mismo <code>usuario</code> y <code>password</code> se consideran iguales.
+          Eso permite usar <code>contains</code> sobre una lista.
+        </p>
+      </section>
+
+      <section class="level2" id="listener-contexto-dia-33">
+        <h2><code>EscuchaContexto</code>: preparar datos al arrancar</h2>
+        <p>
+          Un <code>ServletContextListener</code> permite ejecutar código cuando la
+          aplicación arranca. En esta práctica se usa para crear la lista de
+          usuarios una sola vez y guardarla en el contexto con el nombre
+          <code>listaUsuarios</code>.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">@WebListener
+public class EscuchaContexto implements ServletContextListener {
+
+    public void contextInitialized(ServletContextEvent sce) {
+        Usuario usuario1 = new Usuario("Jaime", "jaime");
+        Usuario usuario2 = new Usuario("Manu", "manu");
+        Usuario usuario3 = new Usuario("Sergio", "sergio");
+
+        ArrayList&lt;Usuario&gt; listaUsuarios = new ArrayList&lt;&gt;();
+        listaUsuarios.add(usuario1);
+        listaUsuarios.add(usuario2);
+        listaUsuarios.add(usuario3);
+
+        ServletContext context = sce.getServletContext();
+        context.setAttribute("listaUsuarios", listaUsuarios);
+    }
+}</code></pre>
+        </div>
+        <p>
+          La lectura correcta es: Tomcat arranca la aplicación, el listener se
+          dispara, se crea la lista y queda disponible para los Servlets. No hay
+          login todavía; solo se está preparando memoria global de aplicación.
+        </p>
+      </section>
+
+      <section class="level2" id="login-lee-contexto-dia-33">
+        <h2><code>Login</code>: leer del contexto y validar</h2>
+        <p>
+          Cuando llega el formulario, el Servlet <code>Login</code> ya no necesita
+          tener los usuarios escritos dentro del método. Pide la lista al contexto,
+          construye un <code>Usuario</code> con lo recibido y comprueba si está en
+          la lista.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">private boolean existeUsuario(String usuario, String password) {
+    ServletContext servletContext = this.getServletContext();
+
+    ArrayList&lt;Usuario&gt; listaUsuarios =
+            (ArrayList&lt;Usuario&gt;) servletContext.getAttribute("listaUsuarios");
+
+    Usuario usuarioRecibido = new Usuario(usuario, password);
+
+    return listaUsuarios.contains(usuarioRecibido);
+}</code></pre>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Línea</th>
+              <th>Qué significa</th>
+              <th>Error que evita</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>getServletContext()</code></td>
+              <td>Accede a la memoria global de la aplicación.</td>
+              <td>No recrear usuarios en cada petición.</td>
+            </tr>
+            <tr>
+              <td><code>getAttribute("listaUsuarios")</code></td>
+              <td>Recupera la lista guardada al arrancar.</td>
+              <td>No duplicar datos dentro del Servlet.</td>
+            </tr>
+            <tr>
+              <td><code>(ArrayList&lt;Usuario&gt;)</code></td>
+              <td>Convierte el <code>Object</code> del contexto al tipo real.</td>
+              <td>No intentar usar métodos de lista sobre un <code>Object</code>.</td>
+            </tr>
+            <tr>
+              <td><code>contains(usuarioRecibido)</code></td>
+              <td>Busca un usuario igual dentro de la lista.</td>
+              <td>No comparar manualmente usuario y contraseña con bucles.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Esta parte une tres conceptos anteriores: colecciones, casting y
+          modelos de datos. El contexto devuelve <code>Object</code> porque puede
+          guardar cualquier cosa; el programador sabe que ahí metió una
+          <code>ArrayList&lt;Usuario&gt;</code> y por eso hace el casting.
+        </p>
+      </section>
+
+      <section class="level2" id="flujo-completo-contexto-sesion-dia-33">
+        <h2>Flujo completo: contexto para usuarios, sesión para acceso</h2>
+        <p>
+          La confusión se reduce si se separan dos memorias distintas. La lista de
+          usuarios vive en el contexto porque es común a toda la aplicación. La
+          sesión vive asociada a un navegador porque representa a quien ya ha
+          entrado.
+        </p>
+        <ol>
+          <li>Tomcat arranca la aplicación.</li>
+          <li><code>EscuchaContexto</code> crea <code>listaUsuarios</code>.</li>
+          <li>La lista se guarda con <code>context.setAttribute("listaUsuarios", listaUsuarios)</code>.</li>
+          <li>El usuario envía el formulario de <code>login.html</code>.</li>
+          <li><code>Login</code> recupera la lista con <code>getAttribute</code>.</li>
+          <li><code>Login</code> comprueba si el usuario recibido está en la lista.</li>
+          <li>Si existe, se crea la sesión con <code>request.getSession()</code>.</li>
+          <li><code>CalculoIMC</code> no mira la lista de usuarios: solo comprueba si hay sesión.</li>
+        </ol>
+        <div class="sourceCode code-panel language-text" data-language-label="MAPA">
+          <pre class="sourceCode text"><code class="sourceCode text" data-start-line="1">contexto  --&gt; listaUsuarios compartida por toda la app
+login     --&gt; valida usuario contra esa lista
+session   --&gt; recuerda que este navegador ya entró
+IMC       --&gt; calcula solo si la sesión existe</code></pre>
+        </div>
+      </section>
+
+      <section class="level2" id="ejercicio-contexto-usuarios-dia-33">
+        <h2>Ejercicio: mover usuarios al contexto</h2>
+        <p>
+          El objetivo es que el Servlet <code>Login</code> no tenga una lista
+          local improvisada. La lista se crea al arrancar la aplicación y el login
+          solo la consulta.
+        </p>
+        <ol>
+          <li>Crea el <code>record Usuario</code> en el paquete de modelo.</li>
+          <li>Crea un listener con <code>@WebListener</code>.</li>
+          <li>En <code>contextInitialized</code>, crea una <code>ArrayList&lt;Usuario&gt;</code>.</li>
+          <li>Guarda esa lista en el contexto con la clave <code>listaUsuarios</code>.</li>
+          <li>En <code>Login</code>, recupera la lista y valida con <code>contains</code>.</li>
+        </ol>
+        <details>
+          <summary>Solución correcta</summary>
+          <p>
+            La solución correcta separa arranque, modelo y validación. El listener
+            prepara datos de aplicación; el record modela un usuario; el Servlet
+            solo consulta y decide si crea sesión.
+          </p>
+          <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">public record Usuario(String usuario, String password) {
+}</code></pre>
+          </div>
+          <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">@WebListener
+public class EscuchaContexto implements ServletContextListener {
+
+    public void contextInitialized(ServletContextEvent sce) {
+        ArrayList&lt;Usuario&gt; listaUsuarios = new ArrayList&lt;&gt;();
+
+        listaUsuarios.add(new Usuario("Jaime", "jaime"));
+        listaUsuarios.add(new Usuario("Manu", "manu"));
+        listaUsuarios.add(new Usuario("Sergio", "sergio"));
+        listaUsuarios.add(new Usuario("Fran", "fran"));
+
+        ServletContext context = sce.getServletContext();
+        context.setAttribute("listaUsuarios", listaUsuarios);
+    }
+}</code></pre>
+          </div>
+          <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">private boolean existeUsuario(String usuario, String password) {
+    ServletContext servletContext = this.getServletContext();
+
+    ArrayList&lt;Usuario&gt; listaUsuarios =
+            (ArrayList&lt;Usuario&gt;) servletContext.getAttribute("listaUsuarios");
+
+    Usuario usuarioRecibido = new Usuario(usuario, password);
+
+    return listaUsuarios.contains(usuarioRecibido);
+}</code></pre>
+          </div>
+          <p>
+            Después, si <code>existeUsuario(...)</code> devuelve <code>true</code>,
+            el Servlet crea la sesión con <code>request.getSession()</code> y
+            redirige a <code>imc.html</code>. Si devuelve <code>false</code>,
+            redirige a <code>error-login.html</code>.
+          </p>
+        </details>
+      </section>
+
       <section class="level2" id="ejercicio-practicar-dia-33">
         <h2>Ejercicio para practicar</h2>
         <p>
@@ -23241,6 +23700,21 @@ if (sesionActual == null) {
               <td>Son responsabilidades distintas.</td>
               <td><code>Login</code> valida y crea sesión; <code>CalculoIMC</code> calcula y devuelve JSON.</td>
             </tr>
+            <tr>
+              <td>Confundir <code>context</code> con <code>session</code></td>
+              <td>El contexto es común a todos; la sesión pertenece a un navegador.</td>
+              <td>Usuarios compartidos en <code>context</code>; acceso iniciado en <code>session</code>.</td>
+            </tr>
+            <tr>
+              <td>Olvidar el casting al leer <code>listaUsuarios</code></td>
+              <td><code>getAttribute</code> devuelve <code>Object</code>.</td>
+              <td>Convertir a <code>ArrayList&lt;Usuario&gt;</code> antes de usar <code>contains</code>.</td>
+            </tr>
+            <tr>
+              <td>No entender por qué funciona <code>contains</code></td>
+              <td>La lista compara objetos, no textos sueltos.</td>
+              <td>Recordar que el <code>record Usuario</code> genera comparación por contenido.</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -23249,8 +23723,10 @@ if (sesionActual == null) {
         <h2>Cierre del día</h2>
         <p>
           El salto importante es mental: una aplicación web no recuerda por sí
-          sola. El login crea una sesión para que Tomcat pueda reconocer al
-          navegador en peticiones posteriores. A partir de ahí, el cálculo del
+          sola. El contexto guarda datos comunes de la aplicación, como la lista
+          de usuarios preparada al arrancar. El login valida contra esa lista y,
+          si el usuario existe, crea una sesión para que Tomcat pueda reconocer
+          al navegador en peticiones posteriores. A partir de ahí, el cálculo del
           IMC se protege preguntando si esa sesión existe antes de leer datos,
           parsear números y devolver JSON.
         </p>
