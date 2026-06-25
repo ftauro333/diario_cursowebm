@@ -4107,7 +4107,10 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
       }
 
       body.editorial-document::before {
-        background: linear-gradient(90deg, var(--teal), var(--blue), var(--gold));
+        animation: diaryAuroraTopbar 28s ease-in-out infinite alternate;
+        background:
+          linear-gradient(90deg, var(--teal), var(--blue), var(--gold), var(--teal));
+        background-size: 220% 100%;
         content: "";
         height: 7px;
         inset: 0 0 auto;
@@ -4126,12 +4129,38 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
       }
 
       .cover {
+        animation: diaryAuroraCover 38s ease-in-out infinite alternate;
         background:
-          linear-gradient(135deg, rgba(8, 19, 35, 0.98), rgba(16, 49, 63, 0.95)),
-          linear-gradient(90deg, #081323, #087c7a 58%, #c59a3d);
+          radial-gradient(circle at 12% 18%, rgba(8, 124, 122, 0.32), transparent 34%),
+          radial-gradient(circle at 82% 7%, rgba(37, 87, 214, 0.22), transparent 30%),
+          radial-gradient(circle at 86% 95%, rgba(197, 154, 61, 0.2), transparent 32%),
+          linear-gradient(135deg, rgba(8, 19, 35, 0.99), rgba(16, 49, 63, 0.96) 58%, rgba(8, 19, 35, 0.98));
+        background-blend-mode: screen, screen, soft-light, normal;
+        background-position: 10% 22%, 84% 8%, 86% 96%, center;
+        background-size: 155% 155%, 150% 150%, 160% 160%, 100% 100%;
         box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.16);
-        min-height: min(92vh, 860px);
+        min-height: 100svh;
         overflow: hidden;
+      }
+
+      @keyframes diaryAuroraTopbar {
+        0% {
+          background-position: 0% 50%;
+        }
+
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes diaryAuroraCover {
+        0% {
+          background-position: 10% 22%, 84% 8%, 86% 96%, center;
+        }
+
+        100% {
+          background-position: 18% 28%, 75% 15%, 78% 90%, center;
+        }
       }
 
       .cover::before {
@@ -4751,16 +4780,21 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
       }
 
       .neuro-study-guide {
+        border-left-color: var(--panel-premium-border);
+        border-left-width: 1px;
+        overflow: hidden;
+        padding-top: 20px;
         position: relative;
       }
 
       .neuro-study-guide::before {
-        background: linear-gradient(180deg, var(--teal), var(--blue), var(--gold));
-        border-radius: 999px;
+        background: linear-gradient(90deg, var(--teal), var(--blue), var(--gold), var(--rose));
+        border-radius: 0 0 999px 999px;
         content: "";
-        inset: 14px auto 14px 10px;
+        height: 4px;
+        inset: 0 16px auto;
         position: absolute;
-        width: 4px;
+        width: auto;
       }
 
       .neuro-study-guide > * {
@@ -4920,6 +4954,36 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         padding-top: 10px;
       }
 
+      /*
+       * DIARIO_CURSOWEBM: aurora editorial en cabeceras de dia.
+       * Movimiento casi imperceptible para dar vida sin competir con el estudio.
+       */
+      section.level1[id^="dia-"] > h1 {
+        animation: diaryAuroraHeader 34s ease-in-out infinite alternate;
+        background:
+          radial-gradient(circle at 13% 18%, rgba(20, 184, 166, 0.28), transparent 31%),
+          radial-gradient(circle at 88% 10%, rgba(96, 165, 250, 0.2), transparent 34%),
+          radial-gradient(circle at 62% 108%, rgba(245, 158, 11, 0.18), transparent 34%),
+          linear-gradient(135deg, rgba(8, 19, 35, 0.99), rgba(21, 69, 75, 0.96) 58%, rgba(15, 23, 42, 0.98));
+        background-blend-mode: screen, screen, soft-light, normal;
+        background-position: 8% 45%, 88% 12%, 58% 100%, center;
+        background-size: 150% 150%, 145% 145%, 155% 155%, 100% 100%;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow:
+          0 24px 58px rgba(15, 23, 42, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      }
+
+      @keyframes diaryAuroraHeader {
+        0% {
+          background-position: 8% 45%, 88% 12%, 58% 100%, center;
+        }
+
+        100% {
+          background-position: 18% 55%, 78% 22%, 66% 92%, center;
+        }
+      }
+
       section.level2 > details > summary {
         border-radius: 8px;
         min-height: 38px;
@@ -4947,6 +5011,15 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         .study-topic-card:hover,
         section.level2 > details:hover {
           transform: none;
+        }
+
+        section.level1[id^="dia-"] > h1 {
+          animation: none !important;
+        }
+
+        body.editorial-document::before,
+        .cover {
+          animation: none !important;
         }
       }
 
