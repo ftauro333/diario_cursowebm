@@ -1965,10 +1965,13 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         border: 1px solid #d8e2ef;
         border-left: 4px solid var(--teal);
         border-radius: var(--radius);
+        box-sizing: border-box;
         color: var(--ink-2);
         line-height: 1.72;
         margin: 14px 0 18px;
+        max-width: 100%;
         padding: 12px 14px;
+        width: 100%;
       }
 
       .trace-card strong {
@@ -2176,6 +2179,229 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
       .layout-stage[data-mode="flex"] .layout-tile:nth-child(5),
       .layout-stage[data-mode="grid"] .layout-tile:nth-child(5) {
         border-left-color: var(--green);
+      }
+
+      /*
+       * DIARIO_CURSOWEBM: laboratorio de layout rediseñado.
+       * Hace visible la regla mental de block, flex y grid sin cambiar el ejercicio.
+       */
+      #lab-layout-mixer {
+        background:
+          radial-gradient(circle at 8% 0%, rgba(8, 124, 122, 0.12), transparent 34%),
+          radial-gradient(circle at 92% 8%, rgba(37, 87, 214, 0.1), transparent 32%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 254, 0.94));
+        overflow: hidden;
+      }
+
+      #lab-layout-mixer .interactive-lab-header {
+        max-width: 900px;
+      }
+
+      .layout-mixer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .layout-mixer-controls {
+        align-items: center;
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(201, 213, 230, 0.9);
+        border-radius: 14px;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.055);
+        padding: 10px;
+      }
+
+      .layout-mixer-controls > button {
+        min-width: 78px;
+      }
+
+      .layout-workbench {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: minmax(220px, 0.74fr) minmax(320px, 1.26fr);
+      }
+
+      .layout-rule-card,
+      .layout-preview-shell {
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(201, 213, 230, 0.9);
+        border-radius: 16px;
+        box-shadow: 0 18px 42px rgba(15, 23, 42, 0.07);
+      }
+
+      .layout-rule-card {
+        align-self: stretch;
+        display: grid;
+        gap: 14px;
+        padding: 16px;
+      }
+
+      .layout-rule-kicker,
+      .layout-preview-kicker {
+        color: var(--teal);
+        font-size: 0.72rem;
+        font-weight: 880;
+        letter-spacing: 0.095em;
+        text-transform: uppercase;
+      }
+
+      .layout-rule-card h3 {
+        color: var(--ink);
+        font-size: 1.35rem;
+        line-height: 1.08;
+        margin: 0;
+      }
+
+      .layout-rule-card p {
+        color: var(--ink-2);
+        margin: 0;
+      }
+
+      .layout-rule-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+      }
+
+      .layout-rule-list div {
+        background: rgba(248, 251, 255, 0.9);
+        border: 1px solid rgba(216, 225, 238, 0.88);
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .layout-rule-list dt {
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 850;
+        letter-spacing: 0.075em;
+        margin-bottom: 3px;
+        text-transform: uppercase;
+      }
+
+      .layout-rule-list dd {
+        color: var(--ink);
+        font-weight: 780;
+        margin: 0;
+      }
+
+      .layout-preview-shell {
+        overflow: hidden;
+      }
+
+      .layout-preview-toolbar {
+        align-items: center;
+        background: rgba(248, 251, 255, 0.92);
+        border-bottom: 1px solid rgba(216, 225, 238, 0.9);
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        padding: 10px 12px;
+      }
+
+      .layout-preview-dots {
+        display: inline-flex;
+        gap: 6px;
+      }
+
+      .layout-preview-dots span {
+        background: var(--line-strong);
+        border-radius: 999px;
+        height: 9px;
+        width: 9px;
+      }
+
+      .layout-preview-dots span:nth-child(1) {
+        background: var(--rose);
+      }
+
+      .layout-preview-dots span:nth-child(2) {
+        background: var(--amber);
+      }
+
+      .layout-preview-dots span:nth-child(3) {
+        background: var(--teal);
+      }
+
+      .layout-mode-pill {
+        background: #ffffff;
+        border: 1px solid rgba(201, 213, 230, 0.9);
+        border-radius: 999px;
+        color: var(--ink);
+        font-size: 0.78rem;
+        font-weight: 850;
+        padding: 6px 10px;
+      }
+
+      #lab-layout-mixer .layout-stage {
+        background:
+          linear-gradient(rgba(37, 87, 214, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(37, 87, 214, 0.055) 1px, transparent 1px),
+          linear-gradient(180deg, #ffffff, #f7fbff);
+        background-size: 28px 28px, 28px 28px, auto;
+        border: 0;
+        border-radius: 0;
+        min-height: 330px;
+        padding: 22px;
+      }
+
+      #lab-layout-mixer .layout-stage[data-mode="block"] .layout-tile {
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #lab-layout-mixer .layout-stage[data-mode="flex"] .layout-tile {
+        flex: 0 1 132px;
+      }
+
+      #lab-layout-mixer .layout-stage[data-mode="grid"] .layout-tile {
+        min-width: 0;
+      }
+
+      #lab-layout-mixer .layout-stage[data-center="true"] {
+        min-height: 330px;
+      }
+
+      #lab-layout-mixer .layout-tile {
+        align-items: center;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.94));
+        border: 1px solid rgba(155, 177, 208, 0.9);
+        border-top: 4px solid var(--blue);
+        border-left: 0;
+        border-radius: 12px;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.075);
+        display: flex;
+        gap: 4px;
+        justify-content: center;
+        min-height: 58px;
+        min-width: 96px;
+        padding: 12px;
+      }
+
+      #lab-layout-mixer .layout-stage .layout-tile:nth-child(2) {
+        border-top-color: var(--teal);
+      }
+
+      #lab-layout-mixer .layout-stage .layout-tile:nth-child(3) {
+        border-top-color: var(--amber);
+      }
+
+      #lab-layout-mixer .layout-stage .layout-tile:nth-child(4) {
+        border-top-color: var(--rose);
+      }
+
+      #lab-layout-mixer .layout-stage .layout-tile:nth-child(5) {
+        border-top-color: var(--green);
+      }
+
+      .layout-feedback-card {
+        background: #fff8ed;
+        border: 1px solid rgba(185, 119, 20, 0.28);
+        border-radius: 12px;
+        color: #744509;
+        font-weight: 760;
+        margin: 16px 0 0;
+        padding: 12px 14px;
       }
 
       .segmented {
@@ -4003,8 +4229,17 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
 
         .interactive-lab-grid,
         .dni-lab-row,
+        .layout-workbench,
         .form-game-shell {
           grid-template-columns: 1fr;
+        }
+
+        .layout-mixer-controls {
+          align-items: stretch;
+        }
+
+        .layout-mixer-controls > button {
+          flex: 1 1 88px;
         }
 
         .dom-flow {
@@ -4691,7 +4926,9 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         border-left: 5px solid rgba(8, 124, 122, 0.5);
         border-radius: 10px;
         box-shadow: 0 10px 28px rgba(15, 23, 42, 0.045);
-        max-width: var(--reading-width);
+        box-sizing: border-box;
+        max-width: 100%;
+        width: 100%;
         padding: 14px 16px;
       }
 
@@ -4952,6 +5189,201 @@ DIARIO_CURSOWEBM: hoja incrustada diario_cursowebm.css
         line-height: 1.5;
         margin: 12px 0 0;
         padding-top: 10px;
+      }
+
+      /* DIARIO_CURSOWEBM: ruta visual para estudiar sesiones y login paso a paso. */
+      .session-flow-board {
+        background:
+          radial-gradient(circle at 12% 18%, rgba(20, 184, 166, 0.12), transparent 32%),
+          radial-gradient(circle at 84% 8%, rgba(37, 99, 235, 0.1), transparent 30%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 251, 255, 0.92));
+        border: 1px solid rgba(180, 202, 229, 0.86);
+        border-radius: 18px;
+        box-shadow: 0 22px 56px rgba(15, 23, 42, 0.08);
+        margin: 18px 0 24px;
+        overflow: hidden;
+        padding: 18px;
+      }
+
+      .session-flow-board h2,
+      .session-flow-board h3 {
+        margin-top: 0;
+      }
+
+      .session-route {
+        counter-reset: session-step;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 16px 0 0;
+      }
+
+      .session-route > article {
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(148, 163, 184, 0.26);
+        border-radius: 14px;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.055);
+        flex: 1 1 230px;
+        min-height: 155px;
+        min-width: 220px;
+        padding: 14px 14px 14px 48px;
+        position: relative;
+      }
+
+      .session-route > article::before {
+        align-items: center;
+        background: linear-gradient(135deg, var(--teal), var(--blue));
+        border-radius: 999px;
+        color: #fff;
+        content: counter(session-step);
+        counter-increment: session-step;
+        display: inline-flex;
+        font-size: 0.78rem;
+        font-weight: 900;
+        height: 28px;
+        justify-content: center;
+        left: 13px;
+        position: absolute;
+        top: 14px;
+        width: 28px;
+      }
+
+      .session-route > article:nth-child(2)::before,
+      .session-route > article:nth-child(5)::before {
+        background: linear-gradient(135deg, var(--green), var(--teal));
+      }
+
+      .session-route > article:nth-child(3)::before,
+      .session-route > article:nth-child(6)::before {
+        background: linear-gradient(135deg, var(--gold), #d97706);
+      }
+
+      .session-route > article:nth-child(4)::before,
+      .session-route > article:nth-child(7)::before {
+        background: linear-gradient(135deg, var(--rose), #e11d48);
+      }
+
+      .session-route h3 {
+        color: var(--ink);
+        font-size: 0.86rem;
+        letter-spacing: 0.04em;
+        margin: 0 0 8px;
+        text-transform: uppercase;
+      }
+
+      .session-route p {
+        color: var(--ink-2);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .session-memory-map {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin: 16px 0 20px;
+      }
+
+      .session-memory-card {
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        border-radius: 14px;
+        border-top: 4px solid var(--teal);
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.055);
+        padding: 14px;
+      }
+
+      .session-memory-card:nth-child(2) {
+        border-top-color: var(--blue);
+      }
+
+      .session-memory-card:nth-child(3) {
+        border-top-color: var(--gold);
+      }
+
+      .session-memory-card strong {
+        color: var(--ink);
+        display: block;
+        font-size: 0.86rem;
+        letter-spacing: 0.045em;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+      }
+
+      .session-memory-card p {
+        color: var(--ink-2);
+        line-height: 1.48;
+        margin: 0;
+      }
+
+      .session-gate-grid {
+        display: grid;
+        align-items: start;
+        gap: 12px;
+        grid-template-columns: 1fr;
+        margin: 16px 0 20px;
+      }
+
+      .session-gate-card {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 250, 254, 0.88));
+        border: 1px solid rgba(180, 202, 229, 0.82);
+        border-radius: 15px;
+        box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
+        min-width: 0;
+        overflow: hidden;
+        padding: 15px;
+      }
+
+      .session-gate-card h3 {
+        color: var(--ink);
+        font-size: 0.92rem;
+        margin: 0 0 8px;
+      }
+
+      .session-gate-card p,
+      .session-gate-card li {
+        color: var(--ink-2);
+        line-height: 1.5;
+      }
+
+      .session-gate-card div.sourceCode.code-panel {
+        box-sizing: border-box;
+        margin-top: 12px;
+        max-width: 100%;
+        min-width: 0;
+        width: 100%;
+      }
+
+      .session-gate-card div.sourceCode.code-panel pre {
+        max-width: 100%;
+        min-width: 0;
+        overflow-x: auto;
+      }
+
+      .session-checkline {
+        background: linear-gradient(135deg, rgba(255, 251, 235, 0.96), rgba(255, 255, 255, 0.92));
+        border: 1px solid rgba(197, 154, 61, 0.46);
+        border-radius: 13px;
+        box-sizing: border-box;
+        color: #7a4b04;
+        font-weight: 800;
+        margin: 14px 0 22px;
+        max-width: 100%;
+        padding: 12px 14px;
+        width: 100%;
+      }
+
+      @media (max-width: 760px) {
+        .session-memory-map,
+        .session-gate-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .session-route > article {
+          flex-basis: 100%;
+          min-height: auto;
+          min-width: 0;
+        }
       }
 
       /*
@@ -5477,6 +5909,14 @@ DIARIO_CURSOWEBM: indice editorial generado
             Día 33 - Sesiones, login e IMC protegido
           </a>
         </li>
+        <li>
+          <a
+            href="#dia-34---filtros-java-web-y-proteccion-de-rutas"
+            id="toc-dia-34---filtros-java-web-y-proteccion-de-rutas"
+          >
+            Día 34 - Filtros Java Web y protección de rutas
+          </a>
+        </li>
       </ul>
     </nav>
     <section class="level1 front-section" id="portada">
@@ -5506,7 +5946,7 @@ DIARIO_CURSOWEBM: indice editorial generado
         </li>
         <li>
           <strong> Fecha de actualizacion: </strong>
-          2026-06-25.
+          2026-06-26.
         </li>
         <li>
           <strong> Version: </strong>
@@ -5661,6 +6101,11 @@ DIARIO_CURSOWEBM: indice editorial generado
               <strong>Login, HttpSession, redirect e IMC protegido</strong>
               <span>Dia 33: entender que el login crea memoria de usuario y el Servlet de IMC solo comprueba si esa memoria existe.</span>
             </a>
+            <a class="study-topic-card" href="#dia-34---filtros-java-web-y-proteccion-de-rutas">
+              <b>Filtros Java Web</b>
+              <strong>Intercepción, cadena de filtros y rutas protegidas</strong>
+              <span>Dia 34: entender qué ocurre antes y después de un Servlet, y proteger <code>imc.html</code> y <code>CalculoIMC</code> desde un filtro.</span>
+            </a>
           </div>
         </div>
       </section>
@@ -5693,6 +6138,7 @@ DIARIO_CURSOWEBM: indice editorial generado
             <tr><td>Diseño Java Web, capas, UML y polimorfismo</td><td><a href="#dia-31---refactorizacion-arquitectura-multicapa-y-uml">Día 31</a></td><td>Separar OpositaTest en capas y comprobar <code>@Override</code> con <code>Dni</code>/<code>Nie</code>.</td></tr>
             <tr><td>Polimorfismo, casting e <code>instanceof</code></td><td><a href="#dia-32---polimorfismo-aplicado-al-servlet-letradni">Día 32</a></td><td>Resolver <code>LetraDni</code> con DNI/NIE y contar alumnos dentro de una <code>List&lt;Persona&gt;</code>.</td></tr>
             <tr><td>Sesiones, login y rutas protegidas</td><td><a href="#dia-33---sesiones-login-e-imc-protegido">Día 33</a></td><td>Crear sesión al entrar, comprobarla antes de calcular IMC y responder <code>401</code> si no existe.</td></tr>
+            <tr><td>Filtros Java Web</td><td><a href="#dia-34---filtros-java-web-y-proteccion-de-rutas">Día 34</a></td><td>Crear un <code>Filter</code>, registrar la URL con <code>@WebFilter</code> y decidir si la petición pasa con <code>chain.doFilter</code>.</td></tr>
           </tbody>
         </table>
       </section>
@@ -6931,10 +7377,10 @@ Diagrama Navegacion Pantallas Clientes.drawio:
             obedecen a block, flex o grid.
           </p>
         </div>
-        <div class="interactive-lab-grid">
+        <div class="interactive-lab-grid layout-mixer-grid">
           <div
             aria-label="Cambiar modelo de layout"
-            class="interactive-controls"
+            class="interactive-controls layout-mixer-controls"
             role="group"
           >
             <button
@@ -6961,19 +7407,54 @@ Diagrama Navegacion Pantallas Clientes.drawio:
               Centrar piezas
             </label>
           </div>
-          <div
-            class="layout-stage lab-stage"
-            data-center="false"
-            data-mode="block"
-          >
-            <span class="layout-tile"> HTML </span>
-            <span class="layout-tile"> CSS </span>
-            <span class="layout-tile"> JS </span>
-            <span class="layout-tile"> IMG </span>
-            <span class="layout-tile"> FORM </span>
+          <div class="layout-workbench">
+            <section class="layout-rule-card" aria-live="polite">
+              <span class="layout-rule-kicker">Regla activa</span>
+              <h3 data-layout-rule-title="">Block: flujo vertical</h3>
+              <p data-layout-rule-copy="">
+                Cada elemento reclama su propia línea. Es el punto de partida de
+                muchos elementos HTML.
+              </p>
+              <dl class="layout-rule-list">
+                <div>
+                  <dt>Dirección</dt>
+                  <dd data-layout-axis="">Arriba hacia abajo</dd>
+                </div>
+                <div>
+                  <dt>Cuándo usarlo</dt>
+                  <dd data-layout-use="">Contenido normal: títulos, párrafos y secciones.</dd>
+                </div>
+                <div>
+                  <dt>Error típico</dt>
+                  <dd data-layout-risk="">Intentar crear una barra o cuadrícula solo con block.</dd>
+                </div>
+              </dl>
+            </section>
+            <section class="layout-preview-shell" aria-label="Vista visual del modelo de layout">
+              <div class="layout-preview-toolbar">
+                <span class="layout-preview-dots" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+                <span class="layout-preview-kicker">Escenario CSS</span>
+                <span class="layout-mode-pill" data-layout-mode-label="">display: block</span>
+              </div>
+              <div
+                class="layout-stage lab-stage"
+                data-center="false"
+                data-mode="block"
+              >
+                <span class="layout-tile">HTML</span>
+                <span class="layout-tile">CSS</span>
+                <span class="layout-tile">JS</span>
+                <span class="layout-tile">IMG</span>
+                <span class="layout-tile">FORM</span>
+              </div>
+            </section>
           </div>
         </div>
-        <p class="lab-feedback" data-feedback="">
+        <p class="lab-feedback layout-feedback-card" data-feedback="">
           Block apila cada caja en una linea nueva: es el comportamiento base de
           muchos elementos.
         </p>
@@ -21793,7 +22274,7 @@ DIARIO_CURSOWEBM: revision editorial 2026-06-23 - Dia 31 rehecho como bloque uni
 
       <section class="level2" id="trazabilidad-dia-31">
         <h2>Material usado</h2>
-        <p>
+        <p class="trace-card">
           La parte de arquitectura se apoya en el ejercicio <code>alumno/opositatest/opositaweb</code>.
           La parte de Java se contrasta con los archivos de profesor
           <code>profe/f11webjava/appwebprofe/src/main/java/appwebprofe/servlet/Dni.java</code>,
@@ -22368,7 +22849,7 @@ DIARIO_CURSOWEBM: revision editorial 2026-06-24 - LetraDni, polimorfismo y valid
 
       <section class="level2" id="trazabilidad-dia-32">
         <h2>Material usado</h2>
-        <p>
+        <p class="trace-card">
           La práctica se apoya en
           <code>profe/f11webjava/appwebprofe/src/main/java/appwebprofe/servlet/LetraDni.java</code>,
           <code>Dni.java</code>, <code>Nie.java</code> y <code>MainPolimorfismo.java</code>.
@@ -23021,20 +23502,21 @@ Alumno alumno = (Alumno) persona1;</code></pre>
     <section class="level1" id="dia-33---sesiones-login-e-imc-protegido">
       <h1 data-day-date="25/06/2026">Día 33 - Sesiones, login e IMC protegido</h1>
       <p>
-        Hoy el proyecto IMC deja de ser una página pública que calcula sin más y
-        pasa a tener una entrada previa: el usuario debe iniciar sesión antes de
-        poder usar el cálculo. La dificultad no está en la fórmula del IMC, sino
-        en entender cómo una aplicación web recuerda que alguien ya ha entrado.
+        Este día se organiza como una ruta de montaje. La pregunta no es solo
+        "cómo calculo el IMC", sino <strong>cómo impido que cualquiera use ese
+        cálculo sin haber entrado antes</strong>. Para conseguirlo se combinan
+        cuatro piezas: una página de login, un Servlet que valida usuarios, una
+        sesión HTTP y un Servlet de IMC que comprueba esa sesión antes de trabajar.
       </p>
 
       <section class="level2 quick-summary" id="resumen-rapido-dia-33">
         <h2>Resumen rápido</h2>
         <ul>
-          <li><strong>Qué se vio:</strong> login, <code>HttpSession</code>, Servlet protegido, usuarios en contexto y respuesta <code>401</code>.</li>
-          <li><strong>Concepto que importa:</strong> <code>session</code> recuerda a un navegador; <code>context</code> guarda datos compartidos por toda la app.</li>
-          <li><strong>Error a evitar:</strong> confundir crear sesión con validar usuario, o usar <code>getSession()</code> en una ruta protegida.</li>
-          <li><strong>Práctica:</strong> cargar usuarios al arrancar, validar login contra esa lista, crear sesión y calcular IMC solo si existe.</li>
-          <li><strong>Debe quedar claro:</strong> <code>request</code> dura una petición, <code>session</code> un usuario y <code>context</code> toda la aplicación.</li>
+          <li><strong>Qué se vio:</strong> login con formulario, usuarios válidos, <code>HttpSession</code>, redirección e IMC protegido.</li>
+          <li><strong>Concepto que importa:</strong> el login crea memoria de usuario; el cálculo solo pregunta si esa memoria existe.</li>
+          <li><strong>Error a evitar:</strong> usar <code>getSession()</code> en una ruta protegida, porque puede crear sesión sin validar.</li>
+          <li><strong>Práctica:</strong> configurar <code>login.html</code>, validar en <code>Login</code>, crear sesión y bloquear <code>CalculoIMC</code> con <code>401</code>.</li>
+          <li><strong>Debe quedar claro:</strong> <code>context</code> guarda usuarios compartidos; <code>session</code> identifica a un navegador concreto.</li>
         </ul>
       </section>
 
@@ -23044,22 +23526,26 @@ Alumno alumno = (Alumno) persona1;</code></pre>
           <article class="study-level-item">
             <h3>Esencial</h3>
             <p>
-              Diferenciar <code>request</code>, <code>session</code> y
-              <code>context</code> antes de leer el código.
+              Entender la diferencia entre <code>getSession()</code> y
+              <code>getSession(false)</code>. Esa diferencia decide si se crea
+              una sesión o solo se comprueba una sesión existente.
             </p>
           </article>
           <article class="study-level-item">
             <h3>Práctica</h3>
             <p>
-              <code>EscuchaContexto</code> carga usuarios; <code>Login</code>
-              valida; <code>CalculoIMC</code> comprueba la sesión.
+              Seguir el flujo: <code>login.html</code> envía datos,
+              <code>Login</code> valida, Tomcat crea sesión, <code>imc.html</code>
+              llama a <code>CalculoIMC</code> y el Servlet devuelve JSON o
+              <code>401</code>.
             </p>
           </article>
           <article class="study-level-item">
             <h3>Ampliación</h3>
             <p>
-              Entender por qué <code>contains</code> funciona con un
-              <code>record</code> y por qué hace falta casting al leer del contexto.
+              Relacionar <code>ServletContext</code>, <code>record Usuario</code>,
+              <code>ArrayList</code>, casting y <code>contains</code> para montar
+              una lista de usuarios compartida por toda la aplicación.
             </p>
           </article>
         </div>
@@ -23067,128 +23553,161 @@ Alumno alumno = (Alumno) persona1;</code></pre>
 
       <section class="level2" id="material-usado-dia-33">
         <h2>Material usado</h2>
-        <p>
+        <p class="trace-card">
           La práctica se apoya en
-          <code>profe/f11webjava/imcsessionprofe/src/main/java/servlets/Login.java</code>,
-          <code>CalculoIMC.java</code>,
+          <code>profe/f11webjava/imcsessionprofe/src/main/webapp/WEB-INF/web.xml</code>,
+          <code>src/main/webapp/login.html</code>,
+          <code>src/main/webapp/error-login.html</code>,
+          <code>src/main/java/servlets/Login.java</code>,
+          <code>src/main/java/servlets/CalculoIMC.java</code>,
           <code>src/main/java/contexto/EscuchaContexto.java</code>,
-          <code>src/main/java/modelo/Usuario.java</code>,
-          <code>src/main/java/modelo/ImcRespuestaNueva.java</code>,
-          <code>src/main/webapp/login.html</code>, <code>imc.html</code> y
-          <code>WEB-INF/web.xml</code>. La carpeta del profesor se ha consultado
-          como referencia y no se ha modificado.
+          <code>src/main/java/modelo/Usuario.java</code> e
+          <code>ImcRespuestaNueva.java</code>. La carpeta del profesor se ha
+          consultado como referencia y no se ha modificado.
         </p>
       </section>
 
       <section class="level2" id="estructura-proyecto-dia-33">
         <h2>Estructura del proyecto</h2>
         <p>
-          Para no mezclar piezas, conviene mirar el proyecto como tres zonas:
-          código Java, documentos web visibles y configuración interna de la
-          aplicación. El cálculo y el login viven en los Servlets; las pantallas
-          viven en <code>webapp</code>; las librerías y la configuración protegida
-          viven dentro de <code>WEB-INF</code>.
+          Antes de escribir código conviene saber dónde va cada pieza. En esta
+          práctica, el navegador solo ve lo que está en <code>webapp</code>; los
+          Servlets y modelos viven en <code>src/main/java</code>; y
+          <code>WEB-INF</code> guarda configuración y librerías internas.
         </p>
         <div class="sourceCode code-panel language-text" data-language-label="TREE">
-          <pre class="sourceCode text"><code class="sourceCode text" data-start-line="1">imcsesionweb/
-|-- .settings/                         configuración del IDE
-|-- bin/                               salida generada por el IDE
-|-- build/                             salida de compilación
+          <pre class="sourceCode text"><code class="sourceCode text" data-start-line="1">imcsessionprofe/
 |-- src/main/
-|   |-- java/contexto/
-|   |   `-- EscuchaContexto.java       listener: carga usuarios al arrancar
-|   |-- java/modelo/
-|   |   |-- ImcRespuestaNueva.java     record de datos para devolver JSON
-|   |   `-- Usuario.java               record de usuario y contraseña
-|   |-- java/servlets/
-|   |   |-- CalculoIMC.java            Servlet protegido: calcula solo si hay sesión
-|   |   |-- Login.java                 Servlet de entrada: valida y crea sesión
+|   |-- java/
+|   |   |-- contexto/
+|   |   |   `-- EscuchaContexto.java       carga usuarios al arrancar
+|   |   |-- modelo/
+|   |   |   |-- Usuario.java               record usuario/password
+|   |   |   `-- ImcRespuestaNueva.java     record de respuesta JSON
+|   |   `-- servlets/
+|   |       |-- Login.java                 valida credenciales y crea sesión
+|   |       `-- CalculoIMC.java            calcula solo si hay sesión
 |   `-- webapp/
 |       |-- css/
-|       |   |-- errorlogin.css         estilos de la pantalla de error
-|       |   `-- login.css              estilos del formulario de login
-|       |-- META-INF/
-|       |   `-- MANIFEST.MF            metadatos internos del paquete web
+|       |   |-- login.css                  estilos del formulario
+|       |   `-- errorlogin.css             estilos de error de login
 |       |-- WEB-INF/
-|       |   |-- lib/
-|       |   |   `-- gson-2.14.0.jar     librería para convertir objetos a JSON
-|       |   `-- web.xml                configuración de bienvenida y sesión
-|       |-- error-login.html           pantalla si falla el acceso
-|       |-- estiloimc.css              estilos de la pantalla de IMC
-|       |-- imc.html                   pantalla del cálculo
-|       |-- imc.js                     JavaScript que llama a CalculoIMC con fetch
-|       `-- login.html                 formulario inicial de acceso
-`-- .project                           configuración del proyecto en Eclipse</code></pre>
+|       |   |-- lib/gson-2.14.0.jar         librería para JSON
+|       |   `-- web.xml                    bienvenida y configuración web
+|       |-- login.html                     puerta de entrada
+|       |-- error-login.html               pantalla si falla el login
+|       |-- imc.html                       pantalla protegida tras entrar
+|       |-- imc.js                         llama al Servlet de cálculo
+|       `-- estiloimc.css                  estilos del IMC</code></pre>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Zona</th>
-              <th>Qué guarda</th>
-              <th>Regla para no liarse</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>src/main/java/servlets</code></td>
-              <td>Clases Java que responden a peticiones HTTP.</td>
-              <td>Si empieza por lógica de servidor, va aquí.</td>
-            </tr>
-            <tr>
-              <td><code>src/main/webapp</code></td>
-              <td>HTML, CSS y JavaScript que puede pedir el navegador.</td>
-              <td>Si es una pantalla visible, va aquí.</td>
-            </tr>
-            <tr>
-              <td><code>WEB-INF</code></td>
-              <td>Configuración y librerías internas de la aplicación.</td>
-              <td>El navegador no entra aquí directamente.</td>
-            </tr>
-            <tr>
-              <td><code>WEB-INF/lib</code></td>
-              <td>JARs externos, como <code>gson-2.14.0.jar</code>.</td>
-              <td>Si Java necesita una librería, se coloca en esta carpeta.</td>
-            </tr>
-            <tr>
-              <td><code>bin</code>, <code>build</code>, <code>.settings</code> y <code>.project</code></td>
-              <td>Archivos de IDE o compilación.</td>
-              <td>No son el lugar principal para estudiar la lógica del ejercicio.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section class="level2" id="idea-central-sesion-dia-33">
-        <h2>La idea central: dos peticiones, una memoria</h2>
-        <p>
-          El lío suele aparecer porque parece que todo ocurre en una sola acción:
-          escribes usuario, pulsas entrar y terminas calculando el IMC. En realidad,
-          el navegador y Tomcat hacen varias conversaciones separadas.
-        </p>
-        <ol>
-          <li>El navegador abre la aplicación y <code>web.xml</code> manda a <code>login.html</code> como página inicial.</li>
-          <li>El formulario de login envía <code>usuario</code> y <code>password</code> al Servlet <code>/login</code>.</li>
-          <li>El Servlet <code>Login</code> lee esos datos con <code>request.getParameter(...)</code>.</li>
-          <li>Si el usuario es válido, <code>Login</code> crea una sesión con <code>request.getSession()</code>.</li>
-          <li>Tomcat asocia esa sesión al navegador mediante una cookie de sesión.</li>
-          <li><code>response.sendRedirect("imc.html")</code> no pinta la página: ordena al navegador hacer otra petición.</li>
-          <li><code>imc.html</code> carga su JavaScript y, al enviar el formulario, llama al Servlet <code>CalculoIMC</code> con <code>fetch</code>.</li>
-          <li>El navegador acompaña esa petición con la cookie de sesión.</li>
-          <li><code>CalculoIMC</code> usa <code>request.getSession(false)</code> para comprobar si la sesión existe.</li>
-          <li>Si no hay sesión, responde <code>401 Unauthorized</code>; si la hay, calcula el IMC y devuelve JSON.</li>
-        </ol>
-        <p>
-          Frase para memorizar: <strong>login crea la sesión; el cálculo la
-          comprueba</strong>.
+        <p class="session-checkline">
+          Regla de orden: HTML/CSS/JS visible en <code>webapp</code>; lógica Java
+          en <code>src/main/java</code>; configuración interna en <code>WEB-INF</code>.
         </p>
       </section>
 
-      <section class="level2" id="webxml-login-dia-33">
-        <h2>Entrada de la aplicación: <code>web.xml</code> y <code>login.html</code></h2>
+      <section class="level2 session-flow-board" id="ruta-montaje-sesion-dia-33">
+        <h2>Ruta de montaje: poner sesión y login paso a paso</h2>
         <p>
-          La aplicación no empieza directamente en el cálculo. Primero enseña el
-          formulario de acceso. Esa decisión queda en el archivo de configuración:
-          la página de bienvenida es <code>login.html</code>.
+          Esta es la secuencia que hay que poder reproducir sin memorizar código
+          a ciegas. Cada paso tiene una responsabilidad concreta.
+        </p>
+        <div class="session-route">
+          <article>
+            <h3>Configurar entrada</h3>
+            <p>
+              En <code>web.xml</code>, declarar <code>login.html</code> como
+              página inicial con <code>&lt;welcome-file&gt;</code>.
+            </p>
+          </article>
+          <article>
+            <h3>Crear formulario</h3>
+            <p>
+              En <code>login.html</code>, enviar <code>usuario</code> y
+              <code>password</code> por <code>POST</code> a la ruta
+              <code>login</code>.
+            </p>
+          </article>
+          <article>
+            <h3>Preparar usuarios</h3>
+            <p>
+              Crear <code>record Usuario</code> y cargar una
+              <code>ArrayList&lt;Usuario&gt;</code> en el contexto al arrancar.
+            </p>
+          </article>
+          <article>
+            <h3>Validar credenciales</h3>
+            <p>
+              En <code>Login</code>, leer parámetros, recuperar
+              <code>listaUsuarios</code> y comprobar con <code>contains</code>.
+            </p>
+          </article>
+          <article>
+            <h3>Crear sesión</h3>
+            <p>
+              Solo si el usuario existe, ejecutar <code>request.getSession()</code>
+              y redirigir a <code>imc.html</code>.
+            </p>
+          </article>
+          <article>
+            <h3>Proteger el cálculo</h3>
+            <p>
+              En <code>CalculoIMC</code>, empezar con
+              <code>request.getSession(false)</code>. Si devuelve
+              <code>null</code>, responder <code>401</code>.
+            </p>
+          </article>
+          <article>
+            <h3>Responder datos</h3>
+            <p>
+              Si hay sesión, leer <code>peso</code> y <code>altura</code>, calcular
+              el IMC, serializar con Gson y devolver <code>application/json</code>.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="level2" id="mapa-memorias-dia-33">
+        <h2>Las tres memorias que no hay que mezclar</h2>
+        <p>
+          La sesión se entiende mejor si se compara con los ámbitos vistos antes.
+          Los tres guardan datos, pero cada uno vive en un sitio distinto.
+        </p>
+        <div class="session-memory-map" aria-label="Comparación entre request, session y context">
+          <article class="session-memory-card">
+            <strong><code>request</code></strong>
+            <p>
+              Vive solo durante una petición. Ejemplo: <code>peso</code> y
+              <code>altura</code> enviados a <code>CalculoIMC</code>.
+            </p>
+          </article>
+          <article class="session-memory-card">
+            <strong><code>session</code></strong>
+            <p>
+              Vive asociada a un navegador. Ejemplo: el usuario que ya ha pasado
+              por el login.
+            </p>
+          </article>
+          <article class="session-memory-card">
+            <strong><code>context</code></strong>
+            <p>
+              Vive para toda la aplicación. Ejemplo: <code>listaUsuarios</code>
+              compartida por todos los Servlets.
+            </p>
+          </article>
+        </div>
+        <p class="session-checkline">
+          Frase de repaso: <strong>context prepara usuarios; login crea sesión;
+          IMC comprueba sesión.</strong>
+        </p>
+      </section>
+
+      <section class="level2" id="paso-1-webxml-login-dia-33">
+        <h2>Paso 1: hacer que la aplicación empiece en <code>login.html</code></h2>
+        <p>
+          El usuario no debe aterrizar directamente en la calculadora. La puerta
+          de entrada se define en <code>WEB-INF/web.xml</code> con
+          <code>welcome-file-list</code>.
         </p>
         <div class="sourceCode code-panel language-xml" data-language-label="XML">
           <pre class="sourceCode xml"><code class="sourceCode xml" data-start-line="1">&lt;welcome-file-list&gt;
@@ -23196,354 +23715,96 @@ Alumno alumno = (Alumno) persona1;</code></pre>
 &lt;/welcome-file-list&gt;</code></pre>
         </div>
         <p>
-          El formulario no llama a JavaScript. Envía una petición HTTP normal al
-          Servlet <code>login</code> usando <code>POST</code>, porque está enviando
-          credenciales al servidor.
+          También se vio que la duración de la sesión puede configurarse en este
+          archivo con <code>&lt;session-timeout&gt;</code>. En la práctica queda
+          comentado, pero sirve para entender que la sesión no vive para siempre.
+        </p>
+        <div class="sourceCode code-panel language-xml" data-language-label="XML">
+          <pre class="sourceCode xml"><code class="sourceCode xml" data-start-line="1">&lt;session-config&gt;
+    &lt;session-timeout&gt;10&lt;/session-timeout&gt;
+&lt;/session-config&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="level2" id="paso-2-formulario-login-dia-33">
+        <h2>Paso 2: formulario de login con <code>POST</code></h2>
+        <p>
+          El formulario recoge dos datos: <code>usuario</code> y
+          <code>password</code>. El método debe ser <code>POST</code> porque el
+          navegador envía credenciales al servidor en el cuerpo de la petición.
         </p>
         <div class="sourceCode code-panel language-html" data-language-label="HTML">
           <pre class="sourceCode html"><code class="sourceCode html" data-start-line="1">&lt;form action="login" method="post"&gt;
-    &lt;input type="text" name="usuario" required&gt;
-    &lt;input type="password" name="password" required&gt;
+    &lt;input type="text" name="usuario" autocomplete="username" required&gt;
+    &lt;input type="password" name="password" autocomplete="current-password" required&gt;
     &lt;button type="submit"&gt;Entrar&lt;/button&gt;
 &lt;/form&gt;</code></pre>
         </div>
+        <p>
+          <code>action="login"</code> apunta a la ruta del Servlet anotado con
+          <code>@WebServlet("/login")</code>. No se escribe el nombre del archivo
+          Java: se escribe la ruta HTTP que Tomcat tiene asociada al Servlet.
+        </p>
       </section>
 
-      <section class="level2" id="login-crea-sesion-dia-33">
-        <h2>Servlet <code>Login</code>: validar y crear sesión</h2>
+      <section class="level2" id="paso-3-usuarios-contexto-dia-33">
+        <h2>Paso 3: usuarios válidos en el contexto</h2>
         <p>
-          El Servlet <code>Login</code> es la puerta de entrada. Su trabajo mínimo
-          no es calcular nada: lee usuario y contraseña, decide si son válidos y,
-          si lo son, crea la sesión.
+          En esta fase no hay base de datos. Para practicar, se crea una lista de
+          usuarios en memoria cuando arranca la aplicación. Esa lista se guarda en
+          <code>ServletContext</code> porque debe estar disponible para cualquier
+          Servlet.
         </p>
-        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
-          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">String usuario = request.getParameter("usuario");
-String password = request.getParameter("password");
-
-if (existeUsuario(usuario, password)) {
-    HttpSession sesion = request.getSession();
-    response.sendRedirect("imc.html");
-} else {
-    response.sendRedirect("error-login.html");
+        <div class="session-gate-grid">
+          <article class="session-gate-card">
+            <h3>Modelo</h3>
+            <p>
+              <code>Usuario</code> es un <code>record</code>. Guarda usuario y
+              contraseña, y además permite comparar por contenido.
+            </p>
+            <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+              <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">public record Usuario(String usuario, String password) {
 }</code></pre>
-        </div>
-        <p>
-          La línea importante es <code>request.getSession()</code>. Si el navegador
-          todavía no tenía sesión, Tomcat crea una nueva. A partir de ahí, el
-          navegador queda identificado mientras la sesión siga viva.
-        </p>
-      </section>
-
-      <section class="level2" id="redirect-dia-33">
-        <h2>Redirección: no mueve variables, abre otra petición</h2>
-        <p>
-          <code>response.sendRedirect("imc.html")</code> no pasa el objeto
-          <code>sesion</code> como si fuera una variable de Java. Lo que hace es
-          responder al navegador con una orden: "ve ahora a esta otra página".
-          Por eso se produce una segunda petición HTTP.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Acción</th>
-              <th>Qué ocurre realmente</th>
-              <th>Qué no debes imaginar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>request.getSession()</code></td>
-              <td>Tomcat crea o recupera memoria de sesión para ese navegador.</td>
-              <td>No calcula el IMC.</td>
-            </tr>
-            <tr>
-              <td><code>sendRedirect("imc.html")</code></td>
-              <td>El navegador hace una nueva petición a <code>imc.html</code>.</td>
-              <td>No transporta variables Java dentro del HTML.</td>
-            </tr>
-            <tr>
-              <td><code>fetch("CalculoIMC?...")</code></td>
-              <td>La página pide datos al Servlet de cálculo.</td>
-              <td>No vuelve a ejecutar el login.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section class="level2" id="calculo-imc-protegido-dia-33">
-        <h2><code>CalculoIMC</code>: comprobar sesión antes de calcular</h2>
-        <p>
-          El Servlet de IMC debe empezar preguntando si la petición trae una
-          sesión válida. Aquí se usa <code>getSession(false)</code> porque no se
-          quiere crear una sesión nueva: solo se quiere comprobar si ya existe.
-        </p>
-        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
-          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">HttpSession sesionActual = request.getSession(false);
-
-if (sesionActual == null) {
-    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-    response.getWriter().write("Sin sesión. No autorizado (401)");
-    return;
-}</code></pre>
-        </div>
-        <p>
-          Si hay sesión, entonces sí tiene sentido leer <code>peso</code> y
-          <code>altura</code>, convertirlos con <code>Float.parseFloat(...)</code>,
-          calcular el IMC y devolver el resultado como JSON.
-        </p>
-        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
-          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">String peso = request.getParameter("peso");
-String altura = request.getParameter("altura");
-
-float pesof = Float.parseFloat(peso);
-float alturaf = Float.parseFloat(altura);
-
-float imcNumerico = pesof / (alturaf * alturaf);
-ImcRespuestaNueva respuesta = new ImcRespuestaNueva(
-        pesof,
-        alturaf,
-        imcNominal,
-        imcNumerico);
-
-response.setContentType("application/json");
-response.getWriter().write(new Gson().toJson(respuesta));</code></pre>
-        </div>
-      </section>
-
-      <section class="level2" id="getsession-comparacion-dia-33">
-        <h2><code>getSession()</code> frente a <code>getSession(false)</code></h2>
-        <p>
-          Esta es la comparación que conviene tener clara antes de seguir. La
-          diferencia no es de sintaxis: cambia la seguridad de la aplicación.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Método</th>
-              <th>Qué hace si no hay sesión</th>
-              <th>Dónde encaja</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>request.getSession()</code></td>
-              <td>Crea una sesión nueva.</td>
-              <td>En <code>Login</code>, después de validar usuario y contraseña.</td>
-            </tr>
-            <tr>
-              <td><code>request.getSession(false)</code></td>
-              <td>Devuelve <code>null</code>; no crea nada.</td>
-              <td>En <code>CalculoIMC</code>, para proteger la ruta.</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>
-          Regla práctica: <strong>crear sesión solo al entrar; comprobar sesión
-          en todo lo que esté protegido</strong>.
-        </p>
-      </section>
-
-      <section class="level2" id="imc-js-fetch-dia-33">
-        <h2>La página <code>imc.html</code> no calcula sola</h2>
-        <p>
-          La página del IMC recoge los datos del formulario y llama al Servlet
-          mediante <code>fetch</code>. Si el servidor responde bien, se lee JSON.
-          Si responde con error, se muestra el texto del fallo.
-        </p>
-        <div class="sourceCode code-panel language-javascript" data-language-label="JS">
-          <pre class="sourceCode javascript"><code class="sourceCode javascript" data-start-line="1">const url = `CalculoIMC?peso=${peso}&amp;altura=${altura}`;
-
-fetch(url)
-    .then(response =&gt; {
-        if (!response.ok) {
-            return response.text().then(text =&gt; {
-                throw new Error(text);
-            });
-        }
-
-        return response.json();
-    });</code></pre>
-        </div>
-        <p>
-          Esto une dos ideas ya vistas: <code>fetch</code> pide datos al servidor
-          y el Servlet responde con un estado HTTP. Un <code>401</code> no significa
-          que el cálculo esté roto: significa que el servidor no reconoce una
-          sesión válida para esa petición.
-        </p>
-      </section>
-
-      <section class="level2" id="mapa-mental-dia-33">
-        <h2>Mapa mental para no perderse</h2>
-        <div class="concept-visual" aria-label="Ruta de estudio de sesión, login e IMC protegido">
-          <div class="concept-steps">
-            <span>login.html</span>
-            <span>POST /login</span>
-            <span><code>getSession()</code></span>
-            <span>redirect</span>
-            <span>imc.html</span>
-            <span><code>fetch</code></span>
-            <span><code>getSession(false)</code></span>
-            <span>JSON o 401</span>
-          </div>
-          <p class="concept-callout">
-            El cálculo del IMC solo ocurre al final, cuando la sesión ya existe.
-          </p>
-        </div>
-        <div class="micro-lesson cognitive-row">
-          <article class="cognitive-card">
-            <h3>Idea clave</h3>
-            <p>Login e IMC son peticiones distintas, no una única ejecución continua.</p>
+            </div>
           </article>
-          <article class="cognitive-card">
-            <h3>Regla práctica</h3>
-            <p>El login crea la sesión; los Servlets protegidos la comprueban.</p>
-          </article>
-          <article class="cognitive-card">
-            <h3>Código que lo demuestra</h3>
-            <p><code>getSession()</code> crea; <code>getSession(false)</code> solo mira.</p>
-          </article>
-          <article class="cognitive-card">
-            <h3>Cuidado</h3>
-            <p>Si proteges con <code>getSession()</code>, puedes dejar entrar por accidente.</p>
-          </article>
-          <article class="cognitive-card">
-            <h3>Comprueba</h3>
-            <p>Abre el cálculo sin login: debe responder <code>401</code>.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="level2" id="request-session-context-dia-33">
-        <h2>Request, session y context en una frase</h2>
-        <p>
-          Este día se entiende mejor si se compara con lo anterior. Los tres
-          ámbitos guardan datos, pero no viven lo mismo.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Ámbito</th>
-              <th>Duración</th>
-              <th>Ejemplo útil</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>request</code></td>
-              <td>Solo una petición.</td>
-              <td><code>peso</code> y <code>altura</code> que llegan a <code>CalculoIMC</code>.</td>
-            </tr>
-            <tr>
-              <td><code>session</code></td>
-              <td>Varias peticiones del mismo navegador.</td>
-              <td>Usuario que ya inició sesión.</td>
-            </tr>
-            <tr>
-              <td><code>context</code></td>
-              <td>Toda la aplicación mientras Tomcat esté arrancado.</td>
-              <td>Contadores globales o listas compartidas por todos.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section class="level2" id="usuarios-en-contexto-dia-33">
-        <h2>Último tramo: usuarios en el contexto de aplicación</h2>
-        <p>
-          La segunda parte del día mejora el login. Al principio se podía pensar
-          en validar usuario y contraseña directamente dentro del Servlet, pero
-          eso mezcla responsabilidades. La práctica nueva coloca los usuarios en
-          el <code>ServletContext</code>, que es una memoria común para toda la
-          aplicación.
-        </p>
-        <div class="micro-lesson cognitive-row">
-          <article class="cognitive-card">
-            <h3>Idea clave</h3>
-            <p><code>context</code> no pertenece a un usuario: pertenece a la aplicación completa.</p>
-          </article>
-          <article class="cognitive-card">
-            <h3>Regla práctica</h3>
-            <p>Los datos compartidos se preparan al arrancar, no en cada petición.</p>
-          </article>
-          <article class="cognitive-card">
-            <h3>Código que lo demuestra</h3>
-            <p><code>setAttribute</code> guarda la lista y <code>getAttribute</code> la recupera.</p>
-          </article>
-          <article class="cognitive-card">
-            <h3>Cuidado</h3>
-            <p>Al leer del contexto vuelve un <code>Object</code>; por eso aparece el casting.</p>
-          </article>
-          <article class="cognitive-card">
-            <h3>Comprueba</h3>
-            <p>El login debe aceptar solo usuarios que estén dentro de <code>listaUsuarios</code>.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="level2" id="record-usuario-dia-33">
-        <h2><code>Usuario</code> como modelo de datos</h2>
-        <p>
-          El usuario deja de ser solo dos textos sueltos. Se crea un modelo pequeño
-          con <code>record</code>. Esto encaja con lo visto en JSON: cuando un dato
-          empieza a tener estructura propia, conviene darle una clase o un record.
-        </p>
-        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
-          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">package modelo;
-
-public record Usuario(String usuario, String password) {
-
-}</code></pre>
-        </div>
-        <p>
-          La ventaja didáctica del <code>record</code> es doble. Primero, evita
-          escribir a mano constructor, getters y métodos básicos. Segundo, Java
-          genera una comparación por contenido: dos <code>Usuario</code> con el
-          mismo <code>usuario</code> y <code>password</code> se consideran iguales.
-          Eso permite usar <code>contains</code> sobre una lista.
-        </p>
-      </section>
-
-      <section class="level2" id="listener-contexto-dia-33">
-        <h2><code>EscuchaContexto</code>: preparar datos al arrancar</h2>
-        <p>
-          Un <code>ServletContextListener</code> permite ejecutar código cuando la
-          aplicación arranca. En esta práctica se usa para crear la lista de
-          usuarios una sola vez y guardarla en el contexto con el nombre
-          <code>listaUsuarios</code>.
-        </p>
-        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
-          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">@WebListener
+          <article class="session-gate-card">
+            <h3>Arranque</h3>
+            <p>
+              <code>EscuchaContexto</code> se ejecuta al iniciar la aplicación y
+              guarda <code>listaUsuarios</code> en el contexto.
+            </p>
+            <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+              <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">@WebListener
 public class EscuchaContexto implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent sce) {
-        Usuario usuario1 = new Usuario("Jaime", "jaime");
-        Usuario usuario2 = new Usuario("Manu", "manu");
-        Usuario usuario3 = new Usuario("Sergio", "sergio");
-
         ArrayList&lt;Usuario&gt; listaUsuarios = new ArrayList&lt;&gt;();
-        listaUsuarios.add(usuario1);
-        listaUsuarios.add(usuario2);
-        listaUsuarios.add(usuario3);
+        listaUsuarios.add(new Usuario("Jaime", "jaime"));
+        listaUsuarios.add(new Usuario("Manu", "manu"));
+        listaUsuarios.add(new Usuario("Sergio", "sergio"));
+        listaUsuarios.add(new Usuario("Fran", "fran"));
+        listaUsuarios.add(new Usuario("Gonzalo", "gonzalo"));
+        listaUsuarios.add(new Usuario("Angel", "angel"));
 
         ServletContext context = sce.getServletContext();
         context.setAttribute("listaUsuarios", listaUsuarios);
     }
 }</code></pre>
+            </div>
+          </article>
         </div>
         <p>
-          La lectura correcta es: Tomcat arranca la aplicación, el listener se
-          dispara, se crea la lista y queda disponible para los Servlets. No hay
-          login todavía; solo se está preparando memoria global de aplicación.
+          Esta parte une colecciones y contexto: la lista se crea una vez y se
+          reutiliza. No hay que construirla en cada petición de login.
         </p>
       </section>
 
-      <section class="level2" id="login-lee-contexto-dia-33">
-        <h2><code>Login</code>: leer del contexto y validar</h2>
+      <section class="level2" id="paso-4-login-valida-dia-33">
+        <h2>Paso 4: <code>Login</code> valida credenciales</h2>
         <p>
-          Cuando llega el formulario, el Servlet <code>Login</code> ya no necesita
-          tener los usuarios escritos dentro del método. Pide la lista al contexto,
-          construye un <code>Usuario</code> con lo recibido y comprueba si está en
-          la lista.
+          El Servlet <code>Login</code> no debe calcular el IMC ni construir la
+          lista de usuarios. Su responsabilidad es recibir credenciales, comprobar
+          si existen y decidir a qué página enviar al navegador.
         </p>
         <div class="sourceCode code-panel language-java" data-language-label="JAVA">
           <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">private boolean existeUsuario(String usuario, String password) {
@@ -23557,92 +23818,194 @@ public class EscuchaContexto implements ServletContextListener {
     return listaUsuarios.contains(usuarioRecibido);
 }</code></pre>
         </div>
+        <p>
+          Hay dos detalles importantes. Primero, <code>getAttribute</code> devuelve
+          <code>Object</code>, por eso aparece el casting a
+          <code>ArrayList&lt;Usuario&gt;</code>. Segundo, <code>contains</code> funciona
+          bien porque <code>Usuario</code> es un <code>record</code> y compara por
+          contenido.
+        </p>
+      </section>
+
+      <section class="level2" id="paso-5-login-crea-sesion-dia-33">
+        <h2>Paso 5: crear sesión solo si el usuario existe</h2>
+        <p>
+          La sesión se crea después de validar. Ese orden es obligatorio: si se
+          crea antes de validar, la aplicación podría reconocer como iniciado a
+          alguien que todavía no ha demostrado sus credenciales.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">String usuario = request.getParameter("usuario");
+String password = request.getParameter("password");
+
+if (existeUsuario(usuario, password)) {
+    HttpSession sesion = request.getSession();
+    response.sendRedirect("imc.html");
+} else {
+    response.sendRedirect("error-login.html");
+}</code></pre>
+        </div>
+        <p>
+          <code>request.getSession()</code> crea una sesión si no existe. Tomcat
+          la identifica con un id de sesión y el navegador conservará esa relación
+          mediante una cookie de sesión.
+        </p>
+      </section>
+
+      <section class="level2" id="paso-6-redireccion-dia-33">
+        <h2>Paso 6: entender la redirección</h2>
+        <p>
+          <code>sendRedirect("imc.html")</code> no ejecuta el cálculo ni mueve
+          variables Java a la página. Le dice al navegador que haga otra petición
+          a <code>imc.html</code>. La sesión queda asociada al navegador, no al
+          HTML como texto visible.
+        </p>
         <table>
           <thead>
             <tr>
               <th>Línea</th>
-              <th>Qué significa</th>
-              <th>Error que evita</th>
+              <th>Qué hace</th>
+              <th>Qué no hace</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><code>getServletContext()</code></td>
-              <td>Accede a la memoria global de la aplicación.</td>
-              <td>No recrear usuarios en cada petición.</td>
+              <td><code>request.getSession()</code></td>
+              <td>Crea o recupera la sesión del navegador.</td>
+              <td>No valida por sí sola.</td>
             </tr>
             <tr>
-              <td><code>getAttribute("listaUsuarios")</code></td>
-              <td>Recupera la lista guardada al arrancar.</td>
-              <td>No duplicar datos dentro del Servlet.</td>
+              <td><code>sendRedirect("imc.html")</code></td>
+              <td>Ordena una nueva petición a otra URL.</td>
+              <td>No pasa variables locales de Java al HTML.</td>
             </tr>
             <tr>
-              <td><code>(ArrayList&lt;Usuario&gt;)</code></td>
-              <td>Convierte el <code>Object</code> del contexto al tipo real.</td>
-              <td>No intentar usar métodos de lista sobre un <code>Object</code>.</td>
-            </tr>
-            <tr>
-              <td><code>contains(usuarioRecibido)</code></td>
-              <td>Busca un usuario igual dentro de la lista.</td>
-              <td>No comparar manualmente usuario y contraseña con bucles.</td>
+              <td><code>fetch("CalculoIMC?...&quot;)</code></td>
+              <td>Pide al Servlet de IMC que calcule.</td>
+              <td>No debe repetir el login.</td>
             </tr>
           </tbody>
         </table>
+      </section>
+
+      <section class="level2" id="paso-7-calculo-protegido-dia-33">
+        <h2>Paso 7: proteger <code>CalculoIMC</code> con <code>getSession(false)</code></h2>
         <p>
-          Esta parte une tres conceptos anteriores: colecciones, casting y
-          modelos de datos. El contexto devuelve <code>Object</code> porque puede
-          guardar cualquier cosa; el programador sabe que ahí metió una
-          <code>ArrayList&lt;Usuario&gt;</code> y por eso hace el casting.
+          Esta es la barrera de seguridad real. El Servlet de cálculo debe empezar
+          comprobando si la petición trae una sesión válida. Aquí no se puede usar
+          <code>getSession()</code>, porque eso crearía sesión a quien no la tiene.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">HttpSession sesionActual = request.getSession(false);
+
+if (sesionActual == null) {
+    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+    response.getWriter().write("Sin sesión. No autorizado (401)");
+    return;
+}</code></pre>
+        </div>
+        <p>
+          Si <code>sesionActual</code> vale <code>null</code>, el servidor responde
+          <code>401 Unauthorized</code>. Eso no significa que el servidor esté roto:
+          significa que la petición no está autorizada.
         </p>
       </section>
 
-      <section class="level2" id="flujo-completo-contexto-sesion-dia-33">
-        <h2>Flujo completo: contexto para usuarios, sesión para acceso</h2>
+      <section class="level2" id="paso-8-calcular-json-dia-33">
+        <h2>Paso 8: si hay sesión, calcular y devolver JSON</h2>
         <p>
-          La confusión se reduce si se separan dos memorias distintas. La lista de
-          usuarios vive en el contexto porque es común a toda la aplicación. La
-          sesión vive asociada a un navegador porque representa a quien ya ha
-          entrado.
+          Solo después de superar la barrera de sesión se leen <code>peso</code> y
+          <code>altura</code>. Si faltan parámetros o no son números, la respuesta
+          debe ser <code>400 Bad Request</code>. Si todo está bien, se calcula el
+          IMC y se devuelve JSON.
         </p>
-        <ol>
-          <li>Tomcat arranca la aplicación.</li>
-          <li><code>EscuchaContexto</code> crea <code>listaUsuarios</code>.</li>
-          <li>La lista se guarda con <code>context.setAttribute("listaUsuarios", listaUsuarios)</code>.</li>
-          <li>El usuario envía el formulario de <code>login.html</code>.</li>
-          <li><code>Login</code> recupera la lista con <code>getAttribute</code>.</li>
-          <li><code>Login</code> comprueba si el usuario recibido está en la lista.</li>
-          <li>Si existe, se crea la sesión con <code>request.getSession()</code>.</li>
-          <li><code>CalculoIMC</code> no mira la lista de usuarios: solo comprueba si hay sesión.</li>
-        </ol>
-        <div class="sourceCode code-panel language-text" data-language-label="MAPA">
-          <pre class="sourceCode text"><code class="sourceCode text" data-start-line="1">contexto  --&gt; listaUsuarios compartida por toda la app
-login     --&gt; valida usuario contra esa lista
-session   --&gt; recuerda que este navegador ya entró
-IMC       --&gt; calcula solo si la sesión existe</code></pre>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">String peso = request.getParameter("peso");
+String altura = request.getParameter("altura");
+
+float pesof = Float.parseFloat(peso);
+float alturaf = Float.parseFloat(altura);
+float imcNumerico = pesof / (alturaf * alturaf);
+
+ImcRespuestaNueva respuesta = new ImcRespuestaNueva(
+        pesof,
+        alturaf,
+        imcNominal,
+        imcNumerico);
+
+response.setContentType("application/json");
+response.getWriter().write(new Gson().toJson(respuesta));</code></pre>
         </div>
       </section>
 
-      <section class="level2" id="ejercicio-contexto-usuarios-dia-33">
-        <h2>Ejercicio: mover usuarios al contexto</h2>
+      <section class="level2" id="getsession-comparacion-dia-33">
+        <h2>Comparación imprescindible: crear frente a comprobar</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Método</th>
+              <th>Qué hace si no hay sesión</th>
+              <th>Dónde se usa</th>
+              <th>Por qué</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>request.getSession()</code></td>
+              <td>Crea una sesión nueva.</td>
+              <td>En <code>Login</code>, después de validar credenciales.</td>
+              <td>El usuario acaba de demostrar que puede entrar.</td>
+            </tr>
+            <tr>
+              <td><code>request.getSession(false)</code></td>
+              <td>Devuelve <code>null</code> si no hay sesión.</td>
+              <td>En <code>CalculoIMC</code>, antes de calcular.</td>
+              <td>Una ruta protegida no debe crear acceso por accidente.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="session-checkline">
+          Regla de seguridad: <strong>crear sesión en la puerta; comprobar sesión
+          dentro de la zona protegida.</strong>
+        </p>
+      </section>
+
+      <section class="level2" id="ejercicio-sesion-login-dia-33">
+        <h2>Ejercicio: montar login y sesión para proteger IMC</h2>
         <p>
-          El objetivo es que el Servlet <code>Login</code> no tenga una lista
-          local improvisada. La lista se crea al arrancar la aplicación y el login
-          solo la consulta.
+          Objetivo: que el usuario no pueda usar el cálculo si no ha pasado antes
+          por el login. La solución debe mantener responsabilidades separadas.
         </p>
         <ol>
-          <li>Crea el <code>record Usuario</code> en el paquete de modelo.</li>
-          <li>Crea un listener con <code>@WebListener</code>.</li>
-          <li>En <code>contextInitialized</code>, crea una <code>ArrayList&lt;Usuario&gt;</code>.</li>
-          <li>Guarda esa lista en el contexto con la clave <code>listaUsuarios</code>.</li>
-          <li>En <code>Login</code>, recupera la lista y valida con <code>contains</code>.</li>
+          <li>Configura <code>login.html</code> como página inicial en <code>web.xml</code>.</li>
+          <li>Crea el formulario con <code>action="login"</code> y <code>method="post"</code>.</li>
+          <li>Crea <code>record Usuario</code>.</li>
+          <li>Carga usuarios en <code>EscuchaContexto</code> al arrancar la aplicación.</li>
+          <li>En <code>Login</code>, valida con <code>contains</code>.</li>
+          <li>Si el usuario existe, crea sesión y redirige a <code>imc.html</code>.</li>
+          <li>En <code>CalculoIMC</code>, comprueba sesión con <code>getSession(false)</code>.</li>
+          <li>Si no hay sesión, responde <code>401</code>; si la hay, calcula y devuelve JSON.</li>
         </ol>
         <details>
           <summary>Solución correcta</summary>
           <p>
-            La solución correcta separa arranque, modelo y validación. El listener
-            prepara datos de aplicación; el record modela un usuario; el Servlet
-            solo consulta y decide si crea sesión.
+            La solución correcta no concentra todo en un único Servlet. Cada pieza
+            tiene una función: <code>web.xml</code> abre la puerta, el formulario
+            envía datos, el listener prepara usuarios, <code>Login</code> valida y
+            crea sesión, y <code>CalculoIMC</code> protege el cálculo.
           </p>
+          <div class="sourceCode code-panel language-xml" data-language-label="XML">
+            <pre class="sourceCode xml"><code class="sourceCode xml" data-start-line="1">&lt;welcome-file-list&gt;
+    &lt;welcome-file&gt;login.html&lt;/welcome-file&gt;
+&lt;/welcome-file-list&gt;</code></pre>
+          </div>
+          <div class="sourceCode code-panel language-html" data-language-label="HTML">
+            <pre class="sourceCode html"><code class="sourceCode html" data-start-line="1">&lt;form action="login" method="post"&gt;
+    &lt;input type="text" name="usuario" required&gt;
+    &lt;input type="password" name="password" required&gt;
+    &lt;button type="submit"&gt;Entrar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+          </div>
           <div class="sourceCode code-panel language-java" data-language-label="JAVA">
             <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">public record Usuario(String usuario, String password) {
 }</code></pre>
@@ -23653,11 +24016,9 @@ public class EscuchaContexto implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent sce) {
         ArrayList&lt;Usuario&gt; listaUsuarios = new ArrayList&lt;&gt;();
-
         listaUsuarios.add(new Usuario("Jaime", "jaime"));
         listaUsuarios.add(new Usuario("Manu", "manu"));
         listaUsuarios.add(new Usuario("Sergio", "sergio"));
-        listaUsuarios.add(new Usuario("Fran", "fran"));
 
         ServletContext context = sce.getServletContext();
         context.setAttribute("listaUsuarios", listaUsuarios);
@@ -23672,52 +24033,27 @@ public class EscuchaContexto implements ServletContextListener {
             (ArrayList&lt;Usuario&gt;) servletContext.getAttribute("listaUsuarios");
 
     Usuario usuarioRecibido = new Usuario(usuario, password);
-
     return listaUsuarios.contains(usuarioRecibido);
 }</code></pre>
           </div>
-          <p>
-            Después, si <code>existeUsuario(...)</code> devuelve <code>true</code>,
-            el Servlet crea la sesión con <code>request.getSession()</code> y
-            redirige a <code>imc.html</code>. Si devuelve <code>false</code>,
-            redirige a <code>error-login.html</code>.
-          </p>
-        </details>
-      </section>
-
-      <section class="level2" id="ejercicio-practicar-dia-33">
-        <h2>Ejercicio para practicar</h2>
-        <p>
-          Reproduce el flujo completo sin mezclar piezas. Primero prueba el acceso
-          sin sesión y después entra correctamente.
-        </p>
-        <ol>
-          <li>Abre directamente la ruta de cálculo con parámetros de peso y altura.</li>
-          <li>Comprueba que el servidor responde <code>401</code> si no hay sesión.</li>
-          <li>Entra por <code>login.html</code> y envía usuario y contraseña.</li>
-          <li>Comprueba que <code>Login</code> crea sesión y redirige a <code>imc.html</code>.</li>
-          <li>Calcula el IMC desde la página y confirma que ahora devuelve JSON.</li>
-        </ol>
-        <details>
-          <summary>Solución correcta</summary>
-          <p>
-            La solución correcta no consiste en meter todo en el mismo Servlet.
-            El login y el cálculo tienen responsabilidades distintas.
-          </p>
           <div class="sourceCode code-panel language-java" data-language-label="JAVA">
-            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">// Login: solo después de validar credenciales.
-if (existeUsuario(usuario, password)) {
-    HttpSession sesion = request.getSession();
-    sesion.setAttribute("usuario", usuario); // opcional, pero útil.
-    response.sendRedirect("imc.html");
-    return;
-}
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
 
-response.sendRedirect("error-login.html");</code></pre>
+    String usuario = request.getParameter("usuario");
+    String password = request.getParameter("password");
+
+    if (existeUsuario(usuario, password)) {
+        HttpSession sesion = request.getSession();
+        response.sendRedirect("imc.html");
+        return;
+    }
+
+    response.sendRedirect("error-login.html");
+}</code></pre>
           </div>
           <div class="sourceCode code-panel language-java" data-language-label="JAVA">
-            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">// CalculoIMC: comprobar antes de leer peso y altura.
-HttpSession sesionActual = request.getSession(false);
+            <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">HttpSession sesionActual = request.getSession(false);
 
 if (sesionActual == null) {
     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -23725,14 +24061,8 @@ if (sesionActual == null) {
     return;
 }
 
-// A partir de aquí ya se puede leer, parsear, calcular y devolver JSON.</code></pre>
+// A partir de aquí: leer peso/altura, parsear, calcular y devolver JSON.</code></pre>
           </div>
-          <p>
-            <code>setAttribute("usuario", usuario)</code> es una mejora opcional:
-            permite recordar qué usuario entró. Lo obligatorio para proteger el
-            IMC es que <code>CalculoIMC</code> use <code>getSession(false)</code>
-            y corte la petición si devuelve <code>null</code>.
-          </p>
         </details>
       </section>
 
@@ -23742,65 +24072,443 @@ if (sesionActual == null) {
           <thead>
             <tr>
               <th>Error</th>
-              <th>Por qué confunde</th>
-              <th>Cómo corregirlo</th>
+              <th>Por qué rompe el razonamiento</th>
+              <th>Corrección</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Creer que HTTP recuerda al usuario</td>
-              <td>Cada petición nace separada de la anterior.</td>
-              <td>Usa sesión para mantener identidad entre peticiones.</td>
+              <td>Crear sesión antes de validar</td>
+              <td>La aplicación recuerda a alguien que todavía no ha demostrado ser usuario válido.</td>
+              <td>Primero <code>existeUsuario(...)</code>, después <code>getSession()</code>.</td>
             </tr>
             <tr>
-              <td>Proteger con <code>getSession()</code></td>
-              <td>Ese método crea sesión si no existe.</td>
-              <td>En rutas protegidas usa <code>getSession(false)</code>.</td>
+              <td>Usar <code>getSession()</code> en <code>CalculoIMC</code></td>
+              <td>Una ruta protegida podría crear sesión por accidente.</td>
+              <td>Usar <code>getSession(false)</code> y cortar con <code>401</code>.</td>
             </tr>
             <tr>
-              <td>Pensar que <code>redirect</code> pasa variables Java</td>
-              <td>La redirección hace que el navegador pida otra URL.</td>
-              <td>Guarda lo que deba sobrevivir en sesión, no en variables locales.</td>
-            </tr>
-            <tr>
-              <td>Confundir <code>401</code> con fallo interno</td>
-              <td>El servidor funciona, pero rechaza la petición sin sesión.</td>
-              <td>Reserva <code>500</code> para fallos del servidor; aquí corresponde <code>401</code>.</td>
-            </tr>
-            <tr>
-              <td>Mezclar login, cálculo y JSON</td>
-              <td>Son responsabilidades distintas.</td>
-              <td><code>Login</code> valida y crea sesión; <code>CalculoIMC</code> calcula y devuelve JSON.</td>
-            </tr>
-            <tr>
-              <td>Confundir <code>context</code> con <code>session</code></td>
+              <td>Confundir contexto con sesión</td>
               <td>El contexto es común a todos; la sesión pertenece a un navegador.</td>
-              <td>Usuarios compartidos en <code>context</code>; acceso iniciado en <code>session</code>.</td>
+              <td>Usuarios en <code>context</code>; acceso iniciado en <code>session</code>.</td>
             </tr>
             <tr>
-              <td>Olvidar el casting al leer <code>listaUsuarios</code></td>
-              <td><code>getAttribute</code> devuelve <code>Object</code>.</td>
+              <td>Olvidar el casting</td>
+              <td><code>getAttribute</code> devuelve <code>Object</code>, no una lista directamente usable.</td>
               <td>Convertir a <code>ArrayList&lt;Usuario&gt;</code> antes de usar <code>contains</code>.</td>
             </tr>
             <tr>
-              <td>No entender por qué funciona <code>contains</code></td>
-              <td>La lista compara objetos, no textos sueltos.</td>
-              <td>Recordar que el <code>record Usuario</code> genera comparación por contenido.</td>
+              <td>No entender <code>contains</code></td>
+              <td>Parece magia, pero depende de cómo se comparan los objetos.</td>
+              <td>Recordar que <code>record Usuario</code> genera comparación por contenido.</td>
+            </tr>
+            <tr>
+              <td>Creer que <code>sendRedirect</code> pasa variables</td>
+              <td>Una redirección es otra petición HTTP, no una llamada interna de Java.</td>
+              <td>Guardar lo que deba sobrevivir en sesión o contexto, según corresponda.</td>
+            </tr>
+            <tr>
+              <td>Responder <code>500</code> cuando falta sesión</td>
+              <td>No es un fallo interno: el usuario no está autorizado.</td>
+              <td>Usar <code>401 Unauthorized</code>.</td>
             </tr>
           </tbody>
         </table>
       </section>
 
+      <section class="level2 neuro-study-guide" id="repaso-cognitivo-dia-33">
+        <h2>Repaso con baja carga cognitiva</h2>
+        <p>
+          Para no mezclar todo, repasa el día en capas. No intentes memorizar el
+          proyecto entero de golpe.
+        </p>
+        <div class="neuro-study-grid">
+          <article class="neuro-study-step">
+            <strong>1. Dibuja la ruta</strong>
+            <p><code>login.html</code> → <code>Login</code> → sesión → <code>imc.html</code> → <code>CalculoIMC</code>.</p>
+          </article>
+          <article class="neuro-study-step">
+            <strong>2. Marca quién crea</strong>
+            <p><code>Login</code> crea sesión con <code>getSession()</code>.</p>
+          </article>
+          <article class="neuro-study-step">
+            <strong>3. Marca quién comprueba</strong>
+            <p><code>CalculoIMC</code> comprueba con <code>getSession(false)</code>.</p>
+          </article>
+          <article class="neuro-study-step">
+            <strong>4. Separa memorias</strong>
+            <p><code>context</code> guarda usuarios; <code>session</code> guarda acceso del navegador.</p>
+          </article>
+          <article class="neuro-study-step">
+            <strong>5. Comprueba el error</strong>
+            <p>Sin login debe aparecer <code>401</code>; con login debe llegar JSON.</p>
+          </article>
+        </div>
+        <p class="neuro-study-note">
+          Si te pierdes, vuelve a una sola pregunta: <strong>¿esta línea está
+          creando memoria, leyendo memoria o comprobando acceso?</strong>
+        </p>
+      </section>
+
       <section class="level2" id="cierre-del-dia-33">
         <h2>Cierre del día</h2>
         <p>
-          El salto importante es mental: una aplicación web no recuerda por sí
-          sola. El contexto guarda datos comunes de la aplicación, como la lista
-          de usuarios preparada al arrancar. El login valida contra esa lista y,
-          si el usuario existe, crea una sesión para que Tomcat pueda reconocer
-          al navegador en peticiones posteriores. A partir de ahí, el cálculo del
-          IMC se protege preguntando si esa sesión existe antes de leer datos,
-          parsear números y devolver JSON.
+          El punto importante es que una aplicación web no recuerda nada por sí
+          sola. El servidor necesita crear una sesión cuando el usuario entra y
+          comprobar esa sesión cada vez que accede a una zona protegida. En esta
+          práctica, <code>EscuchaContexto</code> prepara usuarios compartidos,
+          <code>Login</code> valida credenciales y crea la sesión, y
+          <code>CalculoIMC</code> protege el cálculo devolviendo <code>401</code>
+          si no hay una sesión válida.
+        </p>
+      </section>
+    </section>
+
+
+    <section class="level1" id="dia-34---filtros-java-web-y-proteccion-de-rutas">
+      <h1 data-day-date="26/06/2026">Día 34 - Filtros Java Web y protección de rutas</h1>
+      <p>
+        El día empieza dando un paso más en seguridad Java Web. Hasta ahora cada
+        Servlet podía comprobar por su cuenta si había sesión. Hoy aparece una
+        pieza nueva: el <strong>filtro</strong>. Un filtro intercepta una petición
+        antes de que llegue al recurso solicitado y permite decidir si la petición
+        continúa, se registra o se bloquea.
+      </p>
+
+      <section class="level2 quick-summary" id="resumen-rapido-dia-34">
+        <h2>Resumen rápido</h2>
+        <ul>
+          <li><strong>Qué se vio:</strong> <code>Filter</code>, <code>@WebFilter</code>, <code>doFilter</code>, <code>chain.doFilter</code>, URL solicitada y protección de IMC.</li>
+          <li><strong>Concepto que importa:</strong> un filtro trabaja antes del Servlet y puede dejar pasar o cortar la petición.</li>
+          <li><strong>Error a evitar:</strong> olvidar <code>chain.doFilter</code>, porque entonces el recurso final nunca se ejecuta.</li>
+          <li><strong>Práctica:</strong> crear <code>FiltroBasico</code> para ver ida/vuelta y <code>FiltroIMC</code> para proteger <code>imc.html</code> y <code>CalculoIMC</code>.</li>
+          <li><strong>Debe quedar claro:</strong> el filtro no sustituye al Servlet; lo rodea y controla el acceso.</li>
+        </ul>
+      </section>
+
+      <section class="level2 study-levels" id="niveles-de-estudio-dia-34">
+        <h2>Niveles de estudio</h2>
+        <div class="study-level-grid">
+          <article class="study-level-item">
+            <h3>Esencial</h3>
+            <p>
+              Entender que <code>doFilter</code> recibe petición, respuesta y cadena.
+              La línea <code>chain.doFilter(request, response)</code> es la puerta
+              que deja continuar.
+            </p>
+          </article>
+          <article class="study-level-item">
+            <h3>Práctica</h3>
+            <p>
+              Hacer cast de <code>ServletRequest</code> a
+              <code>HttpServletRequest</code>, imprimir la URL con
+              <code>getRequestURL()</code> y comprobar el orden de ida y vuelta.
+            </p>
+          </article>
+          <article class="study-level-item">
+            <h3>Ampliación</h3>
+            <p>
+              Separar filtro general de observación (<code>/*</code>) y filtro de
+              seguridad específico para <code>/CalculoIMC</code> e
+              <code>/imc.html</code>.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="level2" id="material-usado-dia-34">
+        <h2>Material usado</h2>
+        <p class="trace-card">
+          La práctica se apoya en la aplicación de sesiones e IMC y en dos piezas
+          nuevas: <code>FiltroBasico.java</code>, para observar el recorrido de las
+          peticiones, y <code>FiltroIMC.java</code>, para proteger
+          <code>imc.html</code> y <code>CalculoIMC</code>.
+        </p>
+      </section>
+
+      <section class="level2 session-flow-board" id="ruta-filtros-dia-34">
+        <h2>Ruta mental: qué hace un filtro</h2>
+        <p>
+          El filtro no es la página y tampoco es el Servlet final. Es una pieza
+          intermedia que se coloca delante de una o varias rutas.
+        </p>
+        <div class="session-route">
+          <article>
+            <h3>Llega la petición</h3>
+            <p>
+              El navegador pide un recurso: <code>imc.html</code>,
+              <code>CalculoIMC</code>, una imagen, un CSS o cualquier otra URL.
+            </p>
+          </article>
+          <article>
+            <h3>Entra el filtro</h3>
+            <p>
+              Tomcat mira el patrón de <code>@WebFilter</code>. Si encaja, ejecuta
+              el método <code>doFilter</code> antes del recurso final.
+            </p>
+          </article>
+          <article>
+            <h3>Decide o registra</h3>
+            <p>
+              El filtro puede imprimir la URL, medir tiempos, comprobar sesión o
+              preparar una regla común para varias rutas.
+            </p>
+          </article>
+          <article>
+            <h3>Deja pasar</h3>
+            <p>
+              Si todo está correcto, ejecuta <code>chain.doFilter</code>. Esa línea
+              manda la petición al siguiente filtro o al recurso final.
+            </p>
+          </article>
+          <article>
+            <h3>Vuelve la respuesta</h3>
+            <p>
+              El código situado después de <code>chain.doFilter</code> se ejecuta
+              cuando el recurso ya ha trabajado y la respuesta vuelve al cliente.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="level2" id="filtro-basico-dia-34">
+        <h2>Ejercicio 1: <code>FiltroBasico</code> para ver ida y vuelta</h2>
+        <p>
+          Este filtro se registra con <code>@WebFilter("/*")</code>. El patrón
+          <code>/*</code> significa que intercepta todas las peticiones de la
+          aplicación. Sirve para ver el recorrido, no para proteger todavía una
+          zona concreta.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">package servlets;
+
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.HttpFilter;
+import jakarta.servlet.http.HttpServletRequest;
+
+import java.io.IOException;
+
+@WebFilter("/*")
+public class FiltroBasico extends HttpFilter implements Filter {
+
+    /**
+     * Constructor por defecto del filtro.
+     * Tomcat lo usa para crear la instancia antes de interceptar peticiones.
+     */
+    public FiltroBasico() {
+        super();
+    }
+
+    /**
+     * Intercepta la petición, registra la URL y permite que continúe la cadena.
+     */
+    public void doFilter(ServletRequest request, ServletResponse response,
+            FilterChain chain) throws IOException, ServletException {
+
+        System.out.println("A LA IDA");
+
+        HttpServletRequest req = (HttpServletRequest) request;
+        System.out.println("URL = " + req.getRequestURL().toString());
+
+        chain.doFilter(request, response);
+
+        System.out.println("A LA VUELTA");
+    }
+
+    /**
+     * Se ejecuta al retirar el filtro de servicio.
+     */
+    public void destroy() {
+    }
+
+    /**
+     * Se ejecuta al inicializar el filtro.
+     */
+    public void init(FilterConfig fConfig) throws ServletException {
+    }
+}</code></pre>
+        </div>
+        <p class="session-checkline">
+          Lectura clave: todo lo que está antes de <code>chain.doFilter</code> ocurre
+          a la ida; todo lo que está después ocurre a la vuelta.
+        </p>
+      </section>
+
+      <section class="level2" id="casting-request-dia-34">
+        <h2>Por qué aparece el casting a <code>HttpServletRequest</code></h2>
+        <p>
+          <code>doFilter</code> recibe una petición genérica de tipo
+          <code>ServletRequest</code>. Para leer información propia de HTTP, como
+          la URL solicitada o la sesión, hay que convertirla al tipo específico
+          <code>HttpServletRequest</code>.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">HttpServletRequest req = (HttpServletRequest) request;
+System.out.println("URL = " + req.getRequestURL().toString());</code></pre>
+        </div>
+        <p>
+          El casting no crea una petición nueva. Solo le dice a Java que lea ese
+          objeto con su tipo HTTP real para poder usar métodos como
+          <code>getRequestURL()</code> o <code>getSession(false)</code>.
+        </p>
+      </section>
+
+      <section class="level2" id="filtro-imc-dia-34">
+        <h2>Ejercicio 2: <code>FiltroIMC</code> para proteger rutas</h2>
+        <p>
+          Después del filtro general aparece el filtro útil para seguridad. La
+          idea es no repetir la comprobación de sesión en cada recurso protegido.
+          Si el usuario intenta entrar en <code>imc.html</code> o llamar a
+          <code>CalculoIMC</code> sin sesión, el filtro corta el paso.
+        </p>
+        <div class="sourceCode code-panel language-java" data-language-label="JAVA">
+          <pre class="sourceCode java"><code class="sourceCode java" data-start-line="1">package servlets;
+
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.HttpFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import java.io.IOException;
+
+@WebFilter(urlPatterns = { "/CalculoIMC", "/imc.html" })
+public class FiltroIMC extends HttpFilter implements Filter {
+
+    /**
+     * Comprueba si existe una sesión antes de permitir el acceso al IMC.
+     */
+    public void doFilter(ServletRequest request, ServletResponse response,
+            FilterChain chain) throws IOException, ServletException {
+
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse resp = (HttpServletResponse) response;
+
+        HttpSession sesion = req.getSession(false);
+
+        if (sesion == null) {
+            resp.sendRedirect("error-login.html");
+            return;
+        }
+
+        chain.doFilter(request, response);
+    }
+}</code></pre>
+        </div>
+        <p>
+          La diferencia con <code>FiltroBasico</code> está en el objetivo: el básico
+          observa todas las rutas; <code>FiltroIMC</code> protege solo las rutas que
+          necesitan usuario identificado.
+        </p>
+      </section>
+
+      <section class="level2" id="comparacion-filtros-dia-34">
+        <h2>Comparación rápida</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Filtro</th>
+              <th>Patrón</th>
+              <th>Para qué sirve</th>
+              <th>Cuidado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>FiltroBasico</code></td>
+              <td><code>/*</code></td>
+              <td>Ver todas las peticiones y comprobar el flujo de ida/vuelta.</td>
+              <td>Puede ejecutarse muchas veces porque afecta a todo.</td>
+            </tr>
+            <tr>
+              <td><code>FiltroIMC</code></td>
+              <td><code>/CalculoIMC</code>, <code>/imc.html</code></td>
+              <td>Evitar que se use el IMC sin sesión activa.</td>
+              <td>Debe usar <code>getSession(false)</code> para no crear sesión por accidente.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="session-checkline">
+          Regla de repaso: <strong>si no llamas a <code>chain.doFilter</code>, la
+          petición no llega al recurso final.</strong>
+        </p>
+      </section>
+
+      <section class="level2" id="errores-frecuentes-dia-34">
+        <h2>Errores frecuentes</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Error</th>
+              <th>Qué pasa</th>
+              <th>Corrección</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Olvidar <code>chain.doFilter</code></td>
+              <td>La petición se queda en el filtro y no llega al Servlet ni al HTML.</td>
+              <td>Llamarlo solo cuando se quiera permitir el acceso.</td>
+            </tr>
+            <tr>
+              <td>Usar <code>@WebFilter("/*")</code> para todo</td>
+              <td>El filtro se ejecuta también en recursos que quizá no necesitan seguridad.</td>
+              <td>Usar patrones concretos cuando se protege una zona específica.</td>
+            </tr>
+            <tr>
+              <td>Usar <code>getSession()</code> en seguridad</td>
+              <td>Puede crear sesión a quien no la tenía.</td>
+              <td>Usar <code>getSession(false)</code> para comprobar sin crear.</td>
+            </tr>
+            <tr>
+              <td>Olvidar el cast a <code>HttpServletResponse</code></td>
+              <td>No se puede hacer <code>sendRedirect</code>.</td>
+              <td>Convertir <code>ServletResponse</code> a <code>HttpServletResponse</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="level2 neuro-study-guide" id="repaso-cognitivo-dia-34">
+        <h2>Repaso con baja carga cognitiva</h2>
+        <div class="neuro-study-grid">
+          <article class="neuro-study-step">
+            <strong>1. Dibuja la cadena</strong>
+            <p>Navegador → filtro → <code>chain.doFilter</code> → recurso final → vuelta.</p>
+          </article>
+          <article class="neuro-study-step">
+            <strong>2. Señala la barrera</strong>
+            <p>En <code>FiltroIMC</code>, la barrera es <code>getSession(false)</code>.</p>
+          </article>
+          <article class="neuro-study-step">
+            <strong>3. Comprueba una URL</strong>
+            <p>Con <code>getRequestURL()</code> ves qué recurso estaba intentando pedir el navegador.</p>
+          </article>
+          <article class="neuro-study-step">
+            <strong>4. Repite una frase</strong>
+            <p>Filtro general observa; filtro específico protege.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="level2" id="cierre-del-dia-34">
+        <h2>Cierre del día</h2>
+        <p>
+          El filtro permite sacar una regla común fuera del Servlet. En lugar de
+          que cada recurso protegido repita la misma comprobación, Tomcat ejecuta
+          primero el filtro. Si hay sesión, la petición continúa con
+          <code>chain.doFilter</code>; si no la hay, el filtro corta o redirige.
         </p>
       </section>
     </section>
@@ -25245,11 +25953,43 @@ arrayAlumnos.forEach(alumno => {
             const gapOutput = lab.querySelector("[data-gap-output]");
             const centerInput = lab.querySelector("[data-center]");
             const code = lab.querySelector("[data-layout-code]");
+            const modeLabel = lab.querySelector("[data-layout-mode-label]");
+            const ruleTitle = lab.querySelector("[data-layout-rule-title]");
+            const ruleCopy = lab.querySelector("[data-layout-rule-copy]");
+            const ruleAxis = lab.querySelector("[data-layout-axis]");
+            const ruleUse = lab.querySelector("[data-layout-use]");
+            const ruleRisk = lab.querySelector("[data-layout-risk]");
             const messages = {
               block:
                 "Block apila cada caja en una linea nueva: es el comportamiento base de muchos elementos.",
               flex: "Flex reparte las cajas en una fila flexible y permite alinearlas como una barra de herramientas.",
               grid: "Grid crea una cuadricula: cada pieza ocupa una celda y el conjunto gana estructura.",
+            };
+            const ruleDetails = {
+              block: {
+                label: "display: block",
+                title: "Block: flujo vertical",
+                copy: "Cada elemento reclama su propia linea. Es el punto de partida de muchos elementos HTML.",
+                axis: "Arriba hacia abajo",
+                use: "Contenido normal: titulos, parrafos y secciones.",
+                risk: "Intentar crear una barra o cuadricula solo con block.",
+              },
+              flex: {
+                label: "display: flex",
+                title: "Flex: un eje flexible",
+                copy: "Las piezas se colocan en una direccion principal y pueden saltar de linea si no caben.",
+                axis: "Fila o columna",
+                use: "Menus, barras, tarjetas en fila y alineacion de piezas.",
+                risk: "Usarlo para estructuras de filas y columnas demasiado rigidas.",
+              },
+              grid: {
+                label: "display: grid",
+                title: "Grid: filas y columnas",
+                copy: "El contenedor crea una cuadricula y cada pieza entra en una celda.",
+                axis: "Dos ejes",
+                use: "Galerias, paneles, dashboards y layouts con filas y columnas.",
+                risk: "Usarlo para una alineacion simple que Flex resolveria mejor.",
+              },
             };
             const codeSamples = {
               block: `.caja {
@@ -25313,6 +26053,13 @@ img {
                 button.setAttribute("aria-pressed", active ? "true" : "false");
               });
               feedback.textContent = messages[mode];
+              const details = ruleDetails[mode] || ruleDetails.block;
+              if (modeLabel) modeLabel.textContent = details.label;
+              if (ruleTitle) ruleTitle.textContent = details.title;
+              if (ruleCopy) ruleCopy.textContent = details.copy;
+              if (ruleAxis) ruleAxis.textContent = details.axis;
+              if (ruleUse) ruleUse.textContent = details.use;
+              if (ruleRisk) ruleRisk.textContent = details.risk;
               if (code) {
                 // El codigo mostrado cambia con cada modo; se recolorea despues de sustituir el texto.
                 code.textContent = codeSamples[mode] || codeSamples.block;
