@@ -1,0 +1,91 @@
+/* DIARIO_CURSOWEBM: estilos de impresion extraidos desde index.html. */
+
+/* ===== DIARIO_CURSOWEBM: origen inline diario_cursowebm.print.css ===== */
+/* diario_cursowebm.print.css */
+      @page {
+        size: A4;
+        margin: 13mm 12mm;
+      }
+
+      @media print {
+        html,
+        body {
+          background: #ffffff;
+          font-size: 10.8pt;
+        }
+
+        .cover {
+          min-height: 270mm;
+          page-break-after: always;
+        }
+
+        #TOC {
+          page-break-after: always;
+        }
+
+        section.level1[id^="dia-"] {
+          break-before: page;
+          page-break-before: always;
+        }
+
+        h1,
+        h2,
+        h3 {
+          break-after: avoid;
+          page-break-after: avoid;
+        }
+
+        table,
+        figure,
+        img,
+        pre,
+        div.sourceCode,
+        section.level2:has(> h2[id*="vista-esperada"]),
+        section.level2:has(> h2[id*="vista-complementaria"]) {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+
+        img {
+          max-height: 150mm;
+          object-fit: contain;
+        }
+
+        pre code {
+          font-size: 8.9pt;
+        }
+
+        div.sourceCode.code-panel {
+          margin-top: 14px;
+          overflow: hidden;
+          padding-top: 0;
+        }
+
+        div.sourceCode.code-panel pre {
+          contain: paint;
+          max-width: 100%;
+          padding: 28px 14px 14px;
+        }
+
+        .code-language-badge {
+          font-size: 7.2pt;
+          left: auto;
+          padding: 6px 9px;
+          right: 8px;
+          top: 7px;
+        }
+
+        .interactive-lab,
+        .interactive-lab-script {
+          display: none !important;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .page-break {
+          break-before: page;
+        }
+      }
